@@ -17,7 +17,7 @@
 }
 
 /* 기본 버튼 파란색 버전 */
-.Button-blue {
+.Button_blue {
   background-color: #597edb;
   color: #ffffff;
 }
@@ -51,30 +51,30 @@
 }
 
 /* 200x50 흰색 버튼 */
-.Button-mid {
+.Button_mid {
   width: 200px;
 }
 
 /* 200x50 파란색 버튼 */
-.Button-midBlue {
+.Button_midBlue {
   width: 200px;
   background-color: #597edb;
   color: #ffffff;
 }
 
 /* 200x50 흰색 배경 진한 테두리 버튼 */
-.Button-midStroke {
+.Button_midStroke {
   width: 200px;
   border: 2px solid #4b527e;
 }
 
 /* 330x50 흰색 버튼 */
-.Button-long {
+.Button_long {
   width: 330px;
 }
 
 /* 330x50 파란색 버튼 */
-.Button-longBlue {
+.Button_longBlue {
   width: 330px;
   background-color: #597edb;
   color: #ffffff;

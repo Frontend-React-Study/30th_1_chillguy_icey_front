@@ -1,0 +1,119 @@
+.Dropdown,
+.Dropdown * {
+  box-sizing: border-box;
+}
+
+.Dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 214px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  row-gap: 6px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: relative;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #7b83b1;
+  outline: none;
+}
+
+.Input {
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Placeholder {
+  color: #a4abd5;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.SelectedText {
+  color: #4b527e;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.Dropdown_button {
+  border-radius: 0px;
+  flex-shrink: 0;
+  width: 21px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.Rotate {
+  transform: rotate(180deg);
+}
+
+.Option_wrapper {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 214px;
+  position: absolute;
+  top: 36px;
+  z-index: 10;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.Option {
+  padding: 2px 0px 2px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+  height: 26px;
+
+  color: #4b527e;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.Dropdown_long {
+  width: 100%;
+  max-width: 320px;
+  height: 36.8px;
+}
+
+.Option_wrapper_long {
+  width: 100%;
+  max-width: 320px;
+}
