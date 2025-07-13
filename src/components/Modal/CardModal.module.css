@@ -1,0 +1,267 @@
+.CardModal,
+.CardModal * {
+  box-sizing: border-box;
+}
+
+.CardModal {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  border-radius: 20px;
+  padding: 27px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  height: 750px;
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  backdrop-filter: blur(22.5px);
+}
+
+.Title_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 100px;
+  position: relative;
+}
+
+.Title {
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.Main_title {
+  color: #4b527e;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+}
+
+.Sub_title {
+  color: #4b527e;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  width: 142px;
+  display: flex;
+  align-items: center;
+}
+
+.Line {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 1002px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.Card_body {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 507px;
+  position: relative;
+  overflow: hidden;
+}
+
+.Card {
+  background: #afcdff;
+  border-radius: 20px;
+  padding: 17px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 255px;
+  height: 370px;
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
+}
+
+.Card_Name {
+  color: #4b527e;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  width: 224px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Image_wrapper {
+  background-color: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 228px;
+  position: relative;
+  overflow: visible;
+}
+
+.Arrow_button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.left_right {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.Card_image {
+  width: 150px;
+  height: 150px;
+}
+
+.Info_text {
+  color: #4b527e;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.Write_body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.InputUnderline {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #7b83b1;
+  outline: none;
+  font-size: 18px;
+  padding: 4px 0;
+  width: 100%;
+
+  color: #4b527e;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.InputUnderline::placeholder {
+  color: #a4abd5;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Row1 {
+  padding: 6px 0px 6px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.Row2 {
+  width: 100%;
+  max-width: 670px;
+}
+
+.Col {
+  width: 100%;
+  max-width: 320px;
+}
+
+.Confirm_buttons {
+  padding: 20px 0px 20px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 415px;
+  position: relative;
+}
+
+.Overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(75, 82, 126, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}

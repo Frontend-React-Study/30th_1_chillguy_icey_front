@@ -1,0 +1,332 @@
+.LetterModal,
+.LetterModal * {
+  box-sizing: border-box;
+}
+
+.LetterModal {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  border-radius: 20px;
+  padding: 27px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  height: 750px;
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  backdrop-filter: blur(22.5px);
+  z-index: 1001;
+}
+
+.Title_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 100px;
+  position: relative;
+}
+
+.Title {
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.Main_title {
+  color: #4b527e;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+}
+
+.Sub_title {
+  color: #4b527e;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  width: 142px;
+  display: flex;
+  align-items: center;
+}
+
+.Line {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 1002px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.Letter_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.Card {
+  background: #afcdff;
+  border-radius: 20px;
+  padding: 13px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 357px;
+  height: 507px;
+  position: relative;
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
+}
+
+.Card_Name {
+  color: #4b527e;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 32px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  width: 100%;
+  position: relative;
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Card_Wrapper {
+  position: relative;
+  width: 100%;
+  height: 410px;
+}
+
+.Card_image {
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1002;
+}
+
+.Card_info {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1003;
+}
+
+.Card:hover .Card_info {
+  opacity: 1;
+}
+
+.InfoLabel {
+  color: #4b527e;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.Write_body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.Send_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-left: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.Receive_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-left: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.Info_text {
+  color: #4b527e;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.Info_text_title {
+  color: #4b527e;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 114px;
+}
+
+.Write_letter {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid #4b527e;
+  border-radius: 20px;
+  padding: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+
+.Write_text {
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  color: #363d6c;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  width: 100%;
+  max-width: 572px;
+  height: 100%;
+  max-height: 367px;
+  display: flex;
+  align-items: center;
+}
+
+.Write_text::placeholder {
+  color: #a4abd5;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  width: 450px;
+  display: flex;
+  align-items: center;
+}
+
+.Confirm_buttons {
+  padding: 20px 0px 20px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 415px;
+  position: relative;
+}
+
+.Overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(75, 82, 126, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}

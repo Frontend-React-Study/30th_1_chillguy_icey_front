@@ -1,0 +1,126 @@
+.Card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+  border-radius: 20px;
+  padding: 26.5px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 357px;
+  height: 507px;
+  position: relative;
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
+}
+
+.Card_Name {
+  color: #4b527e;
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 32px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  width: 100%;
+  height: 45px;
+  position: relative;
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Card_Wrapper {
+  position: relative;
+  width: 100%;
+  height: 340px;
+}
+
+.Card_image {
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.Card_info {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* Card hover 시 나타남 */
+.Card:hover .Card_info {
+  opacity: 1;
+}
+
+.InfoLabel {
+  color: #4b527e;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.Send_button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  color: #4b527e;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+}
+
+.TeamName {
+  color: #4b527e;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+}

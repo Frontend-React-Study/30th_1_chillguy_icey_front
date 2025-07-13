@@ -1,0 +1,211 @@
+html {
+  font-size: 16px;
+}
+
+.login-body {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton {
+  position: absolute;
+  top: 0.9375rem; /* 15px */
+  left: 0.9375rem;
+
+  border: none;
+  width: 2.5rem;
+  aspect-ratio: 1/1;
+  background: transparent;
+  cursor: pointer;
+}
+
+.login-content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  width: auto;
+  min-width: 36.25rem; /* ✅ 최소 너비 고정: 580px (버튼 패딩 + 내부 요소 고려) */
+  max-width: 43.75rem; /* 최대 너비 */
+  max-height: 95vh;
+  min-height: 45rem;
+
+  padding: 10rem 4rem 14rem 4rem;
+
+  align-items: center;
+  justify-content: center;
+  gap: 3.125rem;
+
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+
+  box-shadow: 0 0 1.25rem rgba(255, 255, 255, 0.5) inset;
+  backdrop-filter: blur(1.40625rem);
+
+  overflow: hidden; /* 내부 스크롤 방지 */
+}
+
+.logo-box {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.logo {
+  color: #fff;
+  text-align: center;
+
+  font-family: Inter;
+  font-size: 5.625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.1125rem;
+
+  text-shadow: 0px 2px 10px rgba(89, 126, 219, 0.5);
+  flex-shrink: 0;
+}
+
+.hello-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.9375rem;
+  padding: 1.25rem;
+
+  width: min(31.25rem, 80vw);
+  border-radius: 1.25rem;
+  background: var(
+    --,
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    )
+  );
+
+  /* 글래스모피즘 종합 */
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5) inset;
+  backdrop-filter: blur(22.5px);
+
+  flex-shrink: 0;
+}
+
+.text1 {
+  color: var(--Netural-white, #fff);
+  text-shadow: 0 0.125rem 0.625rem rgba(89, 126, 219, 0.5);
+
+  font-family: Inter;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.04rem;
+  flex-shrink: 0;
+}
+
+.text2 {
+  color: var(--Netural-white, #fff);
+  text-shadow: 0 0.125rem 0.625rem rgba(89, 126, 219, 0.5);
+
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.kakao-login,
+.google-login {
+  display: flex;
+  width: min(31.25rem, 80vw);
+  height: 3.1875rem;
+  padding: 0.6875rem 5.5625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+
+  box-shadow: 0px 2px 10px 0px rgba(89, 126, 219, 0.5);
+  border-radius: 0.625rem;
+  border: none;
+
+  flex-shrink: 0;
+}
+
+.kakao-login {
+  background: var(--fee-102, #ffe812);
+}
+
+.google-login {
+  background: #fff;
+}
+
+.kakao-img,
+.google-img {
+  width: 1.875rem;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+}
+
+.kakao-text,
+.google-text {
+  color: #333;
+  text-align: center;
+
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.02rem;
+  flex-shrink: 0;
+}
+
+/* 반응형: 화면 높이 작아질 때 축소 */
+@media (max-height: 800px) {
+  .login-content {
+    /* padding: 4rem 2rem; */
+    gap: 2rem;
+    min-height: auto;
+    /* 모바일대응: 너무 큰 min-height 제거; */
+  }
+
+  .logo {
+    font-size: 4rem;
+  }
+
+  .hello-text-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .login-box {
+    margin-top: 1rem;
+  }
+
+  .kakao-login,
+  .google-login {
+    padding: 0.5rem 2rem;
+  }
+
+  .kakao-text,
+  .google-text {
+    font-size: 1.125rem;
+  }
+}
