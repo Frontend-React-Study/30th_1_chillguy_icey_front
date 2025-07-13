@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
-// import Team from "./pages/Team";
+import Team from "./pages/Team";
 // import PromiseSnackbar from "./components/Snackbar/PromiseSnackbar";
 // import Snackbar from "./components/Snackbar/Snackbar";
 // import LinkSnackbar from "./components/Snackbar/LinkSnackbar";
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App-background">
       <Header />
-      {/* <Team /> */}
+      <Team />
       {/* <PromiseSnackbar /> */}
       {/* <LinkSnackbar /> */}
       {/* <InfoDialog /> */}

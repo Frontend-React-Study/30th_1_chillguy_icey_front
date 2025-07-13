@@ -7,7 +7,7 @@ const Button = ({ text, type, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`${st.Button} ${st[`Button_${type}`]}`}
+      className={`${st.Button} ${st[`Button-${type}`]}`}
     >
       {text}
     </button>

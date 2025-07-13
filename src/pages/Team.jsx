@@ -65,7 +65,7 @@ const Team = () => {
               onTransitionEnd={onFadeTransitionEnd}
             >
               {/* 리더가 아니면, 시간과 완료만 띄어줌. -> 리더면, 날짜/시간, 약속 확정,완료가 뜸 */}
-              <PromiseCheck userType="Leader" />
+              <PromiseCheck userType="" />
             </div>
           )}
         </div>

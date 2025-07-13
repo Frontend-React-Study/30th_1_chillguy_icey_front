@@ -1,0 +1,19 @@
+/* ==== 커스텀 날짜 강조 ==== */
+.normal {
+  background: white !important;
+  color: black !important;
+}
+
+.goal {
+  background-color: #ffd3d3 !important;
+  color: black !important;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.today {
+  background-color: #cde8ff !important;
+  color: black !important;
+  font-weight: bold;
+  border-radius: 50%;
+}
