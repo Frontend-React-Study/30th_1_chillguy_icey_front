@@ -1,7 +1,7 @@
 import st from "./PromiseCheck.module.css";
 import Promise from "./Promise.jsx";
-// import Promise_date from "./promise/Promise.jsx";
-// import Promise_time from "./promise/Promise.jsx";
+import PromiseDate from "./promise/PromiseDate.jsx";
+import PromiseTime from "./promise/PromiseTime.jsx";
 import Button from "../Button.jsx";
 
 const PromiseCheck = ({ userType }) => {
@@ -20,8 +20,8 @@ const PromiseCheck = ({ userType }) => {
           </div>
         </div>
         <div className={st.promise_check_box}>
-          {/* <Promise_date /> */}
-          {/* <Promise_time /> */}
+          <PromiseDate />
+          {/* <PromiseTime /> */}
         </div>
       </div>
     );
@@ -40,8 +40,8 @@ const PromiseCheck = ({ userType }) => {
           </div>
         </div>
         <div className={st.promise_check_box}>
-          {/* <Promise_date /> */}
-          {/* <Promise_time /> */}
+          {/* <PromiseDate /> */}
+          <PromiseTime />
         </div>
       </div>
     );

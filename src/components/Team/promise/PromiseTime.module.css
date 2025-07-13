@@ -1,0 +1,189 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.wrapper {
+  width: 350px;
+  height: 310px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.dateNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-left: 1.5rem;
+}
+
+/* 기존 CSS에 추가할 부분 */
+.chevron {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  color: #4b527e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chevron:hover {
+  background-color: #e2e6fa;
+}
+
+.chevron.disabled {
+  cursor: unset;
+  opacity: 0.3;
+}
+
+.chevron.disabled:hover {
+  background-color: transparent;
+}
+
+.grid {
+  display: grid;
+  gap: 0;
+  font-size: 0.75rem;
+  user-select: none;
+
+  margin-right: 2rem;
+}
+
+.dateList {
+  display: flex;
+  gap: 15px;
+  margin: 0 1rem;
+}
+
+.dateItem {
+  color: #374151;
+
+  color: var(--Font-Color-50, #4b527e);
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 16.8px */
+  letter-spacing: -0.24px;
+}
+
+/* .grid {
+  display: grid;
+  grid-template-columns: auto repeat(5, 1fr);
+  gap: 0;
+  font-size: 0.75rem;
+  user-select: none;
+} */
+
+.timeLabels {
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+
+  color: var(--Font-Color-50, #4b527e);
+  text-align: right;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 14px */
+  letter-spacing: -0.2px;
+}
+
+.dateColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell {
+  height: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.defaultCell {
+  border: 1px solid #4b527e;
+  border-radius: 0;
+}
+
+.roundedFull {
+  border: 2.5px solid #ff7dee;
+  border-radius: 0.25rem;
+}
+
+.roundedTop {
+  border: 2.5px solid #ff7dee;
+  border-bottom: none;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.roundedBottom {
+  border: 2.5px solid #ff7dee;
+  border-top: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.blockMiddle {
+  border: 2.5px solid #ff7dee;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.tooltip {
+  position: absolute;
+  top: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.tooltipTitle {
+  font-weight: 500;
+  font-family: Inter;
+}
+
+.tooltipDesc {
+  color: #d1d5db;
+  font-family: Inter;
+}
+
+.summary {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.submitBtn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background: #3b82f6;
+  color: white;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
