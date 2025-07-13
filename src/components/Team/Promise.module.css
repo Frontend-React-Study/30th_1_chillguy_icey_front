@@ -12,6 +12,7 @@
 /* 달력 박스 (왼쪽 영역) */
 .promise_calendar_box {
   width: 200px;
+  min-width: 150px;
   aspect-ratio: 1 / 1; /* ✅ 항상 정사각형 유지 */
   background-color: #fff;
   border-radius: 20px;
