@@ -62,13 +62,6 @@
   color: #ffffff;
 }
 
-/* 200x50 빨간색 버튼 */
-.Button_midRed {
-  width: 200px;
-  background-color: #ff4f49;
-  color: #ffffff;
-}
-
 /* 200x50 흰색 배경 진한 테두리 버튼 */
 .Button_midStroke {
   width: 200px;

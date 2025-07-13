@@ -1,0 +1,16 @@
+.List,
+.List * {
+  box-sizing: border-box;
+}
+.List {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  padding-bottom: 10px;
+}
