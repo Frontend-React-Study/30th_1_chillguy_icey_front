@@ -77,14 +77,6 @@
   letter-spacing: -0.24px;
 }
 
-/* .grid {
-  display: grid;
-  grid-template-columns: auto repeat(5, 1fr);
-  gap: 0;
-  font-size: 0.75rem;
-  user-select: none;
-} */
-
 .timeLabels {
   display: flex;
   flex-direction: column;
@@ -149,8 +141,8 @@
 
 .tooltip {
   position: absolute;
-  top: 2.5rem;
-  left: 50%;
+  bottom: 1rem;
+  left: 110%;
   transform: translateX(-50%);
   background: #1f2937;
   color: white;
@@ -159,6 +151,8 @@
   border-radius: 0.25rem;
   white-space: nowrap;
   z-index: 10;
+
+  pointer-events: none;
 }
 
 .tooltipTitle {

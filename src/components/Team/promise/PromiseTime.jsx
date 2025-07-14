@@ -1,3 +1,4 @@
+// PromiseTime.jsx
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import st from "./PromiseTime.module.css";
@@ -23,8 +24,6 @@ const TIME_SLOTS = [
 
 const PromiseTime = ({ onPrevPage, onNextPage }) => {
   const timeSlots = TIME_SLOTS;
-
-  // 전체 날짜 데이터
   const allDates = [
     { date: "06.15" },
     { date: "06.16" },
@@ -37,19 +36,18 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
     { date: "06.23" },
     { date: "06.24" },
   ];
-
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
   const totalPages = Math.ceil(allDates.length / itemsPerPage);
-
-  // 현재 페이지에 표시할 날짜들
-  const getCurrentDates = () => {
-    const start = currentPage * itemsPerPage;
-    const end = start + itemsPerPage;
-    return allDates.slice(start, end);
-  };
+  const getCurrentDates = () =>
+    allDates.slice(
+      currentPage * itemsPerPage,
+      (currentPage + 1) * itemsPerPage,
+    );
 
   const [mySelections, setMySelections] = useState({});
+  const [savedSelections, setSavedSelections] = useState({});
+  const [isEditMode, setIsEditMode] = useState(false);
   const [othersSelections] = useState({
     "06.15": [
       {
@@ -100,6 +98,7 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
   const gridRef = useRef(null);
 
   const handleMouseDown = (date, timeIndex) => {
+    if (!isEditMode) return;
     setIsDragging(true);
     const current = mySelections[date] || [];
     const isSelected = current.includes(timeIndex);
@@ -114,14 +113,11 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
 
   const handleMouseEnter = (date, timeIndex) => {
     setHoveredCell({ date, timeIndex });
-    if (!isDragging) return;
+    if (!isEditMode) return;
     const current = mySelections[date] || [];
     const isSelected = current.includes(timeIndex);
     if (dragMode === "add" && !isSelected) {
-      setMySelections((prev) => ({
-        ...prev,
-        [date]: [...current, timeIndex],
-      }));
+      setMySelections((prev) => ({ ...prev, [date]: [...current, timeIndex] }));
     } else if (dragMode === "remove" && isSelected) {
       setMySelections((prev) => ({
         ...prev,
@@ -134,13 +130,11 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
     setIsDragging(false);
     setDragMode(null);
   };
-
   const handleMouseLeave = () => {
     setIsDragging(false);
     setDragMode(null);
     setHoveredCell(null);
   };
-
   const handleMouseLeaveCell = () => setHoveredCell(null);
 
   const getSelectedTimes = useCallback(() => {
@@ -150,10 +144,6 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
     });
     return result;
   }, [mySelections, timeSlots]);
-
-  useEffect(() => {
-    console.log("Selected times:", getSelectedTimes());
-  }, [getSelectedTimes]);
 
   const getConnectedBlocks = (date) => {
     const sel = [...(mySelections[date] || [])].sort((a, b) => a - b);
@@ -186,35 +176,23 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
     return { isInBlock: false };
   };
 
-  const handlePrevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-      if (onPrevPage) onPrevPage();
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages - 1) {
-      setCurrentPage(currentPage + 1);
-      if (onNextPage) onNextPage();
-    }
-  };
-
   const currentDates = getCurrentDates();
+
+  useEffect(() => {
+    setSavedSelections(mySelections);
+  }, [mySelections]);
 
   return (
     <div className={st.container}>
       <div className={st.wrapper}>
-        {/* 페이지네이션 네비게이션 */}
         <div className={st.dateNav}>
           <button
-            onClick={handlePrevPage}
+            onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 0}
             className={`${st.chevron} ${currentPage === 0 ? st.disabled : ""}`}
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={18} />
           </button>
-
           <div className={st.dateList}>
             {currentDates.map((d, i) => (
               <div key={i} className={st.dateItem}>
@@ -222,17 +200,15 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
               </div>
             ))}
           </div>
-
           <button
-            onClick={handleNextPage}
+            onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage === totalPages - 1}
             className={`${st.chevron} ${currentPage === totalPages - 1 ? st.disabled : ""}`}
           >
-            <ChevronRight />
+            <ChevronRight size={18} />
           </button>
         </div>
 
-        {/* 그리드 */}
         <div
           ref={gridRef}
           className={st.grid}
@@ -242,7 +218,6 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
         >
-          {/* 시간 라벨 */}
           <div className={st.timeLabels}>
             {timeSlots.map((time, i) => (
               <div key={i} className={st.time}>
@@ -250,48 +225,54 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
               </div>
             ))}
           </div>
-
-          {/* 날짜 컬럼들 */}
-          {currentDates.map((d, i) => (
-            <div key={i} className={st.dateColumn}>
+          {currentDates.map((d) => (
+            <div key={d.date} className={st.dateColumn}>
               {timeSlots.map((_, j) => {
-                const selected = (mySelections[d.date] || []).includes(j);
+                const mySelected = (mySelections[d.date] || []).includes(j);
                 const others = othersSelections[d.date] || [];
-                const count = others.filter((u) =>
+                const userCount = others.filter((u) =>
                   u.selections.includes(j),
                 ).length;
-                const opacity = Math.min(count * 0.2, 0.8);
+                const totalCount = mySelected ? userCount + 1 : userCount;
+                const opacity = Math.min(totalCount * 0.2, 0.8);
                 const pos = getCellPosition(d.date, j);
                 const isHovered =
                   hoveredCell?.date === d.date && hoveredCell?.timeIndex === j;
 
                 let borderStyle = st.defaultCell;
-                if (selected && pos.isInBlock) {
+                if (mySelected && isEditMode && pos.isInBlock) {
                   if (pos.blockSize === 1) borderStyle = st.roundedFull;
                   else if (pos.isFirst) borderStyle = st.roundedTop;
                   else if (pos.isLast) borderStyle = st.roundedBottom;
                   else borderStyle = st.blockMiddle;
-                } else if (selected) borderStyle = st.roundedFull;
+                } else if (mySelected && isEditMode) {
+                  borderStyle = st.roundedFull;
+                } else if (mySelected && !isEditMode) {
+                  borderStyle = st.defaultCell;
+                }
 
                 return (
                   <div
                     key={j}
                     className={`${st.cell} ${borderStyle}`}
                     style={{
-                      backgroundColor: count
+                      backgroundColor: totalCount
                         ? `rgba(89, 126, 219, ${opacity})`
                         : "white",
+                      cursor: isEditMode ? "pointer" : "default",
                     }}
                     onMouseDown={() => handleMouseDown(d.date, j)}
                     onMouseEnter={() => handleMouseEnter(d.date, j)}
                     onMouseLeave={handleMouseLeaveCell}
                   >
-                    {isHovered && count > 0 && (
+                    {isHovered && (
                       <div className={st.tooltip}>
                         <div className={st.tooltipTitle}>
                           {d.date} {timeSlots[j]}
                         </div>
-                        <div className={st.tooltipDesc}>{count}명 선택</div>
+                        <div className={st.tooltipDesc}>
+                          {totalCount}명 선택
+                        </div>
                       </div>
                     )}
                   </div>
@@ -301,25 +282,30 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
           ))}
         </div>
 
-        <div className={st.summary}>
-          선택된 시간:{" "}
-          {Object.keys(mySelections).length > 0
-            ? Object.keys(mySelections)
-                .map((d) => `${d} (${mySelections[d].length}개)`)
-                .join(", ")
-            : "없음"}
+        <div className={st.btnGroup}>
+          {isEditMode ? (
+            <button
+              className={st.submitBtn}
+              onClick={() => {
+                setSavedSelections(mySelections);
+                setIsEditMode(false);
+                console.log("수정 완료:", getSelectedTimes());
+              }}
+            >
+              수정 완료
+            </button>
+          ) : (
+            <button
+              className={st.editBtn}
+              onClick={() => {
+                setMySelections(savedSelections);
+                setIsEditMode(true);
+              }}
+            >
+              수정하기
+            </button>
+          )}
         </div>
-
-        <button
-          className={st.submitBtn}
-          onClick={() => {
-            const data = getSelectedTimes();
-            console.log("백엔드로 전송할 데이터:", data);
-            alert("콘솔에서 전송 데이터를 확인하세요!");
-          }}
-        >
-          선택 완료 (콘솔 확인)
-        </button>
       </div>
     </div>
   );
