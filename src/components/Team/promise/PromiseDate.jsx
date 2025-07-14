@@ -10,6 +10,21 @@ const PromiseDate = ({ onDateSelect }) => {
 
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
 
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
   const getDaysInMonth = (date) => {
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -20,8 +35,8 @@ const PromiseDate = ({ onDateSelect }) => {
     const days = [];
 
     // 이전 달 날짜 채우기
-    const prevMonth = new Date(year, month - 1, 0);
-    const prevMonthDays = prevMonth.getDate();
+    const prevMonthLastDay = new Date(year, month, 0); // 전달의 마지막 날
+    const prevMonthDays = prevMonthLastDay.getDate();
     for (let i = startingDayOfWeek - 1; i >= 0; i--) {
       days.push({
         day: prevMonthDays - i,
@@ -123,8 +138,7 @@ const PromiseDate = ({ onDateSelect }) => {
               <ChevronLeft size={18} />
             </button>
             <div className={st.month}>
-              {currentDate.getFullYear()}.
-              {String(currentDate.getMonth() + 1).padStart(2, "0")}
+              {monthNames[currentDate.getMonth()]}. {currentDate.getFullYear()}
             </div>
             <button className={st.arrow} onClick={handleNextMonth}>
               <ChevronRight size={18} />

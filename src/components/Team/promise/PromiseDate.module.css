@@ -44,45 +44,65 @@
 }
 
 .month {
-  font-size: 16px;
-  font-weight: bold;
-  color: #1a1a1a;
+  color: var(--Font-Color-50, #4b527e);
+  text-align: center;
+
+  /* Body2/SemiBold/20px */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 28px */
+  letter-spacing: -0.4px;
 }
 
 .arrow {
   background: none;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   padding: 4px;
   display: flex;
   align-items: center;
+  color: var(--Font-Color-50, #4b527e);
   justify-content: center;
+}
+
+.arrow:hover {
+  background-color: rgba(102, 126, 234, 0.15);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  /* gap: 2px; */
   flex-grow: 1;
 }
 
 .weekday {
   height: 20px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
-  color: #667eea;
+  color: #4b527e;
   text-align: center;
   line-height: 20px;
 }
 
 .day {
-  height: 28px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #2d3748;
+  border: 1px solid #4b527e;
+
   text-align: center;
-  border-radius: 6px;
   line-height: 28px;
+
+  color: #4b527e;
+
+  /* Body3/SemiBold/16px */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -96,6 +116,20 @@
 }
 
 .inactive {
-  color: #cbd5e0;
+  color: #7b83b1;
+  opacity: 0.6;
   cursor: default;
+
+  text-align: center;
+
+  /* Body3/SemiBold/16px */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+}
+
+.inactive:hover {
+  background-color: rgba(102, 126, 234, 0);
 }
