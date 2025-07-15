@@ -2,14 +2,13 @@ import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import st from "./PromiseDate.module.css";
 
-const PromiseDate = ({ onDateSelect }) => {
+const PromiseDate = ({ onDateSelect, isEditing }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDates, setSelectedDates] = useState(new Set());
   const [isDragging, setIsDragging] = useState(false);
   const [dragMode, setDragMode] = useState(null);
 
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
-
   const monthNames = [
     "Jan",
     "Feb",
@@ -34,8 +33,7 @@ const PromiseDate = ({ onDateSelect }) => {
     const startingDayOfWeek = firstDay.getDay();
     const days = [];
 
-    // 이전 달 날짜 채우기
-    const prevMonthLastDay = new Date(year, month, 0); // 전달의 마지막 날
+    const prevMonthLastDay = new Date(year, month, 0);
     const prevMonthDays = prevMonthLastDay.getDate();
     for (let i = startingDayOfWeek - 1; i >= 0; i--) {
       days.push({
@@ -45,7 +43,6 @@ const PromiseDate = ({ onDateSelect }) => {
       });
     }
 
-    // 현재 달 날짜
     for (let day = 1; day <= daysInMonth; day++) {
       days.push({
         day,
@@ -54,7 +51,6 @@ const PromiseDate = ({ onDateSelect }) => {
       });
     }
 
-    // 다음 달 날짜 (최대 6주까지만 보이도록 제한)
     const maxCells = 6 * 7;
     const remainingCells = maxCells - days.length;
     for (let day = 1; day <= remainingCells; day++) {
@@ -84,18 +80,18 @@ const PromiseDate = ({ onDateSelect }) => {
   };
 
   const handleMouseDown = (dayObj) => {
-    if (!dayObj.isCurrentMonth) return;
+    if (!isEditing || !dayObj.isCurrentMonth) return;
     setIsDragging(true);
     const dateKey = formatDateKey(dayObj.date);
     const isSelected = selectedDates.has(dateKey);
-    setDragMode(isSelected ? "remove" : "add");
     const newSet = new Set(selectedDates);
     isSelected ? newSet.delete(dateKey) : newSet.add(dateKey);
+    setDragMode(isSelected ? "remove" : "add");
     setSelectedDates(newSet);
   };
 
   const handleMouseEnter = (dayObj) => {
-    if (!isDragging || !dayObj.isCurrentMonth) return;
+    if (!isEditing || !isDragging || !dayObj.isCurrentMonth) return;
     const dateKey = formatDateKey(dayObj.date);
     const isSelected = selectedDates.has(dateKey);
     const newSet = new Set(selectedDates);

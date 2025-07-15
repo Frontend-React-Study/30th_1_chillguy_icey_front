@@ -50,6 +50,11 @@
   );
 }
 
+/* 110x50 흰색 배경 진한 테두리 버튼 */
+.Button-stroke {
+  border: 2px solid #4b527e;
+}
+
 /* 200x50 흰색 버튼 */
 .Button_mid {
   width: 200px;

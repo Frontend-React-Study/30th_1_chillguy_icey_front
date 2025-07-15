@@ -35,4 +35,39 @@
   /* 글래스모피즘 종합 */
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5) inset;
   backdrop-filter: blur(22.5px);
+
+  position: relative;
+}
+
+.edit_button {
+  position: absolute;
+  flex-shrink: 0;
+  bottom: 12px;
+  right: 8px;
+
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #afcdff;
+  border: none;
+  transition: background-color 0.3s;
+  /* padding: 5px; */
+}
+
+.edit_button:hover,
+.edit_button.edit_active {
+  background-color: #acc3f3;
+  border: 2px solid #7b83b1;
+}
+
+.edit_img {
+  height: 15px;
+  width: 15 px;
+
+  color: white;
 }

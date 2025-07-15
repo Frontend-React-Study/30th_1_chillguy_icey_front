@@ -66,6 +66,10 @@
 
 .dateItem {
   color: #374151;
+  width: 35px;
+  height: 1.25rem; /* 날짜 셀 높이 고정 */
+  text-align: center;
+  visibility: visible;
 
   color: var(--Font-Color-50, #4b527e);
   text-align: center;
@@ -102,12 +106,14 @@
 .dateColumn {
   display: flex;
   flex-direction: column;
+  min-height: 100%; /* 열 높이 고정 */
 }
 
 .cell {
   height: 1rem;
   position: relative;
   cursor: pointer;
+  visibility: visible;
 }
 
 .defaultCell {

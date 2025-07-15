@@ -32,9 +32,6 @@ const PromiseTime = ({ onPrevPage, onNextPage }) => {
     { date: "06.19" },
     { date: "06.20" },
     { date: "06.21" },
-    { date: "06.22" },
-    { date: "06.23" },
-    { date: "06.24" },
   ];
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
