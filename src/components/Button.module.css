@@ -79,24 +79,3 @@
   background-color: #597edb;
   color: #ffffff;
 }
-
-/* 흰색 버튼 hover */
-.Button:hover,
-.Button-promise:hover,
-.Button_mid:hover,
-.Button_midStroke:hover,
-.Button_long:hover {
-  background-color: #e4e6f3;
-}
-
-/* 파란색 버튼 hover */
-.Button_blue:hover,
-.Button_midBlue:hover,
-.Button_longBlue:hover {
-  background-color: #6f8bda;
-}
-
-/* 빨간색 버튼 hover */
-.Button_midRed:hover {
-  background-color: #e46a73;
-}
