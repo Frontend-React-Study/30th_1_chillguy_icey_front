@@ -1,7 +1,18 @@
 import st from "./InfoDialog.module.css";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
 const InfoDialog = () => {
+  const navigate = useNavigate();
+
+  const handleConfirm = () => {
+    navigate("/team");
+  };
+
+  const handleCancel = () => {
+    navigate("/");
+  };
+
   return (
     <div className={st.info_black_background}>
       <div className={st.info_popup_space}>
@@ -20,8 +31,8 @@ const InfoDialog = () => {
         </div>
 
         <div className={st.info_popup_button_space}>
-          <Button text={"확정"} type={"midBlue"} />
-          <Button text={"취소"} type={"midStroke"} />
+          <Button text={"확정"} type={"midBlue"} onClick={handleConfirm} />
+          <Button text={"취소"} type={"midStroke"} onClick={handleCancel} />
         </div>
       </div>
     </div>

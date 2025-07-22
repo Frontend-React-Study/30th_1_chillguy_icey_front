@@ -3,10 +3,21 @@ import kakao from "../assets/kakaoLogo.svg";
 import google from "../assets/goolgeLogo.svg";
 import back from "../assets/back.svg";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const IcyLogin = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const handleLogin = async () => {
+    await login();
+
+    const redirectPath = location.state?.from || "/";
+    console.log("Redirecting to:", redirectPath);
+    navigate(redirectPath, { replace: true });
+  };
 
   const kakao_REST_API_KEY = "벡엔드에서 받아오기";
   const kakao_REDIRECT_URI = "벡엔드에서 받아오기";
@@ -54,6 +65,7 @@ const IcyLogin = () => {
             <img className="google-img" src={google} alt="구글 로그인" />
             <div className="google-text">구글로 시작하기</div>
           </button>
+          <button onClick={handleLogin}>테스트</button>
         </div>
       </div>
     </div>
