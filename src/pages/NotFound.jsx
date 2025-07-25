@@ -1,12 +1,19 @@
 import st from "./NotFound.module.css";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleLogoClick = () => {
     navigate("/team"); // 소현이 추가하면 home으로 바꾸기
+  };
+
+  const handleKakaoLogin = async () => {
+    // localStorage.setItem("loginType", "kakao");
+    logout();
   };
   return (
     <>
@@ -21,6 +28,7 @@ const Header = () => {
           </div>
         </div>
         <Button text="홈으로 이동" type="long" onClick={handleLogoClick} />
+        <button onClick={handleKakaoLogin}>로그아웃</button>
       </div>
     </>
   );

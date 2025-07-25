@@ -1,0 +1,110 @@
+.notificationBoxWrapper,
+.notificationBoxWrapper * {
+  box-sizing: border-box;
+}
+.notificationBoxWrapper {
+  background: linear-gradient(
+    180deg,
+    rgba(75, 82, 126, 0.2) 0%,
+    rgba(75, 82, 126, 0.1) 100%
+  );
+  border-radius: 20px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 854px;
+  width: 390px;
+  position: relative;
+}
+.notificationBoxContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 376px;
+  position: relative;
+}
+.notificationHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 11px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.profileIconWrapper {
+  background: linear-gradient(
+    180deg,
+    rgba(75, 82, 126, 0.2) 0%,
+    rgba(75, 82, 126, 0.1) 100%
+  );
+  border-radius: 20px;
+  padding: 9px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  position: relative;
+}
+.profileIconWrapper:hover {
+  background: #a4abd5;
+  box-shadow: inset 0px 4px 20px rgba(75, 82, 126, 0.5);
+  backdrop-filter: blur(22.5px);
+}
+.profileIcon {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: center; /* 가로도 가운데 정렬 */
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden; /* 테두리 밖은 자르기 */
+  padding: 0; /* 불필요한 패딩 제거 */
+}
+
+.alertListWrapper {
+  background: linear-gradient(
+    180deg,
+    rgba(75, 82, 126, 0.2) 0%,
+    rgba(75, 82, 126, 0.1) 100%
+  );
+  border-radius: 20px;
+  padding: 6px 7px 6px 7px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  max-height: 771px;
+  position: relative;
+  box-shadow: inset 0px 4px 20px 0px rgba(75, 82, 126, 0.3);
+  backdrop-filter: blur(22.5px);
+}
+.alertItemWrapper {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 361px;
+  max-height: 756px;
+  position: relative;
+  overflow: hidden;
+}

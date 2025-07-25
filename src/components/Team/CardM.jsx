@@ -2,14 +2,14 @@ import st from "./CardM.module.css";
 import Img from "../../assets/exPig.png";
 import { useNavigate } from "react-router-dom";
 
-const CardM = ({ card }) => {
+const CardM = ({ card, team }) => {
   const navigate = useNavigate();
 
   const handleCardMClick = () => {
-    navigate("/mycard");
+    navigate("/mycard", { state: team });
   };
 
-  if (!card) return null;
+  if (!team) return null;
   // console.log("team.card 확인", card);
 
   return (

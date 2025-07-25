@@ -23,13 +23,11 @@ const IcyLogin = () => {
 
   const googlelink = `https://icey-backend-1027532113913.asia-northeast3.run.app/oauth2/authorization/google`;
 
-  const handleKakaoLogin = async () => {
-    localStorage.setItem("loginType", "kakao");
+  const handleKakaoLogin = () => {
     window.location.href = kakaolink;
   };
 
   const handleGoogleLogin = () => {
-    localStorage.setItem("loginType", "google");
     window.location.href = googlelink;
   };
 

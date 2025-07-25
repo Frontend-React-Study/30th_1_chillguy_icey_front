@@ -1,0 +1,24 @@
+.MemoLike,
+.MemoLike * {
+  box-sizing: border-box;
+}
+.MemoLike {
+  background: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.Animal_image {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  cursor: default;
+  background: white;
+  position: relative;
+}

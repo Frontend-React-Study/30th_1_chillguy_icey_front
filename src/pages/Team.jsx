@@ -1,16 +1,3 @@
-import { useState, useRef, useEffect } from "react";
-import st from "./Team.module.css";
-import Board from "../components/Team/Board";
-import CardM from "../components/Team/CardM";
-import Massage from "../components/Team/Massage";
-import Promise from "../components/Team/Promise";
-import PromiseCheck from "../components/Team/PromiseCheck";
-import PromiseCheck2 from "../components/Team/PromiseCheck2";
-import Teamlist from "../components/Team/Teamlist";
-import PromiseDialog from "../components/Dialog/PromiseDialog";
-import LinkSnackbar from "../components/Snackbar/LinkSnackbar";
-import { teams as teams, links, cards } from "../util/teams";
-
 // 날짜 및 시간 슬롯 설정
 const allDates = [
   { date: "2025-06-15" },
@@ -40,7 +27,23 @@ const fakeMyVotes = {
   "2025-06-18": ["10:00", "11:00", "12:00", "13:00"],
 };
 
+import { useState, useRef, useEffect } from "react";
+import st from "./Team.module.css";
+import Board from "../components/Team/Board";
+import CardM from "../components/Team/CardM";
+import Massage from "../components/Team/Massage";
+import Promise from "../components/Team/Promise";
+import PromiseCheck from "../components/Team/PromiseCheck";
+import PromiseCheck2 from "../components/Team/PromiseCheck2";
+import Teamlist from "../components/Team/Teamlist";
+import PromiseDialog from "../components/Dialog/PromiseDialog";
+import LinkSnackbar from "../components/Snackbar/LinkSnackbar";
+import { teams as teams, links, cards } from "../util/teams";
+import { useAuth } from "../context/AuthContext";
+
 const Team = () => {
+  const { token, login, logout, isLoggedIn } = useAuth();
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [showPromiseCheck, setShowPromiseCheck] = useState(false);
 
@@ -196,10 +199,11 @@ const Team = () => {
                 card={
                   Cards.find((c) => c.teamId === selectedTeam.teamId).card || {}
                 }
+                team={selectedTeam}
               />
             </div>
             <div className={`${st.box} ${st.team_message_box}`}>
-              <Massage />
+              <Massage team={selectedTeam} />
             </div>
           </div>
         </section>

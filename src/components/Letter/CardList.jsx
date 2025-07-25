@@ -15,7 +15,6 @@ import st from "./CardList.module.css";
 
 const CardList = ({
   cards,
-  teamsData = [],
   onSendClick,
   onAddClick,
   showSendButton = true,
@@ -31,13 +30,11 @@ const CardList = ({
       {cards.map((card) => {
         return (
           <Card
-            data={card}
-            teams={
-              teamsData[cards.findIndex((c) => c.cardId === card.cardId)] || []
-            }
-            onLetterModal={showSendButton ? () => onSendClick(card) : null}
             key={card.cardId}
+            data={card}
+            teams={card.teams || []}
             showSendButton={showSendButton}
+            onLetterModal={showSendButton ? () => onSendClick(card) : null}
             selectable={selectable}
             isSelected={selectedCardId === card.cardId}
             onClick={() => onCardClick?.(card.cardId)}

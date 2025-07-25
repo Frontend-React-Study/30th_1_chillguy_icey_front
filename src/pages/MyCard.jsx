@@ -1,4 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 import CardList from "../components/Letter/CardList";
 import CardModal from "../components/Modal/CardModal";
@@ -6,9 +8,12 @@ import Button from "../components/Button";
 import AlertDialog from "../components/Dialog/AlertDialog";
 
 import st from "./MyCard.module.css";
-import { cards, teamsData } from "../util/card-info";
 
 const MyCard = () => {
+  // location: 현재 팀 정보 받기
+  const location = useLocation();
+  const team = location.state || { id: 0, name: "테스트팀" };
+
   // state: 명함 추가 모달 열림 상태
   const [modalOpen, setModalOpen] = useState(false);
   // state: 명함 수정 모달 열림 상태
@@ -26,17 +31,39 @@ const MyCard = () => {
     confirmType: "",
   });
 
-  // state: cards, teamsData 상태 업데이트용
-  const [cardList, setCardList] = useState([...cards]);
-  const [teamList, setTeamList] = useState([...teamsData]);
+  // state: cards 상태 업데이트용
+  const [cardList, setCardList] = useState([]);
+
+  const currentTeamId = team.id;
+  const currentTeamName = team.name;
+
+  useEffect(() => {
+    // 모든 명함 & 현재 팀에서 사용 중인 명함 불러오기
+    const fetchCards = async () => {
+      try {
+        const [allRes, usedRes] = await Promise.all([
+          axios.get("/api/cards"),
+          axios.get(`/api/cards/teams/${currentTeamId}/cards`),
+        ]);
+
+        const usedCardIds = usedRes.data.map((card) => card.cardId);
+        const updatedCards = allRes.data.map((card) => ({
+          ...card,
+          teams: usedCardIds.includes(card.cardId) ? [currentTeamName] : [],
+        }));
+
+        setCardList(updatedCards);
+      } catch (err) {
+        console.error("명함 목록 불러오기 실패", err);
+      }
+    };
+
+    fetchCards();
+  }, [currentTeamId, currentTeamName]);
 
   // 모달 열기/닫기 함수
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   // "명함 추가하기" 모달
   const openAddModal = () => {
@@ -53,43 +80,32 @@ const MyCard = () => {
   };
 
   // 명함 저장 함수
-  const handleSaveCard = (newCardData) => {
-    if (isEditMode && selectedCardId !== null) {
-      // 수정 모드: 기존 카드 수정
-      const updated = [...cardList];
-      updated[selectedCardId] = {
-        ...updated[selectedCardId], // 기존 카드 유지
-        ...newCardData, // 입력값 덮어쓰기 (cardId는 유지됨)
-      };
-      setCardList(updated);
-    } else {
-      // 추가 모드: 새 카드 추가
-      const newCard = {
-        ...newCardData,
-        cardId: Date.now(), // 고유한 ID 부여
-        profileColor: 1, // 우선 1로 부여
-        templateId: 0,
-        userId: 0,
-        accessory: "",
-      };
-      setCardList([...cardList, newCard]);
-      setTeamList([...teamList, []]); // teamList도 같이 추가 (빈 팀)
+  const handleSaveCard = async (newCardData) => {
+    try {
+      if (isEditMode && selectedCardId !== null) {
+        await axios.patch(`/api/cards/${selectedCardId}`, newCardData);
+        setCardList((prev) =>
+          prev.map((card) =>
+            card.cardId === selectedCardId ? { ...card, ...newCardData } : card,
+          ),
+        );
+      } else {
+        const res = await axios.post("/api/cards", newCardData);
+        const newCard = { ...res.data, teams: [] };
+        setCardList((prev) => [...prev, newCard]);
+      }
+      closeModal();
+    } catch (err) {
+      console.error("명함 저장 실패", err);
     }
-    setSelectedCardId(null);
-    closeModal();
   };
 
   // 삭제 경고 dialog
   const openAlert = () => {
     if (selectedCardId === null) return;
 
-    const cardIndex = cardList.findIndex(
-      (card) => card.cardId === selectedCardId,
-    );
-    const selectedTeams = teamList[cardIndex] || [];
-
-    if (selectedTeams.length > 0) {
-      // 사용 중인 명함인 경우
+    const selectedCard = cardList.find((c) => c.cardId === selectedCardId);
+    if (selectedCard?.teams?.includes(currentTeamName)) {
       setAlertDialogConfig({
         mainText: "현재 사용 중인 명함입니다.",
         subText: "명함 교체 후 삭제 가능합니다.",
@@ -97,7 +113,6 @@ const MyCard = () => {
         confirmType: "midBlue",
       });
     } else {
-      // 일반 삭제
       setAlertDialogConfig({
         mainText: "명함을 삭제하시겠습니까?",
         subText: "삭제하면 다시 복구할 수 없습니다.",
@@ -106,85 +121,49 @@ const MyCard = () => {
       });
     }
 
-    // AlertDialog 열기
     setAlertOpen(true);
   };
 
   // AlertDialog 닫는 함수
-  const closeAlert = () => {
-    setAlertOpen(false);
-  };
+  const closeAlert = () => setAlertOpen(false);
 
   // 명함 삭제 함수
-  const handleDeleteCard = () => {
-    if (selectedCardId === null) return;
-
-    const newCards = cardList.filter((card) => card.cardId !== selectedCardId);
-    const cardIndexToDelete = cardList.findIndex(
-      (card) => card.cardId === selectedCardId,
-    );
-
-    const newTeams = [...teamList];
-    if (cardIndexToDelete !== -1) {
-      newTeams.splice(cardIndexToDelete, 1);
+  const handleDeleteCard = async () => {
+    try {
+      await axios.delete(`/api/cards/${selectedCardId}`);
+      setCardList((prev) => prev.filter((c) => c.cardId !== selectedCardId));
+      setSelectedCardId(null);
+      setAlertOpen(false);
+    } catch (err) {
+      console.error("명함 삭제 실패", err);
     }
-
-    // 명함 data 업데이트
-    setCardList(newCards);
-    setTeamList(newTeams);
-    // 선택 명함 초기화
-    setSelectedCardId(null);
-    // dialog 닫기
-    setAlertOpen(false);
   };
+
+  // 팀 선택 핸들러
+  const handleSelectTeam = useCallback(
+    async (cardIdToUse) => {
+      try {
+        await axios.put(`/api/cards/teams/${currentTeamId}/cards/my-card`, {
+          cardId: cardIdToUse,
+        });
+
+        // team 바인딩 갱신
+        setCardList((prev) =>
+          prev.map((card) => ({
+            ...card,
+            teams: card.cardId === cardIdToUse ? [currentTeamName] : [],
+          })),
+        );
+      } catch (err) {
+        console.error("팀에 명함 설정 실패", err);
+      }
+    },
+    [currentTeamId, currentTeamName],
+  );
 
   // 현재 선택된 명함 정보를 가져온다.
   const selectedCard =
     cardList.find((card) => card.cardId === selectedCardId) || null;
-
-  // 현재 팀 이름
-  const currentTeamName = "칠가이";
-
-  // 팀 선택 핸들러를 useCallback으로 메모이제이션 처리
-  const handleSelectTeam = useCallback(
-    (selectedCardId, teamName) => {
-      const cardIndex = cardList.findIndex(
-        (card) => card.cardId === selectedCardId,
-      );
-      if (cardIndex === -1) return;
-
-      const newTeamList = [...teamList];
-
-      // 1. 현재 팀이 사용 중인 명함 인덱스를 찾는다
-      const prevCardIndex = newTeamList.findIndex((teams) =>
-        teams.includes(teamName),
-      );
-
-      // 2. 기존 명함에서 팀 이름 제거
-      if (prevCardIndex !== -1) {
-        newTeamList[prevCardIndex] = newTeamList[prevCardIndex].filter(
-          (team) => team !== teamName,
-        );
-      }
-
-      // 3. 새로 선택한 명함에 팀 이름 추가
-      if (!newTeamList[cardIndex].includes(teamName)) {
-        newTeamList[cardIndex].push(teamName);
-      }
-
-      // 4. 상태 업데이트
-      setTeamList(newTeamList);
-    },
-    [teamList, cardList, setTeamList], // teamList 상태가 바뀔 때마다 새로 생성됨
-  );
-
-  // 현재 팀이 사용 중인 명함 index 찾기
-  const usedCardIndex = teamList.findIndex((teamArr) =>
-    teamArr.includes(currentTeamName),
-  );
-
-  // 실제 사용 중인 명함
-  const usedCard = usedCardIndex !== -1 ? cardList[usedCardIndex] : null;
 
   return (
     <>
@@ -198,7 +177,6 @@ const MyCard = () => {
         {/* 명함 리스트 */}
         <CardList
           cards={cardList}
-          teamsData={teamList}
           onSendClick={openModal}
           onAddClick={openAddModal}
           showSendButton={false}
@@ -206,11 +184,7 @@ const MyCard = () => {
           selectable={true}
           selectedCardId={selectedCardId}
           onCardClick={(id) => {
-            if (selectedCardId === id) {
-              setSelectedCardId(null); // 이미 선택된 카드면 해제
-            } else {
-              setSelectedCardId(id); // 아니면 선택
-            }
+            setSelectedCardId((prev) => (prev === id ? null : id));
           }}
           currentTeamName={currentTeamName}
           onSelectTeam={handleSelectTeam}

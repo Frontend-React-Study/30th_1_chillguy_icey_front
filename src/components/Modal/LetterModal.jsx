@@ -1,8 +1,11 @@
 import { useState } from "react";
-import modal_line from "../../assets/modal_line.svg";
-import modal_line_vertical from "../../assets/modal_line_vertical.svg";
+import axios from "axios";
+
 import Button from "../Button";
 import st from "./LetterModal.module.css";
+
+import modal_line from "../../assets/modal_line.svg";
+import modal_line_vertical from "../../assets/modal_line_vertical.svg";
 import { getAnimalImage } from "../../util/get-animal-image";
 import exPig from "../../assets/exPig.png";
 
@@ -11,16 +14,32 @@ import exPig from "../../assets/exPig.png";
 // onClose: 모달 닫기 함수
 // onSend: 쪽지 내용 저장 함수
 
-const LetterModal = ({ card, onClose, onSend }) => {
+const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
   // state: 쪽지 본문 저장
   const [message, setMessage] = useState("");
+  // state: 전송 중 상태 처리
+  const [sending, setSending] = useState(false);
+  // state: 에러 상태 처리
+  const [error, setError] = useState(null);
 
   // 보내기 버튼 콜백 함수
-  const handleSendClick = () => {
+  const handleSendClick = async () => {
     if (!message.trim()) return; // 빈 메시지 방지
-    onSend(message);
-  };
+    setSending(true);
+    setError(null);
 
+    try {
+      await axios.post(`/api/teams/${teamId}/cards/${card.cardId}/letters`, {
+        content: message,
+      });
+      onSend(message);
+    } catch (e) {
+      console.error("쪽지 전송 실패", e);
+      setError("쪽지 전송에 실패했습니다. 다시 시도해주세요.");
+    } finally {
+      setSending(false);
+    }
+  };
   // 동물 이미지 매핑
   const animalMap = {
     강아지: "dog",
@@ -90,7 +109,9 @@ const LetterModal = ({ card, onClose, onSend }) => {
                   src={modal_line_vertical}
                   alt="modal_line_vertical"
                 />
-                <div className={st.Info_text}>발랄한 고양이</div>
+                <div className={st.Info_text}>
+                  {sender.nickname} {sender.animal}
+                </div>
               </div>
               <div className={st.Receive_wrapper}>
                 <div className={st.Info_text_title}>받는 사람</div>
@@ -112,14 +133,21 @@ const LetterModal = ({ card, onClose, onSend }) => {
                 value={message}
                 placeholder="쪽지 작성.."
                 onChange={(e) => setMessage(e.target.value)}
+                disabled={sending}
               />
             </div>
+            {error && <div style={{ color: "red", marginTop: 8 }}>{error}</div>}
           </div>
         </div>
 
         {/* 하단 버튼 */}
         <div className={st.Confirm_buttons}>
-          <Button text={"보내기"} type={"midBlue"} onClick={handleSendClick} />
+          <Button
+            text={sending ? "전송 중..." : "보내기"}
+            type={"midBlue"}
+            onClick={handleSendClick}
+            disabled={sending}
+          />
           <Button text={"취소"} type={"midStroke"} onClick={onClose} />
         </div>
       </div>

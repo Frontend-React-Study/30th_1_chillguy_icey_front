@@ -25,7 +25,7 @@ const CardModal = ({
   defaultValue = {},
 }) => {
   // state: 명함 추가 시 작성한 내용(CardModal)
-  const [nickname, setNickname] = useState("");
+  const [adjective, setAdjective] = useState("");
   const [animal, setAnimal] = useState("");
   const [profileColor, setProfileColor] = useState("1"); // 나중에 삭제
   const [mbti, setMbti] = useState("");
@@ -37,7 +37,7 @@ const CardModal = ({
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    setNickname(defaultValue?.nickname || "");
+    setAdjective(defaultValue?.adjective || "");
     setAnimal(defaultValue?.animal || "");
     setMbti(defaultValue?.mbti || "");
     setProfileColor(defaultValue?.profileColor || "1"); // 나중에 디폴트 값으로 변경
@@ -49,7 +49,7 @@ const CardModal = ({
   const handleSave = () => {
     // 필수 항목 체크
     if (
-      !nickname.trim() ||
+      !adjective.trim() ||
       !animal.trim() ||
       !mbti.trim() ||
       !hobby.trim() ||
@@ -63,7 +63,7 @@ const CardModal = ({
     // 에러 메시지 초기화
     setErrorMsg("");
 
-    const cardData = { nickname, animal, mbti, hobby, secretTip, tmi };
+    const cardData = { adjective, animal, mbti, hobby, secretTip, tmi };
     if (onSave) onSave(cardData);
   };
 
@@ -107,7 +107,7 @@ const CardModal = ({
           <div className={st.Card_wrapper}>
             <div className={st.Card}>
               <div className={st.Card_Name}>
-                {nickname} {animal}
+                {adjective} {animal}
               </div>
               <div className={st.Image_wrapper}>
                 <button className={st.Arrow_button}>
@@ -145,8 +145,8 @@ const CardModal = ({
                   className={st.InputUnderline}
                   type="text"
                   placeholder="직접 작성.."
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value)}
+                  value={adjective}
+                  onChange={(e) => setAdjective(e.target.value)}
                 />
               </div>
               <div className={st.Col}>

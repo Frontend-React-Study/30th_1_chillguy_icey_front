@@ -34,7 +34,7 @@ const IcyLogin = () => {
   };
 
   const goToHome = () => {
-    navigate("/Team"); // 나중에는 홈으로 바꾸기
+    navigate("/"); // 나중에는 홈으로 바꾸기
   };
 
   return (

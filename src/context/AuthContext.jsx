@@ -1,29 +1,49 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
-// context 만들기 : 앱 전체에 로그인 상태를 공유
 const AuthContext = createContext();
 
-// provider 만들기
 export const AuthProvider = ({ children }) => {
-  const [user, SetUser] = useState(null);
+  const [token, setToken] = useState(null);
 
-  const login = async () => {
-    const fakeUser = { id: 1, name: "송하은 " };
-    SetUser(fakeUser);
+  // 로컬스토리지에서 초기화
+  useEffect(() => {
+    const storedToken = localStorage.getItem("accessToken");
+    if (storedToken) setToken(storedToken);
+  }, []);
+
+  // 로그인 처리 함수
+  const login = (newToken) => {
+    localStorage.setItem("accessToken", newToken);
+    setToken(newToken);
   };
 
-  const logout = () => {
-    SetUser(null);
+  // 로그아웃 처리 함수
+  const logout = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      await axios.post(
+        "https://icey-backend-1027532113913.asia-northeast3.run.app/api/logout",
+        {},
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+      console.log("로그아웃 성공");
+    } catch (error) {
+      console.error("로그아웃 실패", error);
+    } finally {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("loginType");
+      setToken(null);
+    }
   };
+
+  const isLoggedIn = !!token;
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout }}>
+    <AuthContext.Provider value={{ token, login, logout, isLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// 로그인 정보를 쉽게 꺼내서 쓸 수 있음
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);

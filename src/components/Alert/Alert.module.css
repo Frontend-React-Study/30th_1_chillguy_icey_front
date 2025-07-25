@@ -1,0 +1,86 @@
+.notification,
+.notification * {
+  box-sizing: border-box;
+}
+.notification {
+  background: linear-gradient(
+    180deg,
+    rgba(75, 82, 126, 0.2) 0%,
+    rgba(75, 82, 126, 0.1) 100%
+  );
+  border-radius: 20px;
+  padding: 13px 19px 13px 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 133px;
+  position: relative;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.iconWrapper {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: center; /* 가로도 가운데 정렬 */
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden; /* 테두리 밖은 자르기 */
+  padding: 0; /* 불필요한 패딩 제거 */
+}
+.title {
+  color: var(--font-color-70, #252b5a);
+  text-align: left;
+  font-family: var(--body2-semibold-20px-font-family, "Inter-Bold", sans-serif);
+  font-size: var(--body2-semibold-20px-font-size, 20px);
+  line-height: var(--body2-semibold-20px-line-height, 140%);
+  letter-spacing: var(--body2-semibold-20px-letter-spacing, -0.02em);
+  font-weight: var(--body2-semibold-20px-font-weight, 700);
+  position: relative;
+  width: 232px;
+}
+
+.description {
+  color: var(--font-color-70, #252b5a);
+  text-align: left;
+  font-family: var(--body3-semibold-16px-font-family, "Inter-Bold", sans-serif);
+  font-size: var(--body3-semibold-16px-font-size, 16px);
+  line-height: var(--body3-semibold-16px-line-height, 140%);
+  letter-spacing: var(--body3-semibold-16px-letter-spacing, -0.02em);
+  font-weight: var(--body3-semibold-16px-font-weight, 700);
+  position: relative;
+  width: 323px;
+  height: 44px;
+}
+
+/* 읽음 상태일 때 스타일 */
+.read {
+  background: linear-gradient(
+    180deg,
+    rgba(75, 82, 126, 0.5) 0%,
+    rgba(75, 82, 126, 0.6) 100%
+  );
+}

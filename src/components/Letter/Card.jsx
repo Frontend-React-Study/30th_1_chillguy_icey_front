@@ -46,7 +46,7 @@ const Card = ({
   const handleSelect = (e) => {
     e.stopPropagation(); // 카드 클릭 방지
     if (!teams.includes(currentTeamName)) {
-      onSelectTeam(currentTeamName);
+      onSelectTeam(data.cardId);
     }
   };
 
@@ -57,9 +57,7 @@ const Card = ({
     >
       {/* 명함 이름 */}
       <div className={st.CardName_wrapper}>
-        <div className={st.Card_Name}>
-          {data.nickname} {data.animal}
-        </div>
+        <div className={st.Card_Name}>{data.nickname}</div>
         {/* 현재 팀페이지에서 사용 중인 명함에 배지 표시 */}
         {teams.includes(currentTeamName) && (
           <img className={st.Card_Select} src={card_select} alt="card_select" />

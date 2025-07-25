@@ -30,6 +30,14 @@
   overflow: hidden;
 }
 
+.MemoLike_wrapper {
+  gap: 5px;
+}
+
+.MemoLike_container {
+  width: 76px;
+}
+
 .Memo_like_img {
   width: 16px;
   height: 15px;

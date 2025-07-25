@@ -1,0 +1,19 @@
+.ViewAll {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  width: 166px;
+  height: 64px;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--Font-Color-60, #363d6c);
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0);
+  /* Body3/SemiBold/16px */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 22.4px */
+  letter-spacing: -0.32px;
+}
