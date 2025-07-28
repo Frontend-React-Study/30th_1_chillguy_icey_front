@@ -21,7 +21,8 @@ const Header = () => {
           <img className={st.Menu_logo} src={menu} alt="menu" />
         </div>
       </div>
-      <img className={st.Line} src={line} alt="line" />
+      {/* <img className={st.Line} src={line} alt="line" /> */}
+      <hr className={st.headerLine} />
     </header>
   );
 };
