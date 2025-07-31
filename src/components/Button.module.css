@@ -156,17 +156,15 @@
   background: #cccccc; /* 회색 배경 */
   color: #666666; /* 어두운 글자색 */
   border: 1px solid #999999;
-  cursor: not-allowed; /* 마우스 커서를 '금지' 표시로 변경 */
 }
 
 /* 모든 버튼에 대한 일반적인 비활성화 스타일 (disabled 속성 사용 시) */
-.Button:disabled {
-  opacity: 0.7; /* 투명도 조절 */
-  cursor: not-allowed;
+.Button_disabled {
+  cursor: auto;
 }
 /* 330x50 흰색 버튼 */
 .Button_longdisabled {
   width: 330px;
   opacity: 0.7; /* 투명도 조절 */
-  cursor: not-allowed;
+  cursor: auto;
 }

@@ -2,13 +2,13 @@
 .div * {
   box-sizing: border-box;
 }
+
 .div {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-
   border-radius: 20px;
   border-width: 1px;
   border-style: solid;
@@ -18,7 +18,7 @@
     rgba(255, 255, 255, 0.2) 100%
   );
   border-image-slice: 1;
-  padding: 12.6875rem 2.8125rem 12.6875rem 2.8125rem;
+  padding: 12.6875rem 2.8125rem;
   display: flex;
   border: none;
   flex-direction: column;
@@ -29,12 +29,10 @@
   flex-shrink: 0;
   height: 38.4375rem;
   position: relative;
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
 }
+
 .content {
   display: flex;
   flex-direction: column;
@@ -50,15 +48,14 @@
   /* ✅ 스크롤 적용 */
   overflow-y: auto;
   padding-right: 5px;
-  scrollbar-gutter: stable; /* 스크롤 생겨도 너비 안 바뀌게 */
+  scrollbar-gutter: stable;
 }
-/* 전체 스크롤바 영역 */
+
 .content::-webkit-scrollbar {
   width: 0.625rem;
   height: 0.375rem;
 }
 
-/* 스크롤바 막대 (thumb) */
 .content::-webkit-scrollbar-thumb {
   background-color: white;
   border-radius: 50px;
@@ -66,7 +63,6 @@
   background-clip: content-box;
 }
 
-/* 스크롤바 트랙 (배경) */
 .content::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -74,7 +70,7 @@
 .text {
   background: #ffffff;
   border-radius: 10px;
-  padding: 0.4375rem 1.3125rem 0.4375rem 1.3125rem;
+  padding: 0.4375rem 1.3125rem;
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
@@ -86,18 +82,15 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .textarea {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   flex: 1;
 }
@@ -111,12 +104,13 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  width: 12.5rem; /* ✅ 내용에 맞춰서 크기 지정 */
+  width: 12.5rem;
   height: 3.125rem;
   margin: 0 auto;
 }
+
 .viewall {
-  white-space: nowrap; /* ✅ 텍스트 한 줄 유지 */
+  white-space: nowrap;
   word-break: keep-all;
   color: #4b527e;
   text-align: center;

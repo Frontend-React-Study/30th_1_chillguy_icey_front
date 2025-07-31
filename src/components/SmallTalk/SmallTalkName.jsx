@@ -13,10 +13,7 @@ const SmallTalkName = ({
 }) => {
   return (
     // isSelected 값에 따라 조건부로 클래스를 적용합니다.
-    <div
-      className={`${st.div} ${isSelected ? st.selected : ""}`}
-      onClick={onSelect}
-    >
+    <div className={st.div} onClick={onSelect}>
       <div className={st.title_section}>
         <img className={st.vector} src={image} alt="아이콘" />
         <div className={st.date}>{date}</div>
@@ -35,7 +32,7 @@ const SmallTalkName = ({
           }}
         />
       </div>
-      <img className={st.line} src={ListLine} alt="구분선" />
+      <hr className={st.headerLine} />
     </div>
   );
 };
