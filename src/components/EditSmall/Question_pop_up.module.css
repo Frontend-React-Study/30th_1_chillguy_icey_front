@@ -20,47 +20,47 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 29px;
+  gap: 1.8125rem;
   align-items: center;
   justify-content: center;
-  height: 450px;
+  height: 28.125rem;
   position: relative;
   overflow: hidden;
-  width: 800px;
+  width: 50rem;
   height: 450px;
 }
 .iconBackground {
   background: #fee102;
   border-radius: 93px;
-  padding: 46px 84px 46px 84px;
+  padding: 2.875rem 5.25rem 2.875rem 5.25rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 186px;
-  height: 186px;
+  width: 11.625rem;
+  height: 11.625rem;
   position: relative;
 }
 .exclamationMarkGroup {
   flex-shrink: 0;
-  width: 18px;
-  height: 92px;
+  width: 1.125rem;
+  height: 5.75rem;
   position: static;
 }
 .exclamationTop {
-  background: var(--netural-white, #ffffff);
-  width: 18px;
-  height: 57px;
+  background: #ffffff;
+  width: 1.125rem;
+  height: 3.5625rem;
   position: absolute;
   left: 84px;
   top: 47px;
 }
 .exclamationDot {
-  background: var(--netural-white, #ffffff);
-  width: 18px;
-  height: 18px;
+  background: #ffffff;
+  width: 1.125rem;
+  height: 1.125rem;
   position: absolute;
   left: 84px;
   top: 121px;
@@ -68,7 +68,7 @@
 .textSection {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.125rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
@@ -78,48 +78,48 @@
 .buttonGroup {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 0.9375rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
   position: relative;
 }
 .defaultButton {
-  background: var(--netural-white, #ffffff);
+  background: #ffffff;
   border-radius: 20px;
   border-style: solid;
-  border-color: var(--font-color-50, #4b527e);
+  border-color: #4b527e;
   border-width: 1px;
-  padding: 11px 142px 11px 142px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 200px;
-  height: 50px;
+  width: 12.5rem;
+  height: 3.125rem;
   position: relative;
 }
 .buttonText {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
 }
 
 .popupTitle {
-  color: var(--font-color-70, #252b5a);
+  color: #252b5a;
   text-align: center;
-  font-family: var(--subtitle1-bold-36px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--subtitle1-bold-36px-font-size, 36px);
-  line-height: var(--subtitle1-bold-36px-line-height, 140%);
-  letter-spacing: var(--subtitle1-bold-36px-letter-spacing, -0.02em);
-  font-weight: var(--subtitle1-bold-36px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -127,13 +127,13 @@
   justify-content: center;
 }
 .popupDescription {
-  color: var(--font-color-70, #252b5a);
+  color: #252b5a;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -141,13 +141,13 @@
   justify-content: center;
 }
 .popupCountText {
-  color: var(--font-color-70, #252b5a);
+  color: #252b5a;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
   display: flex;

@@ -29,16 +29,13 @@
   height: 51.4375rem;
   max-width: 32.1875rem;
   position: relative;
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
 }
 .list_title {
   display: flex;
   flex-direction: column;
-  gap: 1.625rem;
+  gap: 2rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
@@ -58,11 +55,11 @@
 .list {
   color: #ffffff;
   text-align: center;
-  font-family: var(--subtitle1-bold-36px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--subtitle1-bold-36px-font-size, 36px);
-  line-height: var(--subtitle1-bold-36px-line-height, 140%);
-  letter-spacing: var(--subtitle1-bold-36px-letter-spacing, -0.02em);
-  font-weight: var(--subtitle1-bold-36px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   flex: 1 1 0;
   min-width: 0;
@@ -72,7 +69,6 @@
   /* font */
   text-shadow: 0px 2px 10px rgba(89, 126, 219, 0.5);
 }
-
 .button {
   background: rgba(255, 79, 73, 0.6);
   border-radius: 15px;
@@ -87,7 +83,6 @@
   height: 2.34375rem;
   position: relative;
 }
-
 .left_section {
   display: flex;
   flex-direction: column;
@@ -126,22 +121,16 @@
   flex: 1 1 0;
   min-width: 0;
   position: relative;
-
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
   overflow: hidden;
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  backdrop-filter: blur(22.5px);
 }
-
 .notselected {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-
   border-radius: 20px;
   border-width: 1px;
   border-style: solid;
@@ -162,22 +151,19 @@
   flex-shrink: 0;
   height: 38.4375rem;
   position: relative;
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
 }
 .select {
   color: #ffffff;
   text-align: center;
   /* font */
   text-shadow: 0px 2px 10px rgba(89, 126, 219, 0.5);
-  font-family: var(--subtitle1-bold-36px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--subtitle1-bold-36px-font-size, 36px);
-  line-height: var(--subtitle1-bold-36px-line-height, 140%);
-  letter-spacing: var(--subtitle1-bold-36px-letter-spacing, -0.02em);
-  font-weight: var(--subtitle1-bold-36px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -187,11 +173,11 @@
 .make {
   color: #ffffff;
   text-align: center;
-  font-family: var(--body1-bold-24px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body1-bold-24px-font-size, 24px);
-  line-height: var(--body1-bold-24px-line-height, 140%);
-  letter-spacing: var(--body1-bold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-bold-24px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   width: 39.5rem;
   display: flex;
@@ -200,9 +186,7 @@
   align-items: center;
   justify-content: center;
 }
-
 /* 대상 목적 */
-
 .d {
   display: flex;
   flex-direction: row;
@@ -215,11 +199,11 @@
 .ds {
   color: #ffffff;
   text-align: left;
-  font-family: var(--subtitle1-bold-36px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--subtitle1-bold-36px-font-size, 36px);
-  line-height: var(--subtitle1-bold-36px-line-height, 140%);
-  letter-spacing: var(--subtitle1-bold-36px-letter-spacing, -0.02em);
-  font-weight: var(--subtitle1-bold-36px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   width: 6.125rem;
   display: flex;
@@ -229,11 +213,11 @@
 .dg {
   color: #ffffff;
   text-align: left;
-  font-family: var(--subtitle1-bold-36px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--subtitle1-bold-36px-font-size, 36px);
-  line-height: var(--subtitle1-bold-36px-line-height, 140%);
-  letter-spacing: var(--subtitle1-bold-36px-letter-spacing, -0.02em);
-  font-weight: var(--subtitle1-bold-36px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   width: 21.875rem;
   height: 3.125rem;
@@ -253,11 +237,11 @@
 .o {
   color: #ffffff;
   text-align: left;
-  font-family: var(--subtitle1-bold-36px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--subtitle1-bold-36px-font-size, 36px);
-  line-height: var(--subtitle1-bold-36px-line-height, 140%);
-  letter-spacing: var(--subtitle1-bold-36px-letter-spacing, -0.02em);
-  font-weight: var(--subtitle1-bold-36px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   width: 21.875rem;
   display: flex;

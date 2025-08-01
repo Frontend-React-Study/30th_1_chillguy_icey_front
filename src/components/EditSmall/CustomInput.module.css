@@ -3,12 +3,12 @@
   box-sizing: border-box;
 }
 .customInputCard {
-  background: var(--netural-white, #ffffff);
+  background: #ffffff;
   border-radius: 20px;
-  padding: 20px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
@@ -29,24 +29,20 @@
   overflow: hidden;
 }
 .customInputText {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   flex: 1;
 }
 .customInputActions {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;

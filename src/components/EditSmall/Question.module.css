@@ -3,12 +3,12 @@
   box-sizing: border-box;
 }
 .questionCard {
-  background: var(--netural-white, #ffffff);
+  background: #ffffff;
   border-radius: 20px;
-  padding: 20px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
@@ -29,24 +29,20 @@
   overflow: hidden;
 }
 .questionText {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   flex: 1;
 }
 .questionActions {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
@@ -56,7 +52,7 @@
 .questionDetailSection {
   display: flex;
   flex-direction: column;
-  gap: 21px;
+  gap: 1.3125rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
@@ -64,12 +60,12 @@
   position: relative;
 }
 .questionDetailCard {
-  background: var(--primary-color-10, #e4f0ff);
+  background: #e4f0ff;
   border-radius: 20px;
-  padding: 20px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -77,17 +73,13 @@
   position: relative;
 }
 .detailContentText {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   align-self: stretch;
   flex: 1;
@@ -98,16 +90,12 @@
   width: 100%;
   resize: none;
   overflow: hidden;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
-  color: var(--font-color-50, #4b527e);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: #4b527e;
   background: transparent;
   border: none;
   outline: none;
@@ -128,7 +116,7 @@
   overflow-wrap: break-word;
   cursor: pointer;
   min-height: 40px; /* 최소 한 줄 높이 유지 */
-  padding: 4px 0; /* 위아래 약간 여백 */
+  padding: 0.25rem 0; /* 위아래 약간 여백 */
 }
 .tipButton {
   background: #edfbd8;
@@ -136,10 +124,10 @@
   border-style: solid;
   border-color: #65bc3a;
   border-width: 2px;
-  padding: 11px 0px 11px 0px;
+  padding: 0.6875rem 0px 0.6875rem 0px;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
@@ -150,11 +138,11 @@
 .tipButtonText {
   color: #65bc3a;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   flex: 1;
 }
@@ -169,37 +157,34 @@
     rgba(255, 255, 255, 0.2) 100%
   );
   border-radius: 20px;
-  padding: 20px 40px 20px 40px;
+  padding: 1.25rem 2.5rem 1.25rem 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
-  height: 825px;
+  height: 51.5625rem;
   position: relative;
-  box-shadow: var(
-    --box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
   overflow: hidden;
-  backdrop-filter: var(--backdrop-filter, blur(22.5px));
+  backdrop-filter: blur(22.5px);
 }
 .headerContainer {
-  padding: 0px 0px 30px 0px;
+  padding: 0px 0px 1.875rem 0px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
-  height: 110px;
+  height: 6.875rem;
   position: relative;
 }
 .headerInnerContent {
-  padding: 0px 20px 0px 20px;
+  padding: 0px 1.25rem 0px 1.25rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -210,8 +195,8 @@
 }
 .headerSnowIcon {
   flex-shrink: 0;
-  width: 54px;
-  height: 54px;
+  width: 3.375rem;
+  height: 3.375rem;
   position: relative;
   overflow: visible;
   aspect-ratio: 1;
@@ -219,15 +204,11 @@
 .headerDateText {
   color: #ffffff;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   display: flex;
   align-items: center;
@@ -239,7 +220,7 @@
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  width: 148px;
+  width: 9.25rem;
   position: relative;
 }
 .headerTitleInputWrapper {
@@ -255,7 +236,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -271,7 +252,7 @@
   border-color: #7b83b1;
   border-width: 3px 0 0 0;
   flex-shrink: 0;
-  width: 115.5px;
+  width: 7.21875rem;
   height: 0px;
   position: relative;
   transform-origin: 0 0;
@@ -279,23 +260,19 @@
 }
 .headerEditSaveIcon {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   position: relative;
   overflow: visible;
 }
 .headerTargetText {
   color: #ffffff;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   display: flex;
   align-items: center;
@@ -304,17 +281,13 @@
 .headerPurposeText {
   color: #ffffff;
   text-align: center;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
-  width: 530px;
+  width: 33.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,15 +295,11 @@
 .headerUnusedText {
   color: #ffffff;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: absolute;
   left: 209px;
   top: 1px;
@@ -341,7 +310,7 @@
 .headerLineDivider {
   margin-top: -2px;
   border-style: solid;
-  border-color: var(--netural-white, #ffffff);
+  border-color: #ffffff;
   border-width: 2px 0 0 0;
   flex-shrink: 0;
   height: 0px;
@@ -352,15 +321,15 @@
   filter: blur(1.5px);
 }
 .questionsScrollContainer {
-  padding: 0px 20px 0px 20px;
+  padding: 0px 1.25rem 0px 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 521px;
+  height: 32.5625rem;
   position: relative;
   overflow: hidden;
   /* ✅ 스크롤 적용 */
@@ -370,8 +339,8 @@
 }
 /* 전체 스크롤바 영역 */
 .questionsScrollContainer::-webkit-scrollbar {
-  width: 10px;
-  height: 6px;
+  width: 0.625rem;
+  height: 0.375rem;
 }
 
 /* 스크롤바 막대 (thumb) */
@@ -387,67 +356,67 @@
   background: transparent;
 }
 .longButton {
-  background: var(--primary-color-50, #597edb);
+  background: #597edb;
   border-radius: 20px;
-  padding: 11px 142px 11px 142px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 80px;
-  height: 50px;
+  width: 5rem;
+  height: 3.125rem;
   position: relative;
 }
 .longButtonText {
-  color: var(--netural-white, #ffffff);
+  color: #ffffff;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
 }
 .deleteButton {
   background: #ff4f49;
   border-radius: 20px;
-  padding: 11px 142px 11px 142px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 80px;
-  height: 50px;
+  width: 5rem;
+  height: 3.125rem;
   position: relative;
 }
 .addQuestionButtonWrapper {
-  background: var(--netural-white, #ffffff);
+  background: #ffffff;
   border-radius: 20px;
-  padding: 7px 20px 7px 20px;
+  padding: 0.4375rem 1.25rem 0.4375rem 1.25rem;
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-content: center;
   align-self: stretch;
   flex-shrink: 0;
-  height: 48px;
+  height: 3rem;
   position: relative;
 }
 .addQuestionButtonText {
-  color: var(--font-color-60, #363d6c);
+  color: #363d6c;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   flex: 1;
   display: flex;
@@ -455,35 +424,35 @@
   justify-content: center;
 }
 .blackEnabledButton {
-  background: var(--netural-white, #ffffff);
+  background: #ffffff;
   border-radius: 20px;
-  padding: 11px 142px 11px 142px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 330px;
-  height: 50px;
+  width: 20.625rem;
+  height: 3.125rem;
   position: relative;
   aspect-ratio: 330/50;
 }
 .blackEnabledButtonText {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
 }
 
 .titleInput {
   all: unset; /* 기본 input 스타일 제거 */
   width: 100%;
-  font-size: 16px; /* 기존 div3 폰트 크기 맞춤 */
+  font-size: 1rem; /* 기존 div3 폰트 크기 맞춤 */
   font-weight: 500;
   color: #ffffff; /* 원하는 색으로 */
   /* line38 높이와 맞게 패딩 조절 */

@@ -3,12 +3,12 @@
   box-sizing: border-box;
 }
 .writeCardContainer {
-  background: var(--netural-white, #ffffff);
+  background: #ffffff;
   border-radius: 20px;
-  padding: 20px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
@@ -19,7 +19,7 @@
 .textareaWrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -27,15 +27,15 @@
   position: relative;
 }
 .questionTextarea {
-  color: var(--font-color-30, #4b527e);
+  color: #4b527e;
   text-align: left;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
-  width: 1204px; /* Adjust as needed for responsiveness */
+  width: 75.25rem; /* 필요에 따라 조절 */
   resize: none;
   overflow: hidden;
   justify-content: flex-start;
@@ -46,72 +46,71 @@
 .textareaUnderline {
   margin-top: -3px;
   border-style: solid;
-  border-color: var(--font-color-40, #7b83b1);
+  border-color: #7b83b1;
   border-width: 3px 0 0 0;
   flex-shrink: 0;
-  width: 1204px; /* Adjust as needed for responsiveness */
+  width: 75.25rem; /* 필요에 따라 조절 */
   height: 0px;
   position: relative;
 }
 .buttonGroup {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 0.9375rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
   position: relative;
 }
-/* Note: The following classes were present in the provided CSS but not used in the CustomInput_write component's JSX.
-   They are kept here for completeness if they are used elsewhere or intended for future use. */
+
 .buttonColorEnabled {
-  background: var(--primary-color-50, #597edb);
+  background: #597edb;
   border-radius: 20px;
-  padding: 11px 142px 11px 142px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 200px;
-  height: 50px;
+  width: 12.5rem;
+  height: 3.125rem;
   position: relative;
 }
 .buttonColorEnabledText {
-  color: var(--netural-white, #ffffff);
+  color: #ffffff;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
 }
 .buttonBlackCancel {
-  background: var(--netural-white, #ffffff);
+  background: #ffffff;
   border-radius: 20px;
   border-style: solid;
-  border-color: var(--font-color-50, #4b527e);
+  border-color: #4b527e;
   border-width: 1px;
-  padding: 11px 142px 11px 142px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 200px;
-  height: 50px;
+  width: 12.5rem;
+  height: 3.125rem;
   position: relative;
 }
 .buttonBlackCancelText {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
 }
