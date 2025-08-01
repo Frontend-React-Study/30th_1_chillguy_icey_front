@@ -18,10 +18,7 @@
   flex-shrink: 0;
   height: 51.5625rem;
 
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
 }
 .title {
   display: flex;
@@ -36,11 +33,11 @@
 .title1 {
   color: #252b5a;
   text-align: center;
-  font-family: var(--title2-bold-48px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--title2-bold-48px-font-size, 48px);
-  line-height: var(--title2-bold-48px-line-height, 140%);
-  letter-spacing: var(--title2-bold-48px-letter-spacing, -0.02em);
-  font-weight: var(--title2-bold-48px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 3rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -48,17 +45,13 @@
   justify-content: center;
 }
 .title2 {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: center;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -82,11 +75,6 @@
     rgba(255, 255, 255, 0.2) 100%
   );
   border-radius: 20px;
-  border-width: 3px;
-  border-style: solid;
-  border: none;
-  border-image: transparent;
-  border-image-slice: 1;
   padding: 2.4375rem 2.625rem 2.4375rem 2.625rem;
   display: flex;
   flex-direction: column;
@@ -99,14 +87,11 @@
   margin: 0 auto;
 
   position: relative;
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
 }
 .target_purpose_text {
-  color: var(--font-color-60, #363d6c);
+  color: #363d6c;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
   font-size: 3rem;
@@ -167,7 +152,7 @@
   position: relative;
 }
 .input_tp {
-  color: var(--font-color-40, #363d6c);
+  color: #363d6c;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
   font-size: 1.5rem;
@@ -201,7 +186,7 @@
 .line {
   margin-top: -3px;
   border-style: solid;
-  border-color: var(--font-color-50, #4b527e);
+  border-color: #4b527e;
   border-width: 3px 0 0 0;
   align-self: stretch;
   flex-shrink: 0;
