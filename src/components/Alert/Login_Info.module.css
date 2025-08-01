@@ -9,30 +9,30 @@
     rgba(75, 82, 126, 0.1) 100%
   );
   border-radius: 20px;
-  padding: 7px;
+  padding: 0.4375rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-start;
   justify-content: flex-start;
-  height: 854px;
-  width: 390px;
+  height: 53.375rem;
+  width: 24.375rem;
   position: relative;
 }
 .loginInfoWrapper {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 376px;
+  width: 23.5rem;
   position: relative;
 }
 .loginInfoHeader {
   display: flex;
   flex-direction: row;
-  gap: 11px;
+  gap: 0.6875rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
@@ -47,15 +47,15 @@
     rgba(75, 82, 126, 0.1) 100%
   );
   border-radius: 20px;
-  padding: 9px;
+  padding: 0.5625rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-end;
   justify-content: center;
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   position: relative;
 }
 
@@ -66,14 +66,14 @@
 }
 .bellIconButton {
   display: flex;
-  width: 45px;
-  height: 45px;
+  width: 2.8125rem;
+  height: 2.8125rem;
   align-items: center;
-  justify-content: center; /* 가로도 가운데 정렬 */
+  justify-content: center;
   border-radius: 50%;
   background: #fff;
-  overflow: hidden; /* 테두리 밖은 자르기 */
-  padding: 0; /* 불필요한 패딩 제거 */
+  overflow: hidden;
+  padding: 0;
 }
 
 .userInfoSection {
@@ -83,10 +83,10 @@
     rgba(75, 82, 126, 0.1) 100%
   );
   border-radius: 20px;
-  padding: 6px 7px 6px 7px;
+  padding: 0.375rem 0.4375rem 0.375rem 0.4375rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-start;
   justify-content: center;
   align-self: stretch;
@@ -98,32 +98,29 @@
 }
 .profileImgWrapper {
   flex-shrink: 0;
-  width: 236px;
-  height: 236px;
+  width: 14.75rem;
+  height: 14.75rem;
   position: relative;
   overflow: visible;
   display: flex;
-
   align-items: center;
-  justify-content: center; /* 가로도 가운데 정렬 */
+  justify-content: center;
   border-radius: 50%;
   background: #fff;
-  overflow: hidden; /* 테두리 밖은 자르기 */
-  padding: 0; /* 불필요한 패딩 제거 */
+  overflow: hidden;
+  padding: 0;
 }
 .userInfoWrapper {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  width: 361px;
+  width: 22.5625rem;
   max-height: 756px;
   position: relative;
-  justify-content: center; /* 수평 중앙 */
-  align-items: center;
   overflow: hidden;
 }
 
@@ -131,7 +128,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 9px 12px;
+  padding: 0.5625rem 0.75rem;
   border: none;
   border-radius: 20px;
   background: linear-gradient(
@@ -142,32 +139,32 @@
   box-shadow: 0px 4px 20px 0px rgba(75, 82, 126, 0.3) inset;
   backdrop-filter: blur(22.5px);
   cursor: pointer;
-  width: 181px;
-  height: 64px;
+  width: 11.3125rem;
+  height: 4rem;
 }
 
 .loginButtonInner {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .loginButtonIcon {
   display: flex;
-  width: 45px;
-  height: 45px;
+  width: 2.8125rem;
+  height: 2.8125rem;
   align-items: center;
-  justify-content: center; /* 가로도 가운데 정렬 */
+  justify-content: center;
   border-radius: 50%;
   background: #fff;
-  overflow: hidden; /* 테두리 밖은 자르기 */
-  padding: 0; /* 불필요한 패딩 제거 */
+  overflow: hidden;
+  padding: 0;
 }
 
 .loginButtonLabel {
-  font-family: Inter;
-  font-size: 20px;
+  font-family: Inter, sans-serif;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #252b5a;
   letter-spacing: -0.4px;
@@ -179,20 +176,20 @@
   box-sizing: border-box;
 }
 .userInfoContent {
-  padding: 10px 0px 10px 0px;
+  padding: 0.625rem 0px 0.625rem 0px;
   display: flex;
   flex-direction: column;
-  gap: 223px;
+  gap: 13.9375rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 311px;
+  width: 19.4375rem;
   position: relative;
 }
 .userInfoDetails {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
@@ -201,38 +198,38 @@
 }
 .profileImg {
   flex-shrink: 0;
-  width: 127px;
-  height: 127px;
+  width: 7.9375rem;
+  height: 7.9375rem;
   position: relative;
   overflow: visible;
   aspect-ratio: 1;
 }
 .userName {
-  color: var(--font-color-70, #252b5a);
+  color: #252b5a;
   text-align: center;
-  font-family: var(--body2-semibold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-semibold-20px-font-size, 20px);
-  line-height: var(--body2-semibold-20px-line-height, 140%);
-  letter-spacing: var(--body2-semibold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-semibold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
 }
 .userEmail {
-  color: var(--font-color-70, #252b5a);
+  color: #252b5a;
   text-align: center;
-  font-family: var(--body2-semibold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-semibold-20px-font-size, 20px);
-  line-height: var(--body2-semibold-20px-line-height, 140%);
-  letter-spacing: var(--body2-semibold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-semibold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
 }
 .linkedAccountWrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
@@ -242,25 +239,22 @@
 .linkedAccountInner {
   background: #ffffff;
   border-radius: 10px;
-  padding: 11px 89px 11px 89px;
+  padding: 0.6875rem 5.5625rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
-  height: 51px;
+  height: 3.1875rem;
   position: relative;
-  box-shadow: var(
-    --basic-button2-box-shadow,
-    2px 2px 10px 5px rgba(209, 209, 209, 0.5)
-  );
+  box-shadow: 2px 2px 10px 5px rgba(209, 209, 209, 0.5);
 }
 .linkedAccountContent {
   display: flex;
   flex-direction: row;
-  gap: 14px;
+  gap: 0.875rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
@@ -269,7 +263,7 @@
 .linkedIcon {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
@@ -281,17 +275,17 @@
   color: #000000;
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
   position: relative;
 }
 .logoutSection {
-  padding: 8px;
+  padding: 0.5rem;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
@@ -299,19 +293,19 @@
 }
 .logoutIcon {
   flex-shrink: 0;
-  width: 25px;
-  height: 25px;
+  width: 1.5625rem;
+  height: 1.5625rem;
   position: relative;
   overflow: visible;
   aspect-ratio: 1;
 }
 .logoutLabel {
-  color: var(--font-color-70, #252b5a);
+  color: #252b5a;
   text-align: center;
-  font-family: var(--body2-semibold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-semibold-20px-font-size, 20px);
-  line-height: var(--body2-semibold-20px-line-height, 140%);
-  letter-spacing: var(--body2-semibold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-semibold-20px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
 }
