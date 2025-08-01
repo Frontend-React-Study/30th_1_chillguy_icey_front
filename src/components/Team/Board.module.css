@@ -68,12 +68,12 @@
 .board_wrapper {
   display: grid;
   grid-template-columns: repeat(4, 11.4375rem);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
   align-content: stretch;
   width: 100%;
-  max-height: calc((13.125rem * 2) + 3vw);
+  max-height: calc((13.125rem * 2) + 3rem);
   padding: 20px;
-  gap: 1.5vw;
+  gap: 1rem;
   overflow: hidden;
   place-items: start;
   justify-content: start;
@@ -94,10 +94,10 @@
 
 .board_wrapper.expanded {
   max-height: none; /* 기존 max-height 제한 해제 */
-  grid-template-columns: repeat(6, 1fr); /* 6열로 변경 */
+  grid-template-columns: repeat(6, 11.4375rem); /* 6열로 변경 */
   grid-template-rows: repeat(3, 1fr); /* 3줄로 고정 */
-  gap: 15px;
-  padding: 20px;
+  gap: 1rem;
+  padding: 1rem;
   z-index: 999;
   transition: max-height 0.3s ease;
 }
@@ -113,6 +113,8 @@
 @media (max-width: 65.125rem) {
   .board_wrapper.expanded {
     grid-template-columns: repeat(5, 1fr);
+    max-height: calc((13.125rem * 3) + 3rem);
+    overflow: auto;
   }
 }
 
@@ -121,6 +123,22 @@
   .board_wrapper.expanded {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.board_wrapper.expanded::-webkit-scrollbar {
+  height: 0.375rem;
+  width: 2rem;
+}
+
+.board_wrapper.expanded::-webkit-scrollbar-thumb {
+  background-color: #e4f0ff;
+  border-radius: 3.125rem;
+  border: 10px solid transparent;
+  background-clip: content-box;
+}
+
+.board_wrapper.expanded::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .Menu_container {

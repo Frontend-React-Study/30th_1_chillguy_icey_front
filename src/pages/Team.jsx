@@ -340,13 +340,17 @@ const Team = () => {
 
   return (
     <>
+      {console.log("✅ [Team.js] isBoardExpanded:", isBoardExpanded)}
+      {console.log("✅ [Team.js] selectedTeam:", selectedTeam)}
+      {console.log(
+        "✅ selectedTeam.confirmedDate:",
+        selectedTeam?.confirmedDate,
+      )}
       <div className={st.Team_container}>
         <section className={st.Team_section1}>
           <div
             className={`${st.box} ${st.team_board_box} ${
-              isBoardExpanded && selectedTeam?.confirmedDate === null
-                ? st.promExpandedBoard
-                : ""
+              isBoardExpanded ? st.promExpandedBoard : ""
             }`}
           >
             {selectedTeam && teams !== 401 ? (
@@ -447,9 +451,7 @@ const Team = () => {
           </div>
         </section>
       </div>
-
       {isLinkSnackbarOpen && <LinkSnackbar link={invitationLink} />}
-
       {isPromiseDialogOpen && (
         <PromiseDialog
           bestCandidates={bestCandidates}
@@ -458,7 +460,6 @@ const Team = () => {
           setConfirmVoteData={setConfirmVoteData}
         />
       )}
-
       {isSnackbarOpen && linkMessage && (
         <Snackbar
           text={linkMessage}

@@ -94,7 +94,7 @@
   letter-spacing: -0.48px;
 }
 
-@media (max-width: 66.25rem) {
+@media (max-width: 68.125rem) {
   .promise_text_box {
     display: none;
   }
