@@ -4,15 +4,15 @@
 }
 .Balance {
   background: #e4f0ff;
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 1.25rem;
+  padding: 0.625rem;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3125rem;
   align-items: center;
   justify-content: flex-start;
-  width: 183px;
-  height: 210px;
+  width: 11.4375rem;
+  height: 13.125rem;
   position: relative;
   overflow: hidden;
 }
@@ -20,12 +20,12 @@
 .Balance_tools {
   display: flex;
   flex-direction: row;
-  gap: 36px;
+  gap: 2.25rem;
   align-items: center;
   justify-content: flex-end;
   align-self: stretch;
   flex-shrink: 0;
-  height: 25px;
+  height: 1.5625rem;
   padding-right: 10px;
   position: relative;
   overflow: hidden;
@@ -34,19 +34,19 @@
 .Balance_delete_img {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem;
+  height: 0.9375rem;
   position: relative;
   overflow: visible;
   cursor: pointer;
 }
 
 .Balance_line_img {
-  width: 160px;
+  width: 10rem;
 }
 
 .Button_wrapper {
@@ -64,8 +64,8 @@
 .Balance_button {
   background: transparent;
   border: none;
-  width: 160px;
-  height: 70px;
+  width: 10rem;
+  height: 4.375rem;
   padding: 0px;
   display: flex;
   flex-direction: column;
@@ -77,21 +77,21 @@
 
 .Balance_button_img {
   width: 100%;
-  height: 70px;
+  height: 4.375rem;
 }
 
 .Balance_count {
   position: absolute;
-  top: 12px;
-  left: 15px;
+  top: 8px;
+  left: 12px;
   background: #ffffff;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
 
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -112,7 +112,7 @@
   color: #252b5a;
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -126,6 +126,11 @@
 }
 
 .Balance_vs_img {
-  width: 140px;
-  height: 15px;
+  width: 8.75rem;
+  height: 0.9375rem;
+}
+
+.Selected {
+  border: 3px solid #ffc107;
+  transition: border 0.3s ease;
 }

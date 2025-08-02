@@ -4,28 +4,28 @@
 }
 .Memo {
   background: #e4f0ff;
-  border-radius: 20px;
-  padding: 5px 10px;
+  border-radius: 1.25rem;
+  padding: 0.3125rem 0.625rem;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
   align-items: center;
   justify-content: flex-start;
-  width: 183px;
-  height: 210px;
+  width: 11.4375rem;
+  height: 13.125rem;
   position: relative;
   overflow: hidden;
 }
 
 .Memo_tools {
-  padding: 0px 10px;
+  padding: 0px 0.625rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   align-self: stretch;
   flex-shrink: 0;
-  height: 30px;
+  height: 1.875rem;
   position: relative;
   overflow: hidden;
 }
@@ -33,16 +33,16 @@
 .MemoLike_wrapper {
   display: flex;
   align-items: center; /* 세로 가운데 정렬 */
-  gap: 5px;
+  gap: 0.3125rem;
 }
 
 .MemoLike_container {
-  width: 76px;
+  width: 4.75rem;
 }
 
 .Memo_like_img {
-  width: 16px;
-  height: 15px;
+  width: 1rem;
+  height: 0.9375rem;
   position: relative;
   cursor: pointer;
 }
@@ -50,31 +50,31 @@
 .edit_delete {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  height: 15px;
+  height: 0.9375rem;
   position: relative;
   overflow: visible;
 }
 
 .Memo_edit_img {
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem;
+  height: 0.9375rem;
   position: relative;
   cursor: pointer;
 }
 
 .Memo_delete_img {
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem;
+  height: 0.9375rem;
   position: relative;
   cursor: pointer;
 }
 
 .Memo_line_img {
-  width: 160px;
+  width: 10rem;
 }
 
 .Memo_text {
@@ -84,7 +84,7 @@
   color: #4b527e;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;

@@ -4,10 +4,10 @@
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  width: 80px;
-  height: 50px;
-  padding: 10px 5px;
-  font-size: 20px;
+  width: 5rem;
+  height: 3.125rem;
+  padding: 0.625rem 0.3125rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: #4b527e;
   white-space: nowrap;
@@ -40,12 +40,12 @@
 
 /* 110x50 흰색 버튼 */
 .Button_promise {
-  width: 110px;
+  width: 6.875rem;
 }
 
 /* 110x50 흰색 비활성화 버튼 */
 .Button_promise_no {
-  width: 110px;
+  width: 6.875rem;
   cursor: auto;
 
   background: linear-gradient(
@@ -62,19 +62,19 @@
 
 /* 200x50 흰색 버튼 */
 .Button_mid {
-  width: 200px;
+  width: 12.5rem;
 }
 
 /* 200x50 파란색 버튼 */
 .Button_midBlue {
-  width: 200px;
+  width: 12.5rem;
   background-color: #597edb;
   color: #ffffff;
 }
 
 /* 200x50 파란색 비활성화 버튼 */
 .Button_midBlue_no {
-  width: 200px;
+  width: 12.5rem;
   cursor: auto;
 
   background-color: rgba(89, 126, 219, 0.8);
@@ -83,25 +83,25 @@
 
 /* 200x50 빨간색 버튼 */
 .Button_midRed {
-  width: 200px;
+  width: 12.5rem;
   background-color: #ff4f49;
   color: #ffffff;
 }
 
 /* 200x50 흰색 배경 진한 테두리 버튼 */
 .Button_midStroke {
-  width: 200px;
+  width: 12.5rem;
   border: 2px solid #4b527e;
 }
 
 /* 330x50 흰색 버튼 */
 .Button_long {
-  width: 330px;
+  width: 20.625rem;
 }
 
 /* 330x50 파란색 버튼 */
 .Button_longBlue {
-  width: 330px;
+  width: 20.625rem;
   background-color: #597edb;
   color: #ffffff;
 }
@@ -135,4 +135,36 @@
 /* 200x50 파란색 버튼 */
 .Button_midBlue_no:hover:disabled {
   background-color: rgba(89, 126, 219, 0.8);
+}
+/* 기본 버튼 빨간색 버전 */
+.Button_bred {
+  background-color: #ff4f49;
+  color: #ffffff;
+}
+.Button_bred:hover {
+  background-color: #e46a73;
+}
+/* 200x50 삘긴색 버튼 */
+.Button_red {
+  width: 200px;
+  background-color: #ff4f49;
+  color: #ffffff;
+}
+/* 새로운 type="disabledReplace" 에 대한 스타일 */
+/* '바꾸기' 횟수 소진 시 적용될 스타일 */
+.disabledReplace {
+  background: #cccccc; /* 회색 배경 */
+  color: #666666; /* 어두운 글자색 */
+  border: 1px solid #999999;
+}
+
+/* 모든 버튼에 대한 일반적인 비활성화 스타일 (disabled 속성 사용 시) */
+.Button_disabled {
+  cursor: auto;
+}
+/* 330x50 흰색 버튼 */
+.Button_longdisabled {
+  width: 330px;
+  opacity: 0.7; /* 투명도 조절 */
+  cursor: auto;
 }

@@ -3,7 +3,7 @@ import modal_line from "../../assets/modal_line.svg";
 import cardmodal_left from "../../assets/cardmodal_left.svg";
 import cardmodal_right from "../../assets/cardmodal_right.svg";
 import { getAnimalImage } from "../../util/get-animal-image";
-import exPig from "../../assets/exPig.png";
+import exPig from "../../assets/animal/animal_pig9.svg";
 
 import Button from "../Button";
 import Dropdown from "../Dropdown";
@@ -27,7 +27,8 @@ const CardModal = ({
   // state: 명함 추가 시 작성한 내용(CardModal)
   const [adjective, setAdjective] = useState("");
   const [animal, setAnimal] = useState("");
-  const [profileColor, setProfileColor] = useState("1"); // 나중에 삭제
+  const [profileColor, setProfileColor] = useState("");
+  const [accessory, setAccessory] = useState("");
   const [mbti, setMbti] = useState("");
   const [hobby, setHobby] = useState("");
   const [secretTip, setSecretTip] = useState("");
@@ -40,7 +41,8 @@ const CardModal = ({
     setAdjective(defaultValue?.adjective || "");
     setAnimal(defaultValue?.animal || "");
     setMbti(defaultValue?.mbti || "");
-    setProfileColor(defaultValue?.profileColor || "1"); // 나중에 디폴트 값으로 변경
+    setProfileColor(defaultValue?.profileColor || "9");
+    setAccessory(defaultValue?.accessory || "animal");
     setHobby(defaultValue?.hobby || "");
     setSecretTip(defaultValue?.secretTip || "");
     setTmi(defaultValue?.tmi || "");
@@ -63,6 +65,8 @@ const CardModal = ({
     } else {
       setAdjective(defaultValue?.adjective || "");
     }
+
+    setAccessory(reverseAccessoryMap[defaultValue?.accessory] || "BASIC");
   }, [defaultValue]);
 
   const handleSave = () => {
@@ -70,6 +74,7 @@ const CardModal = ({
     if (
       !adjective.trim() ||
       !animal.trim() ||
+      !accessory.trim() ||
       !mbti.trim() ||
       !hobby.trim() ||
       !secretTip.trim() ||
@@ -82,7 +87,15 @@ const CardModal = ({
     // 에러 메시지 초기화
     setErrorMsg("");
 
-    const cardData = { adjective, animal, mbti, hobby, secretTip, tmi };
+    const cardData = {
+      adjective,
+      animal,
+      accessory,
+      mbti,
+      hobby,
+      secretTip,
+      tmi,
+    };
     if (onSave) onSave(cardData);
   };
 
@@ -120,10 +133,42 @@ const CardModal = ({
     회색: 10,
   };
 
-  // 이미지 경로 받아오기
-  const animalKey = animalMap[animal] || "default";
-  const colorKey = colorMap[profileColor] || "default";
-  const animalImageSrc = getAnimalImage(animalKey, colorKey);
+  const accessoryMap = { BASIC: "animal", RIBBON: "ribbon", STAR: "star" };
+
+  // animal, color 키 변환
+  const animalKey = animalMap[animal] || "pig";
+  const colorKey = colorMap[profileColor] || "9";
+
+  // accessory 상태는 한글 키(동물, 리본, 별)를 저장함
+  // 여기서 실제 사용할 accessoryKey는 영어값으로 변환
+  const accessoryKey = accessoryMap[accessory] || "animal";
+
+  const accessories = ["BASIC", "RIBBON", "STAR"];
+
+  const reverseAccessoryMap = {
+    animal: "BASIC",
+    ribbon: "RIBBON",
+    star: "STAR",
+  };
+
+  const handleAccessoryChange = (direction) => {
+    const currentIndex = accessories.indexOf(accessory);
+    if (currentIndex === -1) {
+      setAccessory("BASIC");
+      return;
+    }
+
+    let nextIndex;
+    if (direction === "left") {
+      nextIndex = (currentIndex - 1 + accessories.length) % accessories.length;
+    } else if (direction === "right") {
+      nextIndex = (currentIndex + 1) % accessories.length;
+    }
+    setAccessory(accessories[nextIndex]);
+  };
+
+  // getAnimalImage 호출 시에는 accessoryKey (영어 값) 사용
+  const animalImageSrc = getAnimalImage(animalKey, colorKey, accessoryKey);
 
   return (
     <div className={st.Overlay}>
@@ -143,7 +188,10 @@ const CardModal = ({
                 {adjective} {animal}
               </div>
               <div className={st.Image_wrapper}>
-                <button className={st.Arrow_button}>
+                <button
+                  className={st.Arrow_button}
+                  onClick={() => handleAccessoryChange("left")}
+                >
                   <img
                     className={st.left_right}
                     src={cardmodal_left}
@@ -155,10 +203,13 @@ const CardModal = ({
                   src={animalImageSrc}
                   alt={`${animal} image`}
                   onError={(e) => {
-                    e.currentTarget.src = exPig; // 디폴트 이미지 나중에 변경
+                    e.currentTarget.src = exPig;
                   }}
                 />
-                <button className={st.Arrow_button}>
+                <button
+                  className={st.Arrow_button}
+                  onClick={() => handleAccessoryChange("right")}
+                >
                   <img
                     className={st.left_right}
                     src={cardmodal_right}
@@ -166,7 +217,7 @@ const CardModal = ({
                   />
                 </button>
               </div>
-              <div className={st.Info_text}>Team</div>
+              <div className={st.Info_text}></div>
             </div>
           </div>
 

@@ -9,16 +9,16 @@
     rgba(255, 255, 255, 0.6) 0%,
     rgba(255, 255, 255, 0.6) 100%
   );
-  border-radius: 20px;
-  padding: 13px 23px;
+  border-radius: 1.25rem;
+  padding: 0.8125rem 1.4375rem;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 0.0625rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 180px;
-  height: 180px;
+  width: 11.25rem;
+  height: 11.25rem;
   position: relative;
   box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(22.5px);
@@ -27,21 +27,21 @@
 
 .Envelope_wrapper {
   position: relative;
-  width: 112.5px;
-  height: 112.5px;
+  width: 7.03125rem;
+  height: 7.03125rem;
 }
 
 .Envelope_logo {
-  width: 112.5px;
-  height: 112.5px;
+  width: 7.03125rem;
+  height: 7.03125rem;
 }
 
 .Unread {
   position: absolute;
   top: 10px;
   right: -5px;
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
   background-color: #ff4f49;
   border-radius: 50%;
 }
@@ -50,7 +50,7 @@
   color: #4b527e;
   text-align: center;
   font-family: "Inter-Regular", sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 400;

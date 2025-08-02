@@ -23,6 +23,7 @@ const Card = ({
   onClick,
   currentTeamName,
   onSelectTeam,
+  isCurrentCard = false,
 }) => {
   // 동물 이름 매핑
   const animalMap = {
@@ -46,9 +47,14 @@ const Card = ({
     하양: 9,
     회색: 10,
   };
-  const animalKey = animalMap[data.animal] || "default";
-  const colorKey = colorMap[data.profileColor] || "default";
-  const animalImageSrc = getAnimalImage(animalKey, colorKey);
+
+  const accessoryMap = { BASIC: "animal", RIBBON: "ribbon", STAR: "star" };
+
+  const animalKey = animalMap[data.animal] || "pig";
+  const colorKey = colorMap[data.profileColor] || "9";
+  const accessoryKey = accessoryMap[data.accessory] || "animal";
+
+  const animalImageSrc = getAnimalImage(animalKey, colorKey, accessoryKey);
 
   // 해당 명함을 사용 중인 팀 목록
   // "칠가이 외 3" 형식으로 표시
@@ -118,10 +124,13 @@ const Card = ({
             <div className={st.TeamName}>{renderTeams()}</div>
             <div
               className={`${st.SelectButtonWrapper} ${
-                isSelected && !teams.includes(currentTeamName)
-                  ? st.Show
-                  : st.Hide
+                isSelected ? st.Show : st.Hide
               }`}
+              style={{
+                visibility: teams.includes(currentTeamName)
+                  ? "hidden"
+                  : "visible",
+              }}
             >
               <Button text={"선택"} onClick={handleSelect} />
             </div>

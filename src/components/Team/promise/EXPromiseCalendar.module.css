@@ -4,15 +4,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 170px;
-  max-height: 170px;
+  /* min-width: none */
+  min-width: 10.625rem;
+  min-height: 10.625rem;
   height: 100%;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   overflow: hidden;
   font-family: "Inter", sans-serif;
   padding: 6%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
 }
 
 /* ==== 달력 전체 ==== */
@@ -43,7 +44,7 @@
   justify-content: center;
   cursor: pointer;
   padding: 0.5em;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   transition: background-color 0.2s;
   font-size: 1em;
   font-weight: 400;
@@ -68,11 +69,11 @@
   color: var(--Font-Color-50, #4b527e);
   text-align: center;
   font-family: Inter;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.01875rem;
   pointer-events: none; /* 가운데 년월 비활성화 */
 }
 
@@ -110,24 +111,24 @@
   font-size: 0.75em;
   font-weight: 700;
   line-height: 140%;
-  letter-spacing: -0.262px;
-  cursor: pointer;
+  letter-spacing: -0.015625rem;
+  /* cursor: pointer; */
   transition: all 0.2s;
   border-radius: 50%;
   position: relative;
 }
 
-.dayCell:hover {
+/* .dayCell:hover {
   background-color: #f0f0f0;
-}
+} */
 
 /* 오늘 날짜 */
 .today {
-  border: 1px solid #7b83b1 !important; /* 은은한 보더 */
-  border-radius: 6px; /* 살짝 둥글게 */
+  border: 0.0625rem solid #7b83b1 !important; /* 은은한 보더 */
+  border-radius: 0.375rem; /* 살짝 둥글게 */
   color: #4b527e;
   background-color: transparent !important;
-  box-shadow: inset 0 0 0 1px rgba(123, 131, 177, 0.2); /* 은은한 안쪽 그림자 */
+  box-shadow: inset 0 0 0 0.0625rem rgba(123, 131, 177, 0.2); /* 은은한 안쪽 그림자 */
   font-weight: 600;
 }
 
@@ -140,21 +141,21 @@
 
 /* 목표 날짜 */
 .goal {
-  background-color: #ffeb3b !important;
+  background-color: #ffb8f6 !important;
   color: #4b527e;
 }
 
-.goal:hover {
+/* .goal:hover {
   background-color: #fdd835 !important;
-}
+} */
 
 .create {
-  background-color: rgb(173, 244, 221) !important;
+  background-color: var(--Primary-Color-20, #afcdff) !important;
 }
 
-.create:hover {
+/* .create:hover {
   background-color: rgb(169, 223, 206) !important;
-}
+} */
 
 /* 이전/다음 달 날짜 */
 .neighboringMonth {
@@ -163,7 +164,7 @@
 }
 
 /* 반응형 처리 */
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .calendarContainer {
     padding: 4%;
   }

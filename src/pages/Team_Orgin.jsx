@@ -1,320 +1,462 @@
-import { useState, useRef, useEffect } from "react";
-import st from "./Team.module.css";
-import Board from "../components/Team/Board";
-import CardM from "../components/Team/CardM";
-import Massage from "../components/Team/Massage";
-import Promise from "../components/Team/Promise";
-import PromiseCheck2 from "../components/Team/PromiseCheck2";
-import Teamlist from "../components/Team/Teamlist";
-import PromiseDialog from "../components/Dialog/PromiseDialog";
-import LinkSnackbar from "../components/Snackbar/LinkSnackbar";
-import { useAuth } from "../context/AuthContext";
-import {
-  fetchTeamList,
-  fetchTeamDetail,
-  createTeam,
-  fetchTeamLink,
-} from "../util/TeamDataAPI";
-import {
-  fetchTeamVoteCreate,
-  fetchTeamVotesSummary,
-  fetchTeamMyVotes,
-  fetchMaxCandidates,
-  fetchScheduleConfirm,
-} from "../util/TeamVoteAPI";
+// import { useState, useRef, useEffect } from "react";
+// import { useNavigate, useLocation } from "react-router-dom";
+// import st from "./Team.module.css";
+// import Board from "../components/Team/Board";
+// import CardM from "../components/Team/CardM";
+// import Massage from "../components/Team/Massage";
+// import Promise from "../components/Team/Promise";
+// import PromiseCheck2 from "../components/Team/PromiseCheck2";
+// import Teamlist from "../components/Team/Teamlist";
+// import PromiseDialog from "../components/Dialog/PromiseDialog";
+// import LinkSnackbar from "../components/Snackbar/LinkSnackbar";
+// import Snackbar from "../components/Snackbar/Snackbar";
+// import { useAuth } from "../context/AuthContext";
+// import {
+//   fetchTeamList,
+//   fetchTeamDetail,
+//   createTeam,
+//   fetchTeamLink,
+//   fetchTeamCardM,
+// } from "../util/TeamDataAPI";
 
-const Team = () => {
-  const { token } = useAuth();
+// import {
+//   fetchTeamVoteCreate,
+//   fetchTeamVoteOnlySummery,
+//   fetchTeamVotesSummary,
+//   fetchTeamMyVotes,
+//   fetchTeamVoteSave,
+//   fetchMaxCandidates,
+//   fetchScheduleConfirm,
+// } from "../util/TeamVoteAPI";
 
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [showPromiseCheck, setShowPromiseCheck] = useState(false);
-  const [fadeState, setFadeState] = useState("hidden");
+// const Team = () => {
+//   const { token, logout } = useAuth();
 
-  const [teams, setTeams] = useState([]);
-  const [selectedTeamId, setSelectedTeamId] = useState(null);
-  const [selectedTeam, setSelectedTeam] = useState(null);
-  const [invitationLink, setInvitationLink] = useState("");
-  const [isLinkSnackbarOpen, setIsLinkSnackbarOpen] = useState(false);
-  const [isPromiseDialogOpen, setIsPromiseDialogOpen] = useState(false);
+//   const [isExpanded, setIsExpanded] = useState(false);
+//   const [showPromiseCheck, setShowPromiseCheck] = useState(false);
+//   const [fadeState, setFadeState] = useState("hidden");
 
-  const [pendingTeamId, setPendingTeamId] = useState(null);
-  const timeoutRef = useRef(null);
-  const lastFetchedTeamId = useRef(null);
-  const lastFetchedVotesTeamId = useRef(null);
+//   const [teams, setTeams] = useState([]);
+//   const [selectedTeamId, setSelectedTeamId] = useState(null);
+//   const [selectedTeam, setSelectedTeam] = useState(null);
+//   const [invitationLink, setInvitationLink] = useState("");
 
-  const [myVotes, setMyVotes] = useState([]);
-  const [hasDateVotes, setHasDateVotes] = useState(false);
-  const [savedVotes, setSavedVotes] = useState([]);
-  const [summary, setSummary] = useState([]);
-  const [maxVoteCount, setMaxVoteCount] = useState(0);
-  const [bestCandidates, setBestCandidates] = useState([]);
-  const [selectedDates, setSelectedDates] = useState([]);
-  const [isDateSaved, setIsDateSaved] = useState(false);
-  const [confirmVoteData, setConfirmVoteData] = useState([]);
+//   const [isLinkSnackbarOpen, setIsLinkSnackbarOpen] = useState(false);
+//   const [isPromiseDialogOpen, setIsPromiseDialogOpen] = useState(false);
+//   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
-  // 🔁 팀 리스트 로드
-  useEffect(() => {
-    const loadTeams = async () => {
-      try {
-        const res = await fetchTeamList(token);
-        const teamList = res.data;
-        setTeams(teamList);
-        if (teamList.length > 0) {
-          setSelectedTeamId((prevId) => prevId || teamList[0].id);
-        }
-      } catch (error) {
-        console.error("팀 목록 불러오기 실패", error);
-      }
-    };
-    if (token) loadTeams();
-  }, [token]);
+//   const [pendingTeamId, setPendingTeamId] = useState(null);
+//   const linkTimeoutRef = useRef(null); // 초대 링크 스낵바 전용
+//   const messageTimeoutRef = useRef(null); // 메시지 (linkMessage) 스낵바 전용
 
-  useEffect(() => {
-    // 하나라도 선택된 항목이 있으면 true
-    const result = selectedDates.some((d) => d.length > 0);
-    setHasDateVotes(result);
-  }, [selectedDates]);
+//   // 팀 투표를 위한 추가 변수 코드
+//   const [myVotes, setMyVotes] = useState([]);
+//   const [hasDateVotes, setHasDateVotes] = useState(false);
+//   const [savedVotes, setSavedVotes] = useState([]);
+//   const [summary, setSummary] = useState([]);
+//   // const [maxVoteCount, setMaxVoteCount] = useState(0);
+//   const [bestCandidates, setBestCandidates] = useState([]);
 
-  // 🔁 팀 상세 정보 로드 (중복 방지)
-  useEffect(() => {
-    const loadTeamDetail = async () => {
-      if (!selectedTeamId || lastFetchedTeamId.current === selectedTeamId)
-        return;
+//   // 팀 날짜 생성을 위한 추가 변수 코드
+//   const [selectedDates, setSelectedDates] = useState([]); // 날짜 선택
+//   const [isDateSaved, setIsDateSaved] = useState(false); // 저장 여부
 
-      try {
-        const res = await fetchTeamDetail(token, selectedTeamId);
-        setSelectedTeam(res.data);
-        lastFetchedTeamId.current = selectedTeamId;
-      } catch (error) {
-        console.error("팀 상세 정보 불러오기 실패", error);
-      }
-    };
-    if (token && selectedTeamId) {
-      loadTeamDetail();
-    }
-  }, [selectedTeamId, token]);
+//   // 팀 투표 확정을 위한 추가 변수 코드
+//   const [confirmVoteData, setConfirmVoteData] = useState([]);
 
-  // 🔁 투표 데이터 로드 (중복 방지)
-  useEffect(() => {
-    const loadVoteData = async () => {
-      if (!selectedTeamId || !selectedTeam || !selectedTeam.hasSchedule) return;
-      if (lastFetchedVotesTeamId.current === selectedTeamId) return;
+//   // state: 게시판 확장 상태
+//   const [isBoardExpanded, setIsBoardExpanded] = useState(false);
 
-      try {
-        const [resSum, resVotes] = await Promise.all([
-          fetchTeamVotesSummary(token, selectedTeamId),
-          fetchTeamMyVotes(token, selectedTeamId),
-        ]);
+//   // 팀 링크 초대 확정을 위한 추가 변수 코드
+//   const location = useLocation();
+//   const navigate = useNavigate();
+//   const { linkMessage, linkStatus, linkTeamId } = location.state || {};
 
-        setMaxVoteCount(resSum.data.maxVoteCount);
-        setSummary(resSum.data.summary);
-        setMyVotes(resVotes.data.myVotes);
-        setSavedVotes(resVotes.data.myVotes);
-        lastFetchedVotesTeamId.current = selectedTeamId;
-      } catch (err) {
-        console.error("투표 정보 불러오기 실패", err);
-      }
-    };
-    if (token && selectedTeamId && selectedTeam) {
-      loadVoteData();
-    }
-  }, [selectedTeamId, selectedTeam, token]);
+//   // 팀 카드 미리보기를 위한 추가 변수 코드
+//   const [selectedCardM, setSelectedCardM] = useState([]);
 
-  // ✅ 팀 선택 핸들링
-  const handleTeamSelect = (teamId) => {
-    if (fadeState === "visible") {
-      setFadeState("hiding");
-      setPendingTeamId(teamId);
-    } else {
-      if (selectedTeamId !== teamId) {
-        setSelectedTeamId(teamId);
-      }
-    }
-  };
+//   // 🔁 팀 리스트 로드
+//   useEffect(() => {
+//     const loadTeams = async () => {
+//       try {
+//         const res = await fetchTeamList(token);
+//         const teamList = res.data;
+//         setTeams(teamList);
+//         // console.log(teamList[3].id);
+//         if (teamList.length > 0) {
+//           if (linkTeamId) {
+//             setSelectedTeamId(linkTeamId);
+//           } else {
+//             setSelectedTeamId(teamList[0].id);
+//           }
+//         }
+//       } catch (error) {
+//         if (error.response) {
+//           const status = error.response.status;
+//           console.error("에러 상태 코드:", status);
 
-  const handleLinkSnackbar = async (teamId) => {
-    try {
-      const res = await fetchTeamLink(token, teamId);
-      setInvitationLink(res.data.invitationLink || "");
-      setIsLinkSnackbarOpen(true);
+//           if (status === 401) {
+//             // 🔐 인증 실패 처리 (예: 로그아웃 또는 로그인 페이지로 리다이렉트)
+//             console.warn("토큰 만료 또는 인증 실패. 로그인 필요.");
+//             logout();
 
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        setIsLinkSnackbarOpen(false);
-        timeoutRef.current = null;
-      }, 3000);
-    } catch (error) {
-      console.error("초대 링크 가져오기 실패", error);
-    }
-  };
+//             setTeams(status);
+//             setSelectedTeam(status);
+//           }
+//         } else {
+//           console.error("네트워크 에러 또는 서버 응답 없음:", error.message);
+//         }
+//       }
+//     };
+//     if (token) loadTeams();
+//   }, [token]);
 
-  const handleTeamAdd = async (teamName) => {
-    try {
-      const res = await createTeam(token, teamName);
-      const newres = await fetchTeamList(token);
-      const newTeamList = newres.data;
-      setTeams(newTeamList);
-      setSelectedTeamId(res.data.teamId);
-      lastFetchedTeamId.current = null;
-      lastFetchedVotesTeamId.current = null;
-    } catch (error) {
-      console.error("팀 생성 실패", error);
-    }
-  };
+//   // 새 팀 선택 시 데이터 초기화
+//   useEffect(() => {
+//     setSummary([]);
+//     setMyVotes([]);
+//     setSavedVotes([]);
+//   }, [selectedTeamId]);
 
-  const handlePromiseClick = () => {
-    if (fadeState === "visible") return;
-    if (selectedTeam?.confirmedDate !== null) return;
-    setIsExpanded(true);
-    setShowPromiseCheck(true);
-    setFadeState("visible");
-  };
+//   useEffect(() => {
+//     // 하나라도 선택된 항목이 있으면 true
+//     const result = selectedDates.some((d) => d.length > 0);
+//     console.log("선택되었는가? : ", result);
+//     setHasDateVotes(result);
+//   }, [selectedDates]);
 
-  const handleListClick = () => {
-    if (fadeState !== "visible") return;
-    if (selectedTeam?.confirmedDate !== null) return;
-    setFadeState("hiding");
-  };
+//   // 🔁 팀 상세 정보 로드
+//   useEffect(() => {
+//     if (teams === 401) return;
+//     if (selectedTeam === 401) return;
 
-  const onFadeTransitionEnd = (e) => {
-    if (e.propertyName !== "opacity") return;
-    if (fadeState === "hiding") {
-      setIsExpanded(false);
-      setFadeState("hidden");
-      if (pendingTeamId !== null) {
-        if (selectedTeamId !== pendingTeamId) {
-          setSelectedTeamId(pendingTeamId);
-        }
-        setPendingTeamId(null);
-      }
-    }
-  };
+//     const loadTeamDetail = async () => {
+//       if (!selectedTeamId) return;
+//       try {
+//         const res = await fetchTeamDetail(token, selectedTeamId);
+//         const res_card = await fetchTeamCardM(token, selectedTeamId);
 
-  const openPromiseDialog = async () => {
-    try {
-      const bestCandidates = await fetchMaxCandidates(token, selectedTeamId);
-      setBestCandidates(bestCandidates.data.results);
-      setIsPromiseDialogOpen(true);
-    } catch (err) {
-      console.error("최다 후보 가져오기 실패", err);
-    }
-  };
+//         setSelectedTeam(res.data);
+//         console.log(res.data);
+//         setSelectedCardM(res_card);
+//         console.log(
+//           `🐳${selectedTeamId} 팀 카드 미리보기 조회 성공 :`,
+//           res_card,
+//         );
+//       } catch (error) {
+//         console.error("팀 상세 정보 불러오기 실패", error);
+//       }
+//     };
+//     loadTeamDetail();
+//   }, [selectedTeamId, token]);
 
-  const closePromiseDialog = () => setIsPromiseDialogOpen(false);
+//   useEffect(() => {
+//     const loadVoteData = async () => {
+//       if (!selectedTeamId || !selectedTeam) return;
+//       if (!selectedTeam.hasSchedule) return;
+//       if (selectedTeam === 401) return;
+//       if (teams === 401) return;
 
-  const confirmPromiseDialog = async (data) => {
-    await fetchScheduleConfirm(token, selectedTeamId, data);
-    const res = await fetchTeamDetail(token, selectedTeamId);
-    setSelectedTeam(res.data);
-    lastFetchedTeamId.current = selectedTeamId;
+//       try {
+//         const resSum = await fetchTeamVotesSummary(token, selectedTeamId);
+//         const resVotes = await fetchTeamMyVotes(token, selectedTeamId);
+//         setSummary(resSum.data.summary);
+//         setMyVotes(resVotes.data.myVotes);
+//         setSavedVotes(resVotes.data.myVotes); // 저장용도도 초기화
+//       } catch (err) {
+//         console.error("투표 정보 불러오기 실패", err);
+//       }
+//     };
+//     loadVoteData();
+//   }, [selectedTeamId, selectedTeam, token]);
 
-    setFadeState("hidden");
-    setIsExpanded(false);
-    setIsPromiseDialogOpen(false);
-  };
+//   // ✅ 팀 선택 핸들링
+//   const handleTeamSelect = (teamId) => {
+//     if (fadeState === "visible") {
+//       setFadeState("hiding");
+//       setPendingTeamId(teamId);
+//     } else {
+//       setSelectedTeamId(teamId);
+//     }
+//   };
 
-  const handleSaveDate = async () => {
-    const res = await fetchTeamVoteCreate(token, selectedTeamId, selectedDates);
-    setSummary(res.data.summary);
-    setMyVotes(res.data.myVotes);
-    setIsDateSaved(false);
-  };
+//   // ✅ 초대 링크 클릭 시
+//   const handleLinkSnackbar = async (teamId) => {
+//     try {
+//       const res = await fetchTeamLink(token, teamId);
+//       setInvitationLink(res.data.invitationLink || "");
+//       setIsLinkSnackbarOpen(true);
 
-  return (
-    <>
-      <div className={st.Team_container}>
-        <section className={st.Team_section1}>
-          <div className={`${st.box} ${st.team_borad_box}`}>
-            {selectedTeam && <Board team={selectedTeam} />}
-          </div>
-          <div>
-            <div className={`${st.box} ${st.team_card_box}`}>
-              {selectedTeam && (
-                <CardM card={{}} team={selectedTeam} />
-                // TODO: card 데이터 별도 조회 필요 시 fetchTeamCard 추가 필요
-              )}
-            </div>
-            <div className={`${st.box} ${st.team_message_box}`}>
-              {selectedTeam && <Massage team={selectedTeam} />}
-            </div>
-          </div>
-        </section>
+//       if (linkTimeoutRef.current) clearTimeout(linkTimeoutRef.current);
+//       linkTimeoutRef.current = setTimeout(() => {
+//         setIsLinkSnackbarOpen(false);
+//         linkTimeoutRef.current = null;
+//       }, 3000);
+//     } catch (error) {
+//       console.error("초대 링크 가져오기 실패", error);
+//     }
+//   };
 
-        <section className={st.Team_section2}>
-          <div
-            className={`${st.box} ${st.team_promise_box} ${isExpanded && selectedTeam?.confirmedDate === null ? st.promExpanded : ""}`}
-            onClick={handlePromiseClick}
-          >
-            {selectedTeam && (
-              <Promise
-                team={selectedTeam}
-                teamCreateDate={selectedTeam.createdAt}
-                goalDate={selectedTeam.confirmedDate}
-              />
-            )}
+//   // ✅ 팀 생성
+//   const handleTeamAdd = async (teamName) => {
+//     try {
+//       const res = await createTeam(token, teamName);
+//       const newTeamId = res.data.id;
+//       const newTeamres = await fetchTeamList(token);
+//       const newres = await fetchTeamDetail(token, newTeamId);
+//       const newTeamDetail = newres.data;
+//       console.log(newTeamDetail);
+//       setTeams(newTeamres.data);
+//       setSelectedTeamId(newTeamDetail.teamId);
+//     } catch (error) {
+//       console.error("팀 생성 실패", error);
+//     }
+//   };
 
-            <div
-              className={`${st.fadeWrap} ${fadeState === "visible" ? st.show : st.hide}`}
-              style={{ display: fadeState === "hidden" ? "none" : "block" }}
-              onTransitionEnd={onFadeTransitionEnd}
-            >
-              {selectedTeam && (
-                <PromiseCheck2
-                  team={selectedTeam}
-                  summary={summary}
-                  myVotes={myVotes}
-                  setMyVotes={setMyVotes}
-                  hasDateVotes={hasDateVotes}
-                  savedVotes={savedVotes}
-                  setSavedVotes={setSavedVotes}
-                  setSummary={setSummary}
-                  maxVoteCount={maxVoteCount}
-                  setMaxVoteCount={setMaxVoteCount}
-                  openPromiseDialog={openPromiseDialog}
-                  selectedDates={selectedDates}
-                  setSelectedDates={setSelectedDates}
-                  isDateSaved={isDateSaved}
-                  onSaveDate={handleSaveDate}
-                />
-              )}
-            </div>
-          </div>
+//   const handlePromiseClick = () => {
+//     if (fadeState === "visible") return;
+//     if (selectedTeam?.confirmedDate !== null) return;
+//     if (selectedTeam.role === "MEMBER" && !selectedTeam.hasSchedule) return;
+//     console.log(`handlePromiseClick 이거 작동했음`);
 
-          <div
-            className={`${st.box} ${st.team_list_box} ${isExpanded ? st.listShrinked : ""}`}
-            onClick={handleListClick}
-          >
-            <Teamlist
-              teams={teams}
-              onTeamAdd={handleTeamAdd}
-              onLinkClick={handleLinkSnackbar}
-              onTeamCheckClick={handleTeamSelect}
-              selectedTeamId={selectedTeamId}
-            />
-          </div>
-        </section>
-      </div>
+//     setIsExpanded(true);
+//     setShowPromiseCheck(true);
+//     setFadeState("visible");
+//   };
 
-      {isLinkSnackbarOpen && <LinkSnackbar link={invitationLink} />}
+//   const handleListClick = () => {
+//     if (fadeState !== "visible") return;
+//     if (selectedTeam?.confirmedDate !== null) return;
+//     if (selectedTeam.role === "MEMBER" && !selectedTeam.hasSchedule) return;
 
-      {isPromiseDialogOpen && (
-        <PromiseDialog
-          bestCandidates={bestCandidates}
-          onConfirm={confirmPromiseDialog}
-          onCancel={closePromiseDialog}
-          setConfirmVoteData={setConfirmVoteData}
-        />
-      )}
+//     setFadeState("hiding");
+//   };
 
-      {/* 🧪 레거시 코드 */}
-      {/* 
-      const [Teams, setTeams] = useState(teams);
-      const [Links, setLinks] = useState(links);
-      const [Cards, setCards] = useState(cards);
-      const [selectedTeam, setSelectedTeam] = useState(Teams[0]);
-      */}
-    </>
-  );
-};
+//   const onFadeTransitionEnd = (e) => {
+//     if (e.propertyName !== "opacity") return;
+//     if (fadeState === "hiding") {
+//       setIsExpanded(false);
+//       setFadeState("hidden");
+//       if (pendingTeamId !== null) {
+//         setSelectedTeamId(pendingTeamId);
+//         setPendingTeamId(null);
+//       }
+//     }
+//   };
 
-export default Team;
+//   const openPromiseDialog = async () => {
+//     const bestCandidates = await fetchMaxCandidates(token, selectedTeamId);
+//     setBestCandidates(bestCandidates.data.results);
+//     setIsPromiseDialogOpen(true);
+//   };
+//   const closePromiseDialog = () => setIsPromiseDialogOpen(false);
+
+//   // 확정했을 때의 코드
+//   const confirmPromiseDialog = async (data) => {
+//     console.log(data);
+//     await fetchScheduleConfirm(token, selectedTeamId, data);
+//     // 🔁 확정 후 팀 상세 정보 다시 불러오기
+//     const res = await fetchTeamDetail(token, selectedTeamId);
+//     setSelectedTeam(res.data);
+
+//     setFadeState("hidden");
+//     setIsExpanded(false);
+
+//     setIsPromiseDialogOpen(false);
+//   };
+
+//   const handleSaveDate = async () => {
+//     const res = await fetchTeamVoteCreate(token, selectedTeamId, selectedDates);
+
+//     setSummary(res.data.summary);
+//     setMyVotes(res.data.myVotes);
+
+//     setIsDateSaved(false);
+//   };
+
+//   const handleSaveTime = () => {
+//     setFadeState("hidden");
+//     setIsExpanded(false);
+//   };
+
+//   // 토글 함수
+//   const toggleBoardExpand = () => {
+//     setIsBoardExpanded((prev) => !prev);
+//   };
+
+//   useEffect(() => {
+//     const handleKeyDown = (e) => {
+//       if (e.key === "Escape") {
+//         toggleBoardExpand();
+//       }
+//     };
+//     window.addEventListener("keydown", handleKeyDown);
+//     return () => window.removeEventListener("keydown", handleKeyDown);
+//   }, [toggleBoardExpand]);
+
+//   // ✅ 메시지 (linkMessage) 스낵바
+//   const handleSnackbar = () => {
+//     setIsSnackbarOpen(true);
+
+//     if (messageTimeoutRef.current) clearTimeout(messageTimeoutRef.current);
+//     messageTimeoutRef.current = setTimeout(() => {
+//       setIsSnackbarOpen(false);
+//       clearLocationState();
+//       messageTimeoutRef.current = null;
+//     }, 3000);
+//   };
+
+//   // ✅ 확인 버튼 눌러서 닫기
+//   const handleCloseSnackbar = () => {
+//     console.log("아니 버튼 누르는중.");
+//     if (messageTimeoutRef.current) {
+//       clearTimeout(messageTimeoutRef.current);
+//       messageTimeoutRef.current = null;
+//     }
+//     setIsSnackbarOpen(false);
+//     clearLocationState();
+//   };
+
+//   const clearLocationState = () => {
+//     navigate(location.pathname, { replace: true, state: null });
+//   };
+
+//   useEffect(() => {
+//     if (linkMessage) {
+//       handleSnackbar();
+//     }
+//   }, [linkMessage]);
+
+//   return (
+//     <>
+//       <div className={st.Team_container}>
+//         <section className={st.Team_section1}>
+//           <div
+//             className={`${st.box} ${st.team_board_box} ${
+//               isBoardExpanded && selectedTeam?.confirmedDate === null
+//                 ? st.promExpandedBoard
+//                 : ""
+//             }`}
+//           >
+//             {selectedTeam && teams !== 401 ? (
+//               <Board
+//                 team={selectedTeam}
+//                 isBoardExpanded={isBoardExpanded}
+//                 onToggleExpand={toggleBoardExpand}
+//                 onCloseExpand={() => setIsBoardExpanded(false)}
+//               />
+//             ) : (
+//               <div></div>
+//             )}
+//           </div>
+//           <div className={st.card_message_wrapper}>
+//             <div className={`${st.box} ${st.team_card_box}`}>
+//               {selectedTeam && teams !== 401 ? (
+//                 <CardM card={selectedCardM} team={selectedTeam} />
+//               ) : (
+//                 // TODO: card 데이터 별도 조회 필요 시 fetchTeamCard 추가 필요
+//                 <div></div>
+//               )}
+//             </div>
+//             <div className={`${st.box} ${st.team_message_box}`}>
+//               {selectedTeam && teams !== 401 ? (
+//                 <Massage team={selectedTeam} />
+//               ) : (
+//                 <div></div>
+//               )}
+//             </div>
+//           </div>
+//         </section>
+
+//         <section className={st.Team_section2}>
+//           <div
+//             className={`${st.box} ${st.team_promise_box} ${isExpanded && selectedTeam?.confirmedDate === null ? (selectedTeam.role === "MEMBER" && !selectedTeam.hasSchedule ? "" : selectedTeam.confirmedDate ? "" : st.promExpanded) : ""}`}
+//             onClick={handlePromiseClick}
+//           >
+//             {selectedTeam && teams !== 401 ? (
+//               <Promise
+//                 team={selectedTeam}
+//                 teamCreateDate={selectedTeam.createdAt}
+//                 goalDate={selectedTeam.confirmedDate}
+//               />
+//             ) : (
+//               <div></div>
+//             )}
+
+//             <div
+//               className={`${st.fadeWrap} ${fadeState === "visible" ? (selectedTeam.role === "MEMBER" && !selectedTeam.hasSchedule ? st.hide : selectedTeam.confirmedDate ? st.hide : st.show) : st.hide}`}
+//               style={{
+//                 display:
+//                   fadeState === "hidden"
+//                     ? "none"
+//                     : selectedTeam.role === "MEMBER" &&
+//                         !selectedTeam.hasSchedule
+//                       ? "none"
+//                       : selectedTeam?.confirmedDate
+//                         ? "none"
+//                         : "block",
+//               }}
+//               onTransitionEnd={onFadeTransitionEnd}
+//             >
+//               {selectedTeam && teams !== 401 ? (
+//                 <PromiseCheck2
+//                   team={selectedTeam}
+//                   setSelectedTeam={setSelectedTeam}
+//                   handleSaveTime={handleSaveTime}
+//                   summary={summary}
+//                   myVotes={myVotes}
+//                   setMyVotes={setMyVotes}
+//                   hasDateVotes={hasDateVotes}
+//                   savedVotes={savedVotes}
+//                   setSavedVotes={setSavedVotes}
+//                   setSummary={setSummary}
+//                   openPromiseDialog={openPromiseDialog}
+//                   selectedDates={selectedDates}
+//                   setSelectedDates={setSelectedDates}
+//                   isDateSaved={isDateSaved}
+//                   onSaveDate={handleSaveDate}
+//                 />
+//               ) : (
+//                 <div></div>
+//               )}
+//             </div>
+//           </div>
+
+//           <div
+//             className={`${st.box} ${st.team_list_box} ${isExpanded && selectedTeam?.confirmedDate === null ? (selectedTeam.role === "MEMBER" && !selectedTeam.hasSchedule ? "" : selectedTeam?.confirmedDate ? "" : st.listShrinked) : ""}`}
+//             onClick={handleListClick}
+//           >
+//             <Teamlist
+//               teams={teams}
+//               onTeamAdd={handleTeamAdd}
+//               onLinkClick={handleLinkSnackbar}
+//               onTeamCheckClick={handleTeamSelect}
+//               selectedTeamId={selectedTeamId}
+//             />
+//           </div>
+//         </section>
+//       </div>
+
+//       {isLinkSnackbarOpen && <LinkSnackbar link={invitationLink} />}
+
+//       {isPromiseDialogOpen && (
+//         <PromiseDialog
+//           bestCandidates={bestCandidates}
+//           onConfirm={confirmPromiseDialog}
+//           onCancel={closePromiseDialog}
+//           setConfirmVoteData={setConfirmVoteData}
+//         />
+//       )}
+
+//       {isSnackbarOpen && linkMessage && (
+//         <Snackbar
+//           text={linkMessage}
+//           buttontext="확인"
+//           buttonOnclick={handleCloseSnackbar} // ✅ 오타 수정 및 핸들러 연결
+//         />
+//       )}
+//     </>
+//   );
+// };
+
+// export default Team;

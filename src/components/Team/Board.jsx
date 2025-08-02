@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import st from "./Board.module.css";
 import MemoEdit from "../Memo/MemoEdit";
 import Memo from "../Memo/Memo";
@@ -9,95 +8,64 @@ import board_menu from "../../assets/board_menu.svg";
 import wide from "../../assets/board_wide.svg";
 import memo_add from "../../assets/board_memo_add.svg";
 import balance_add from "../../assets/board_balance_add.svg";
+import memo_add_disable from "../../assets/memo_add_disable.svg";
+import balance_add_disable from "../../assets/balance_add_disable.svg";
+import board_narrow from "../../assets/board_narrow.svg";
 
-import { useAuth } from "../../context/AuthContext";
+import {
+  fetchMemos,
+  deleteMemo,
+  fetchBalanceGames,
+  createBalanceGame,
+  deleteBalanceGame,
+  voteBalanceGame,
+  fetchBalanceGameResult,
+} from "../../util/BoardDataAPI";
 
 const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
-  // 토큰 불러오기
-  const { token } = useAuth();
-  const backLink = "https://icey-backend-1027532113913.asia-northeast3.run.app";
-
-  // state: 메모 삭제 함수에 사용됨
   const [memos, setMemos] = useState([]);
-  // state: 수정할 메모 저장
   const [editingMemo, setEditingMemo] = useState(null);
-  // state: 메모 작성 열 때 사용됨
   const [isMemoEditOpen, setIsMemoEditOpen] = useState(false);
-  // state: 밸런스 게임 상태
   const [balanceGames, setBalanceGames] = useState([]);
-  // state: 메뉴 토글에 사용됨
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const isLimitReached = memos.length + balanceGames.length >= 18;
+
   useEffect(() => {
-    if (!team || !team.teamId) return;
+    if (!team?.teamId) return;
 
-    // 전체 메모 목록 불러오기
-    const fetchMemos = async () => {
+    const loadData = async () => {
       try {
-        const res = await axios.get(
-          `${backLink}/api/teams/${team.teamId}/memos`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-        console.log("res.data =", res.data);
-
-        const memoList = Array.isArray(res.data)
-          ? res.data
-          : Array.isArray(res.data.data)
-            ? res.data.data
-            : [];
-        setMemos(memoList); // 서버에서 받은 메모 배열로 설정
-      } catch (err) {
-        console.error("메모 목록 불러오기 실패", err);
-      }
-    };
-
-    // 전체 밸런스 게임 목록 불러오기
-    const fetchBalanceGames = async () => {
-      try {
-        const res = await axios.get(
-          `${backLink}/api/teams/${team.teamId}/balance-game`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-        const balanceList = res.data?.data ?? [];
+        const [memoList, balanceList] = await Promise.all([
+          fetchMemos(team.teamId),
+          fetchBalanceGames(team.teamId),
+        ]);
+        setMemos(memoList);
         setBalanceGames(balanceList);
-      } catch (error) {
-        console.error("밸런스 게임 목록 불러오기 실패", error);
+      } catch (err) {
+        console.error("게시판 데이터 로딩 실패", err);
       }
     };
 
-    fetchMemos();
-    fetchBalanceGames();
+    loadData();
   }, [team?.teamId]);
 
-  // MemoEdit 여는 함수 (memo가 있으면 수정, 없으면 새로 추가)
   const openMemoEdit = (memo = null) => {
-    // 새 메모 추가 시 개수 제한 체크
-    if (!memo && memos.length + balanceGames.length >= 18) {
+    if (!memo && isLimitReached) {
       alert(
         "게시판에는 메모와 밸런스 게임을 합쳐 최대 18개까지만 생성할 수 있습니다.",
       );
       return;
     }
-
     setEditingMemo(memo);
     setIsMemoEditOpen(true);
   };
 
-  // MemoEdit 닫는 함수
   const closeMemoEdit = () => {
     setIsMemoEditOpen(false);
     setEditingMemo(null);
   };
 
-  // 메모 저장 성공 시 호출되는 함수
   const handleMemoSave = (savedMemo) => {
     setMemos((prev) => {
       const exists = prev.some((m) => m.memoId === savedMemo.memoId);
@@ -110,14 +78,9 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
     closeMemoEdit();
   };
 
-  // 메모 삭제 함수
   const handleDeleteMemo = async (teamId, memoId) => {
     try {
-      await axios.delete(`${backLink}/api/teams/${teamId}/memos/${memoId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await deleteMemo(teamId, memoId);
       setMemos((prev) => prev.filter((memo) => memo.memoId !== memoId));
     } catch (error) {
       console.error("메모 삭제 실패", error);
@@ -125,9 +88,8 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
     }
   };
 
-  // 밸런스 게임 생성
   const handleAddBalance = async () => {
-    if (memos.length + balanceGames.length >= 18) {
+    if (isLimitReached) {
       alert(
         "게시판에는 메모와 밸런스 게임을 합쳐 최대 18개까지만 생성할 수 있습니다.",
       );
@@ -138,29 +100,10 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
       return;
     }
     try {
-      const res = await axios.post(
-        `${backLink}/api/teams/${team.teamId}/balance-game/generate`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      const newGame = res.data?.data;
-      if (newGame) {
-        setBalanceGames((prev) => [...prev, newGame]);
-      }
-      // 생성 후 최신 밸런스 게임 목록 다시 불러오기
-      const resList = await axios.get(
-        `${backLink}/api/teams/${team.teamId}/balance-game`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      const balanceList = resList.data?.data ?? [];
+      const newGame = await createBalanceGame(team.teamId);
+      if (newGame) setBalanceGames((prev) => [...prev, newGame]);
+      // 최신 목록 재조회
+      const balanceList = await fetchBalanceGames(team.teamId);
       setBalanceGames(balanceList);
     } catch (error) {
       console.error("밸런스 게임 생성 실패", error);
@@ -168,18 +111,9 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
     }
   };
 
-  // 밸런스 게임 삭제
   const handleBalanceDelete = async (gameId) => {
     try {
-      await axios.delete(
-        `${backLink}/api/teams/${team.teamId}/balance-game/${gameId}/delete`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      // 삭제 후 상태 업데이트
+      await deleteBalanceGame(team.teamId, gameId);
       setBalanceGames((prev) => prev.filter((game) => game.id !== gameId));
     } catch (error) {
       console.error("밸런스 게임 삭제 실패", error);
@@ -187,59 +121,43 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
     }
   };
 
-  // 밸런스 게임 투표
   const handleBalanceVote = async (gameId, selectedOption) => {
     try {
-      await axios.post(
-        `${backLink}/api/teams/${team.teamId}/balance-game/${gameId}/vote`,
-        { selectedOption: Number(selectedOption) },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      // 투표 후 최신 목록 다시 불러오기
-      const res = await axios.get(
-        `${backLink}/api/teams/${team.teamId}/balance-game`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      const data = res.data?.data || [];
+      await voteBalanceGame(team.teamId, gameId, selectedOption);
+      const data = await fetchBalanceGames(team.teamId);
       setBalanceGames(data);
     } catch (error) {
       console.error("밸런스 게임 투표 실패", error);
 
-      // 중복 투표 에러 메시지 분기
       if (
         error.response?.status === 400 &&
         error.response.data?.message === "투표는 1회만 가능합니다."
       ) {
-        // 중복 투표인 경우
         throw new Error("이미 투표하셨습니다!");
       } else {
-        // 그 외 에러는 alert
         alert("투표에 실패했습니다.");
         throw error;
       }
     }
   };
 
-  // 게시판 메뉴 토글 버튼
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
 
-  // 게시판 확장 토글 (상위에서 상태 관리하므로 콜백 호출)
   const toggleExpand = () => {
     if (onToggleExpand) onToggleExpand();
   };
 
-  // 팀 아이디 아직 없는 경우 게시판 로딩 중 표시
-  if (!team || !team.teamId) return <div>로딩 중...</div>;
+  if (!team?.teamId) return <div>로딩 중...</div>;
+
+  const combinedItems = [...memos, ...balanceGames].sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
+  const getVoteResult = (gameId) => {
+    return fetchBalanceGameResult(team.teamId, gameId);
+  };
 
   return (
     <div className={st.Board_content}>
@@ -256,31 +174,40 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
         <div
           className={`${st.board_wrapper} ${isBoardExpanded ? st.expanded : ""}`}
         >
-          {memos.map((memo) => (
-            <Memo
-              key={memo.memoId}
-              teamId={team.teamId}
-              memoId={memo.memoId}
-              memo={memo}
-              onDelete={handleDeleteMemo}
-              onEdit={() => openMemoEdit(memo)}
-            />
-          ))}
-          {balanceGames.map((game) => (
-            <Balance
-              key={game.id}
-              gameId={game.id}
-              option1={game.option1}
-              option1Count={game.option1Count}
-              option2={game.option2}
-              option2Count={game.option2Count}
-              totalVotes={game.totalVotes}
-              onDelete={() => handleBalanceDelete(game.id)}
-              onVote={(gameId, selectedOption) =>
-                handleBalanceVote(gameId, selectedOption)
-              }
-            />
-          ))}
+          {combinedItems.map((item) => {
+            if (item.memoId !== undefined) {
+              return (
+                <Memo
+                  key={`memo-${item.memoId}`}
+                  teamId={team.teamId}
+                  memoId={item.memoId}
+                  memo={item}
+                  onDelete={handleDeleteMemo}
+                  onEdit={() => openMemoEdit(item)}
+                />
+              );
+            } else if (item.id !== undefined) {
+              return (
+                <Balance
+                  key={`balance-${item.id}`}
+                  gameId={item.id}
+                  option1={item.option1}
+                  option1Count={item.option1Count}
+                  option2={item.option2}
+                  option2Count={item.option2Count}
+                  totalVotes={item.totalVotes}
+                  onDelete={() => handleBalanceDelete(item.id)}
+                  onVote={(gameId, selectedOption) =>
+                    handleBalanceVote(gameId, selectedOption)
+                  }
+                  teamMemberCount={team.memberCount}
+                  getVoteResult={getVoteResult}
+                  userSelectedOption={item.userSelectedOption}
+                />
+              );
+            }
+            return null;
+          })}
         </div>
 
         <div className={st.Menu_container}>
@@ -288,19 +215,36 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
             <div className={st.Menu_buttons}>
               <button
                 className={st.Menu_item}
-                onClick={() => openMemoEdit(null)}
+                onClick={() => {
+                  if (!isLimitReached) openMemoEdit(null);
+                }}
+                disabled={isLimitReached}
               >
-                <img src={memo_add} alt="메모" />
+                <img
+                  src={isLimitReached ? memo_add_disable : memo_add}
+                  alt="메모"
+                />
               </button>
-              <button className={st.Menu_item} onClick={handleAddBalance}>
-                <img src={balance_add} alt="밸런스 게임" />
+              <button
+                className={st.Menu_item}
+                onClick={() => {
+                  if (!isLimitReached) handleAddBalance();
+                }}
+                disabled={isLimitReached}
+              >
+                <img
+                  src={isLimitReached ? balance_add_disable : balance_add}
+                  alt="밸런스 게임"
+                />
               </button>
               <button className={st.Menu_item} onClick={toggleExpand}>
-                <img src={wide} alt="확대" />
+                <img
+                  src={isBoardExpanded ? board_narrow : wide}
+                  alt={isBoardExpanded ? "축소" : "확대"}
+                />
               </button>
             </div>
           )}
-          {/* 메뉴 토글 버튼 */}
           <button
             className={`${st.Menu_toggle} ${menuOpen ? st.rotate : ""}`}
             onClick={toggleMenu}
@@ -312,9 +256,9 @@ const Board = ({ team, isBoardExpanded, onToggleExpand }) => {
         {isMemoEditOpen && (
           <MemoEdit
             teamId={team.teamId}
-            editingMemo={editingMemo} // 수정 시 내용 전달, 새로 추가 시 null
+            editingMemo={editingMemo}
             onSave={handleMemoSave}
-            onClose={closeMemoEdit} // 닫기 함수 전달
+            onClose={closeMemoEdit}
           />
         )}
       </div>

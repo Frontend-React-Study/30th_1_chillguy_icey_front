@@ -1,0 +1,119 @@
+.writeCardContainer,
+.writeCardContainer * {
+  box-sizing: border-box;
+}
+.writeCardContainer {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.questionTextarea {
+  color: #4b527e;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+  width: 75.25rem; /* 필요에 따라 조절 */
+  resize: none;
+  overflow: hidden;
+  justify-content: flex-start;
+  border: none;
+  outline: none;
+}
+
+.textareaUnderline {
+  margin-top: -3px;
+  border-style: solid;
+  border-color: #7b83b1;
+  border-width: 3px 0 0 0;
+  flex-shrink: 0;
+  width: 75.25rem; /* 필요에 따라 조절 */
+  height: 0px;
+  position: relative;
+}
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 0.9375rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.buttonColorEnabled {
+  background: #597edb;
+  border-radius: 1.25rem;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
+
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 12.5rem;
+  height: 3.125rem;
+  position: relative;
+}
+.buttonColorEnabledText {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+}
+.buttonBlackCancel {
+  background: #ffffff;
+
+  border-radius: 1.25rem;
+  border-style: solid;
+  border-color: #4b527e;
+  border-width: 1px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 12.5rem;
+  height: 3.125rem;
+  position: relative;
+}
+.buttonBlackCancelText {
+  color: #4b527e;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+}

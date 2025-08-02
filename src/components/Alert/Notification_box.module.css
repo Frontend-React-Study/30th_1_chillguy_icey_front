@@ -8,54 +8,57 @@
     rgba(75, 82, 126, 0.2) 0%,
     rgba(75, 82, 126, 0.1) 100%
   );
-  border-radius: 20px;
-  padding: 7px;
+
+  border-radius: 1.25rem;
+  padding: 0.4375rem;
+
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem; /* 0.5rem */
   align-items: flex-start;
   justify-content: flex-start;
-  height: 854px;
-  width: 390px;
+  height: 53.375rem; /* 53.375rem */
+  width: 24.375rem; /* 24.375rem */
   position: relative;
 }
 .notificationBoxContent {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem; /* 0.25rem */
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 376px;
+  width: 23.5rem; /* 23.5rem */
   position: relative;
 }
 .notificationHeader {
   display: flex;
   flex-direction: row;
-  gap: 11px;
+  gap: 0.6875rem; /* 0.6875rem */
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
 }
-
 .profileIconWrapper {
   background: linear-gradient(
     180deg,
     rgba(75, 82, 126, 0.2) 0%,
     rgba(75, 82, 126, 0.1) 100%
   );
-  border-radius: 20px;
-  padding: 9px;
+
+  border-radius: 1.25rem;
+  padding: 0.5625rem;
+
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem; /* 0.5rem */
   align-items: flex-end;
   justify-content: center;
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  width: 4rem; /* 4rem */
+  height: 4rem; /* 4rem */
   position: relative;
 }
 .profileIconWrapper:hover {
@@ -65,27 +68,28 @@
 }
 .profileIcon {
   display: flex;
-  width: 45px;
-  height: 45px;
+  width: 2.8125rem; /* 2.8125rem */
+  height: 2.8125rem; /* 2.8125rem */
   align-items: center;
-  justify-content: center; /* 가로도 가운데 정렬 */
+  justify-content: center;
   border-radius: 50%;
   background: #fff;
-  overflow: hidden; /* 테두리 밖은 자르기 */
-  padding: 0; /* 불필요한 패딩 제거 */
+  overflow: hidden;
+  padding: 0;
 }
-
 .alertListWrapper {
   background: linear-gradient(
     180deg,
     rgba(75, 82, 126, 0.2) 0%,
     rgba(75, 82, 126, 0.1) 100%
   );
-  border-radius: 20px;
-  padding: 6px 7px 6px 7px;
+
+  border-radius: 1.25rem;
+  padding: 0.375rem 0.4375rem 0.375rem 0.4375rem; /* 0.375rem 0.4375rem 0.375rem 0.4375rem */
+
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem; /* 0.5rem */
   align-items: flex-start;
   justify-content: center;
   align-self: stretch;
@@ -96,15 +100,28 @@
   backdrop-filter: blur(22.5px);
 }
 .alertItemWrapper {
-  border-radius: 20px;
+  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem; /* 0.5rem */
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 361px;
+  width: 22.5625rem; /* 22.5625rem */
   max-height: 756px;
+  overflow-y: auto;
   position: relative;
-  overflow: hidden;
+}
+/* 스크롤바 숨기기 */
+.alertItemWrapper::-webkit-scrollbar {
+  display: none;
+}
+.noNotifications {
+  color: #252b5a; /* var(--font-color-70) */
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }

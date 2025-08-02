@@ -2,13 +2,13 @@
   display: flex;
   border: none;
   cursor: pointer;
-  width: 217px;
-  height: 192px;
-  padding: 46px 40px;
+  width: 13.5625rem;
+  height: 12rem;
+  padding: 2.875rem 2.5rem;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  border-radius: 20px;
+  gap: 0.5rem;
+  border-radius: 1.25rem;
   border: 1px solid var(--, rgba(255, 255, 255, 0.3));
   background: linear-gradient(
     180deg,
@@ -24,9 +24,9 @@
   color: var(--Font-Color-50, #4b527e);
   text-align: center;
   font-family: Inter;
-  font-size: 36px;
+  font-size: 2.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 50.4px */
-  letter-spacing: -0.72px;
+  letter-spacing: -0.045rem;
 }

@@ -24,6 +24,7 @@ const CardList = ({
   onCardClick = () => {},
   currentTeamName,
   onSelectTeam,
+  currentCardId,
 }) => {
   return (
     <div className={st.List}>
@@ -40,6 +41,7 @@ const CardList = ({
             onClick={() => onCardClick?.(card.cardId)}
             currentTeamName={currentTeamName}
             onSelectTeam={(teamName) => onSelectTeam(card.cardId, teamName)}
+            isCurrentCard={card.cardId === currentCardId}
           />
         );
       })}

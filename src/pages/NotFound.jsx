@@ -8,7 +8,7 @@ const Header = () => {
   const { logout } = useAuth();
 
   const handleLogoClick = () => {
-    navigate("/team"); // 소현이 추가하면 home으로 바꾸기
+    navigate("/");
   };
 
   const handleKakaoLogin = async () => {

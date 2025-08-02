@@ -13,12 +13,12 @@
   justify-content: center;
   align-items: center;
   background: #fff;
-  border-radius: 20px;
+  border-radius: 1.25rem;
 }
 
 .wrapper {
-  width: 300px;
-  height: 310px;
+  width: 18.75rem;
+  height: 19.375rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,8 +28,8 @@
   width: 100%;
   height: 100%;
   background-color: white;
-  border-radius: 16px;
-  padding: 12px;
+  border-radius: 1rem;
+  padding: 0.75rem;
   /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
 
   /* Body2/SemiBold/20px */
   font-family: Inter;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 28px */
@@ -58,10 +58,10 @@
 
 .arrow {
   background: none;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 0.25rem;
   display: flex;
   align-items: center;
   color: var(--Font-Color-50, #4b527e);
@@ -89,28 +89,28 @@
 }
 
 .weekday {
-  height: 20px;
-  font-size: 12px;
+  height: 1.25rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #4b527e;
   text-align: center;
-  line-height: 20px;
+  line-height: 1.25rem;
 }
 
 .day {
-  border: 1px solid #4b527e;
+  border: 0.0625rem solid #4b527e;
 
   text-align: center;
-  line-height: 28px;
+  line-height: 1.75rem;
 
   color: #4b527e;
 
   /* Body3/SemiBold/16px */
   font-family: Inter;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-style: normal;
   font-weight: 700;
-  letter-spacing: -0.32px;
+  letter-spacing: -0.02rem;
 
   cursor: pointer;
   transition: all 0.2s ease;
@@ -139,7 +139,7 @@
 
   /* Body3/SemiBold/16px */
   font-family: Inter;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-style: normal;
   font-weight: 700;
   letter-spacing: -0.32px;

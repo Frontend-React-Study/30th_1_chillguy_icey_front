@@ -4,28 +4,28 @@
 }
 .AlertDialog {
   background: #ffffff;
-  border-radius: 20px;
-  padding: 35px 192px 35px 192px;
+  border-radius: 1.25rem;
+  padding: 2.1875rem 12rem 2.1875rem 12rem;
   display: flex;
   flex-direction: column;
-  gap: 29px;
+  gap: 1.8125rem;
   align-items: center;
   justify-content: center;
-  width: 800px;
-  height: 450px;
+  width: 50rem;
+  height: 28.125rem;
   position: relative;
   overflow: hidden;
 }
 
 .Alert_dialog_img {
-  width: 186px;
-  height: 186px;
+  width: 11.625rem;
+  height: 11.625rem;
 }
 
 .Text_contanier {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.125rem;
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
@@ -36,7 +36,7 @@
   color: #252b5a;
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 36px;
+  font-size: 2.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -51,7 +51,7 @@
   color: #252b5a;
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -65,7 +65,7 @@
 .Confirm_buttons {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 0.9375rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;

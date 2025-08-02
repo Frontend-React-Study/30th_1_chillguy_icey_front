@@ -10,8 +10,13 @@ const InfoDialog = ({ linkTeam, invitationToken }) => {
 
   const handleConfirm = async () => {
     try {
-      const res = await acceptInvitation();
+      const res = await fetchAcceptTeamLink(invitationToken);
       console.log("초대 수락 반응 확인 : ", res);
+
+      // res가 undefined일 경우를 방지
+      if (!res) {
+        throw new Error("응답 데이터가 없습니다.");
+      }
 
       navigate("/team", {
         state: {
@@ -22,15 +27,15 @@ const InfoDialog = ({ linkTeam, invitationToken }) => {
       });
     } catch (error) {
       console.error("예외 발생", error);
-      navigate("/home");
+      navigate("/");
     }
   };
 
-  const acceptInvitation = async () => {
-    const res = await fetchAcceptTeamLink(token, invitationToken);
+  // const acceptInvitation = async () => {
+  //   const res = await fetchAcceptTeamLink(invitationToken);
 
-    return res;
-  };
+  //   return res;
+  // };
 
   const handleCancel = () => {
     navigate("/");

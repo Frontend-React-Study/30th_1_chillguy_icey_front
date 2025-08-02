@@ -9,13 +9,13 @@
     rgba(255, 255, 255, 0.8) 0%,
     rgba(255, 255, 255, 0.8) 100%
   );
-  border-radius: 20px;
-  padding: 27px 24px;
+  border-radius: 1.25rem;
+  padding: 1.6875rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
-  height: 750px;
+  height: 46.875rem;
   box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
   overflow: hidden;
   backdrop-filter: blur(22.5px);
@@ -25,20 +25,20 @@
 .Title_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 100px;
+  height: 6.25rem;
   position: relative;
 }
 
 .Title {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 0.625rem 0px 0.625rem;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-end;
   justify-content: flex-start;
   align-self: stretch;
@@ -50,7 +50,7 @@
 .Main_title {
   color: #4b527e;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: 700;
   line-height: 140%;
   letter-spacing: -0.02em;
@@ -61,11 +61,11 @@
 .Sub_title {
   color: #4b527e;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 140%;
   letter-spacing: -0.02em;
-  width: 142px;
+  width: 8.875rem;
   display: flex;
   align-items: center;
 }
@@ -73,13 +73,13 @@
 .Line {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
   width: 100%;
-  max-width: 1002px;
+  max-width: 62.625rem;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -89,7 +89,7 @@
 .Letter_wrapper {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: flex-start;
   justify-content: center;
   align-self: stretch;
@@ -99,16 +99,16 @@
 
 .Card {
   background: #afcdff;
-  border-radius: 20px;
-  padding: 13px 17px;
+  border-radius: 1.25rem;
+  padding: 0.8125rem 1.0625rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 357px;
-  height: 507px;
+  width: 22.3125rem;
+  height: 31.6875rem;
   position: relative;
   box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(22.5px);
@@ -118,7 +118,7 @@
   color: #4b527e;
   text-align: left;
   font-family: "Inter-SemiBold", sans-serif;
-  font-size: 32px;
+  font-size: 2rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 600;
@@ -134,12 +134,12 @@
 .Card_Wrapper {
   position: relative;
   width: 100%;
-  height: 410px;
+  height: 25.625rem;
 }
 
 .Card_image {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -158,11 +158,11 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-  border-radius: 20px;
-  padding: 20px;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: flex-start;
   justify-content: center;
   position: absolute;
@@ -184,7 +184,7 @@
 .InfoLabel {
   color: #4b527e;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -195,7 +195,7 @@
 .Write_body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -206,7 +206,7 @@
 .Info {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -217,7 +217,7 @@
 .Send_wrapper {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1.25rem;
   padding-left: 10px;
   align-items: center;
   justify-content: flex-start;
@@ -228,7 +228,7 @@
 .Receive_wrapper {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1.25rem;
   padding-left: 10px;
   align-items: center;
   justify-content: flex-start;
@@ -239,7 +239,7 @@
 .Info_text {
   color: #4b527e;
   font-family: "Inter-SemiBold", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 600;
@@ -250,24 +250,24 @@
 .Info_text_title {
   color: #4b527e;
   font-family: "Inter-SemiBold", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 600;
   display: flex;
   align-items: center;
-  width: 114px;
+  width: 7.125rem;
 }
 
 .Write_letter {
   background: rgba(255, 255, 255, 0.8);
   border: 1.5px solid #4b527e;
-  border-radius: 20px;
-  padding: 25px;
+  border-radius: 1.25rem;
+  padding: 1.5625rem;
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   flex: 1;
@@ -281,12 +281,12 @@
   resize: none;
   color: #363d6c;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
   width: 100%;
-  max-width: 572px;
+  max-width: 35.75rem;
   height: 100%;
   max-height: 367px;
   display: flex;
@@ -296,23 +296,23 @@
 .Write_text::placeholder {
   color: #a4abd5;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
-  width: 450px;
+  width: 28.125rem;
   display: flex;
   align-items: center;
 }
 
 .Confirm_buttons {
-  padding: 20px 0px 20px 0px;
+  padding: 1.25rem 0px 1.25rem 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  width: 415px;
+  width: 25.9375rem;
   position: relative;
 }
 

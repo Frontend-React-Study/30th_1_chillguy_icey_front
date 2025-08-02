@@ -1,5 +1,5 @@
 html {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .login-body {
@@ -181,7 +181,7 @@ html {
 }
 
 /* 반응형: 화면 높이 작아질 때 축소 */
-@media (max-height: 800px) {
+@media (max-height: 50rem) {
   .login-content {
     /* padding: 4rem 2rem; */
     gap: 2rem;

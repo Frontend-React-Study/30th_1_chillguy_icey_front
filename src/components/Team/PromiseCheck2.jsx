@@ -4,12 +4,12 @@ import PromiseDate from "./promise/PromiseDate.jsx";
 import PromiseTime2 from "./promise/PromiseTime2.jsx";
 import Button from "../Button.jsx";
 import { FaPen } from "react-icons/fa6";
-import { fetchTeamVoteSave } from "../../util/TeamVoteAPI.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 import {
   fetchTeamMyVotes,
   fetchTeamVotesSummary,
   fetchTeamVoteCreate,
+  fetchTeamVoteSave,
 } from "../../util/TeamVoteAPI.js";
 import { fetchTeamDetail } from "../../util/TeamDataAPI.js";
 
@@ -72,8 +72,8 @@ const PromiseCheck2 = ({
   const saveTime = async () => {
     try {
       // isTeamDate(true);
-      const newSummary = await fetchTeamVoteSave(token, team.teamId, myVotes);
-      const newTeams = await fetchTeamDetail(token, team.teamId);
+      const newSummary = await fetchTeamVoteSave(team.teamId, myVotes);
+      const newTeams = await fetchTeamDetail(team.teamId);
 
       console.log("newTeams 새로운 팀 데이터 배정 :", newTeams.data);
 

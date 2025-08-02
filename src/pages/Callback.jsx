@@ -17,16 +17,19 @@ const Callback = () => {
     const params = new URLSearchParams(window.location.search);
     const accessToken =
       params.get("accessToken") || localStorage.getItem("accessToken");
+    const refreshToken =
+      params.get("refreshToken") || localStorage.getItem("refreshToken");
 
     const redirectPath = sessionStorage.getItem("loginRedirectPath") || "/";
+
     // 이미 로그인 처리된 경우라면 중복 처리 방지
     if (!accessToken || sessionStorage.getItem("loginProcessed") === "true")
       return;
 
     sessionStorage.setItem("loginProcessed", "true"); // ✅ 중복 방지용 플래그
 
-    if (accessToken) {
-      login(accessToken);
+    if (accessToken && refreshToken) {
+      login(accessToken, refreshToken);
       console.log("✅ 로그인 성공. 이동 경로:", redirectPath);
 
       sessionStorage.removeItem("loginRedirectPath");

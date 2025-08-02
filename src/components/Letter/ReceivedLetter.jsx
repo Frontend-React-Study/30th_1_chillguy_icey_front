@@ -1,5 +1,5 @@
 import envelope from "../../assets/envelope.svg";
-import styles from "./ReceivedLetter.module.css";
+import st from "./ReceivedLetter.module.css";
 
 // Props
 // isRead: 쪽지 읽음 여부
@@ -8,13 +8,13 @@ import styles from "./ReceivedLetter.module.css";
 
 const ReceivedLetter = ({ isRead, onClick, name }) => {
   return (
-    <div className={styles.Receiced_letter} onClick={onClick}>
-      <div className={styles.Envelope_wrapper}>
-        <img className={styles.Envelop_logo} src={envelope} alt="envelope" />
+    <div className={st.Receiced_letter} onClick={onClick}>
+      <div className={st.Envelope_wrapper}>
+        <img className={st.Envelope_logo} src={envelope} alt="envelope" />
         {/* 안 읽은 경우에만 Unread 표시 */}
-        {!isRead && <div className={styles.Unread}></div>}
+        {!isRead && <div className={st.Unread}></div>}
       </div>
-      <div className={styles.From}>FROM. {name}</div>
+      <div className={st.From}>FROM. {name}</div>
     </div>
   );
 };

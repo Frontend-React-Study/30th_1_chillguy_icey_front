@@ -1,20 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import axios from "axios";
 
 import CardList from "../components/Letter/CardList";
 import CardModal from "../components/Modal/CardModal";
 import Button from "../components/Button";
 import AlertDialog from "../components/Dialog/AlertDialog";
+import Snackbar from "../components/Snackbar/Snackbar";
 
 import st from "./MyCard.module.css";
 
-const MyCard = () => {
-  // 토큰 불러오기
-  const { token } = useAuth();
-  const backLink = "https://icey-backend-1027532113913.asia-northeast3.run.app";
+import {
+  fetchMyCards,
+  fetchCurrentTeamCard,
+  createCard,
+  updateCard,
+  deleteCard,
+  selectCardForTeam,
+} from "../util/CardDataAPI";
 
+const MyCard = () => {
   // location: 현재 팀 정보 받기
   const [searchParams] = useSearchParams();
   const currentTeamId = searchParams.get("teamId");
@@ -39,56 +43,26 @@ const MyCard = () => {
 
   // state: cards 상태 업데이트용
   const [cardList, setCardList] = useState([]);
+  // state: 내가 현재 팀에서 사용 중인 명함 ID
+  const [currentCardIdInTeam, setCurrentCardIdInTeam] = useState(null);
+  // state: 명함 삭제 snackbar용
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  // 내 명함 목록 불러오기
-  const fetchMyCards = async () => {
+  // 카드 목록 및 현재 팀 내 카드 조회
+  const loadCards = useCallback(async () => {
     try {
-      const res = await axios.get(`${backLink}/api/cards`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const cards = res.data;
-      console.log("불러온 내 명함 목록:", cards);
-
-      // 각 명함에 대해 사용 팀 목록 불러오기
-      const cardsWithTeams = await Promise.all(
-        cards.map(async (card) => {
-          try {
-            const teamRes = await axios.get(
-              `${backLink}/api/cards/${card.templateId}/used-teams`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              },
-            );
-            return {
-              ...card,
-              teams: teamRes.data.map((team) => team.name),
-            };
-          } catch (teamErr) {
-            console.error(
-              `카드 ${card.cardId}의 팀 정보 불러오기 실패`,
-              teamErr,
-            );
-            return {
-              ...card,
-              teams: [],
-            };
-          }
-        }),
-      );
-
-      setCardList(cardsWithTeams);
-    } catch (err) {
-      console.error("내 명함 불러오기 실패", err);
+      const cards = await fetchMyCards();
+      setCardList(cards);
+      const currentCard = await fetchCurrentTeamCard(currentTeamId);
+      setCurrentCardIdInTeam(currentCard?.cardId || null);
+    } catch (error) {
+      console.error("카드 불러오기 실패", error);
     }
-  };
+  }, [currentTeamId]);
 
   useEffect(() => {
-    fetchMyCards();
-  }, [token, currentTeamId, currentTeamName]);
+    loadCards();
+  }, [loadCards]);
 
   // 모달 열기/닫기 함수
   const openModal = () => setModalOpen(true);
@@ -108,46 +82,26 @@ const MyCard = () => {
     setModalOpen(true);
   };
 
-  // 명함 저장 함수
+  // 스낵바 닫기 함수
+  const handleSnackbarClose = () => setSnackbarOpen(false);
+
+  // AlertDialog 닫는 함수
+  const closeAlert = () => setAlertOpen(false);
+
+  // 명함 저장 (생성 or 수정)
   const handleSaveCard = async (newCardData) => {
     try {
-      console.log("저장된 카드 정보:", newCardData);
       if (isEditMode && selectedCardId !== null) {
         // 수정 모드
-        await axios.patch(
-          `${backLink}/api/cards/${selectedCardId}`,
-          newCardData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-        setCardList((prev) =>
-          prev.map((card) => {
-            if (card.cardId === selectedCardId) {
-              // 선택된 명함은 현재 팀으로 변경
-              return { ...card, ...newCardData, teams: [currentTeamName] };
-            } else {
-              // 나머지 명함은 기존 teams 유지
-              return card;
-            }
-          }),
-        );
+        await updateCard(selectedCardId, newCardData);
       } else {
         // 새 명함 저장
-        const res = await axios.post(`${backLink}/api/cards`, newCardData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log("서버 응답 데이터:", res.data);
-        const newCard = { ...res.data, teams: [] };
-        setCardList((prev) => [...prev, newCard]);
+        await createCard(newCardData);
       }
+      await loadCards();
       closeModal();
-    } catch (err) {
-      console.error("명함 저장 실패", err);
+    } catch (error) {
+      console.error("명함 저장 실패", error);
     }
   };
 
@@ -155,8 +109,7 @@ const MyCard = () => {
   const openAlert = () => {
     if (selectedCardId === null) return;
 
-    const selectedCard = cardList.find((c) => c.cardId === selectedCardId);
-    if (selectedCard?.teams?.includes(currentTeamName)) {
+    if (selectedCard.teams.length > 0) {
       setAlertDialogConfig({
         mainText: "현재 사용 중인 명함입니다.",
         subText: "명함 교체 후 삭제 가능합니다.",
@@ -171,63 +124,39 @@ const MyCard = () => {
         confirmType: "midRed",
       });
     }
-
     setAlertOpen(true);
   };
 
-  // AlertDialog 닫는 함수
-  const closeAlert = () => setAlertOpen(false);
-
-  // 명함 삭제 함수
+  // 명함 삭제
   const handleDeleteCard = async () => {
     try {
-      await axios.delete(`${backLink}/api/cards/${selectedCardId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await deleteCard(selectedCardId);
       setCardList((prev) => prev.filter((c) => c.cardId !== selectedCardId));
       setSelectedCardId(null);
       setAlertOpen(false);
-    } catch (err) {
-      console.error("명함 삭제 실패", err);
+      setSnackbarOpen(true);
+    } catch (error) {
+      console.error("명함 삭제 실패", error);
     }
   };
 
-  // 팀 선택 핸들러
+  // 팀 내 명함 선택
   const handleSelectTeam = useCallback(
     async (cardIdToUse) => {
-      console.log("선택된 카드 ID:", cardIdToUse);
       const selectedCard = cardList.find((card) => card.cardId === cardIdToUse);
-      console.log("선택된 카드:", selectedCard);
-
-      if (!selectedCard) {
-        console.warn("선택된 명함 정보를 찾을 수 없습니다.");
-        return;
-      }
-
-      const { templateId } = selectedCard;
-      console.log("보낼 쿼리 파라미터:", { templateId });
+      if (!selectedCard) return;
 
       try {
-        await axios.put(
-          `${backLink}/api/cards/teams/${currentTeamId}/cards/my-card`,
-          null, // body 없음
-          {
-            headers: { Authorization: `Bearer ${token}` },
-            params: { templateId: selectedCard.templateId },
-          },
-        );
-
-        await fetchMyCards();
-      } catch (err) {
-        console.error("팀에 명함 설정 실패", err);
+        await selectCardForTeam(currentTeamId, selectedCard.templateId);
+        await loadCards();
+      } catch (error) {
+        console.error("팀에 명함 설정 실패", error);
       }
     },
-    [cardList, currentTeamId, currentTeamName, token],
+    [cardList, currentTeamId, loadCards],
   );
 
-  // 현재 선택된 명함 정보를 가져온다.
+  // 현재 선택된 명함 정보 가져오기
   const selectedCard =
     cardList.find((card) => card.cardId === selectedCardId) || null;
 
@@ -250,11 +179,12 @@ const MyCard = () => {
           showAddButton={true}
           selectable={true}
           selectedCardId={selectedCardId}
-          onCardClick={(id) => {
-            setSelectedCardId((prev) => (prev === id ? null : id));
-          }}
+          onCardClick={(id) =>
+            setSelectedCardId((prev) => (prev === id ? null : id))
+          }
           currentTeamName={currentTeamName}
           onSelectTeam={handleSelectTeam}
+          currentCardId={currentCardIdInTeam}
         />
       </div>
 
@@ -301,6 +231,14 @@ const MyCard = () => {
             />
           </div>
         </div>
+      )}
+
+      {snackbarOpen && (
+        <Snackbar
+          text={"삭제가 완료되었습니다!"}
+          buttontext={"확인"}
+          buttonOnclick={handleSnackbarClose}
+        />
       )}
     </>
   );

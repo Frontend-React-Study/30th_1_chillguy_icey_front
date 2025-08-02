@@ -6,11 +6,11 @@
 .Dropdown {
   position: relative;
   width: 100%;
-  max-width: 214px;
-  height: 30px;
+  max-width: 13.375rem;
+  height: 1.875rem;
   display: flex;
   flex-direction: row;
-  gap: 7px;
+  gap: 0.4375rem;
   row-gap: 6px;
   align-items: flex-start;
   justify-content: flex-start;
@@ -38,7 +38,7 @@
   font-family: "Inter-Bold", sans-serif;
   line-height: 140%;
   letter-spacing: -0.02em;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -48,15 +48,15 @@
   font-family: "Inter-Bold", sans-serif;
   line-height: 140%;
   letter-spacing: -0.02em;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
 .Dropdown_button {
   border-radius: 0px;
   flex-shrink: 0;
-  width: 21px;
-  height: 20px;
+  width: 1.3125rem;
+  height: 1.25rem;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -69,14 +69,14 @@
 
 .Option_wrapper {
   background: #ffffff;
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 1.25rem;
+  padding: 0.625rem;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3125rem;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 214px;
+  width: 13.375rem;
   position: absolute;
   top: 40px;
   z-index: 10;
@@ -87,13 +87,13 @@
 
 /* 스크롤바 전체 영역 */
 .Option_wrapper::-webkit-scrollbar {
-  width: 18px;
+  width: 1.125rem;
 }
 
 /* 스크롤바 막대 (thumb) */
 .Option_wrapper::-webkit-scrollbar-thumb {
   background-color: #7b83b1;
-  border-radius: 50px;
+  border-radius: 3.125rem;
   border: 6px solid transparent;
   background-clip: content-box;
 }
@@ -106,12 +106,12 @@
 .Option_wrapper::-webkit-scrollbar-button:vertical:start:decrement,
 .Option_wrapper::-webkit-scrollbar-button:vertical:end:increment {
   display: block;
-  height: 10px;
+  height: 0.625rem;
   background: transparent;
 }
 
 .Option {
-  padding: 2px 0px 2px 0px;
+  padding: 0.125rem 0px 0.125rem 0px;
   display: flex;
   flex-direction: row;
   gap: 0px;
@@ -122,12 +122,12 @@
   overflow: hidden;
   cursor: pointer;
   width: 100%;
-  height: 26px;
+  height: 1.625rem;
 
   color: #4b527e;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -141,13 +141,13 @@
 /* 드롭다운 긴 버전(CardModal) */
 .Dropdown_long {
   width: 100%;
-  max-width: 320px;
-  height: 36.8px;
+  max-width: 20rem;
+  height: 2.3rem;
 }
 
 .Option_wrapper_long {
   width: 100%;
-  max-width: 320px;
+  max-width: 20rem;
 }
 
 .Disabled {

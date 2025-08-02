@@ -1,135 +1,66 @@
-.alert,
-.alert * {
-  box-sizing: border-box;
-}
-.alert {
-  background: #ffffff;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 29px;
-  align-items: center;
-  justify-content: center;
-  height: 450px;
-  position: relative;
-  overflow: hidden;
-  width: 800px;
-  height: 450px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* 페이지보다 위에 */
-}
-.button_body {
-  background: #fee102;
-  border-radius: 93px;
-  padding: 46px 84px 46px 84px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 186px;
-  height: 186px;
-  position: relative;
-}
-
-.mark {
-  flex-shrink: 0;
-  width: 18px;
-  height: 92px;
-  position: static;
-}
-.q_1 {
-  background: var(--netural-white, #ffffff);
-  width: 18px;
-  height: 57px;
-  position: absolute;
-  left: 84px;
-  top: 47px;
-}
-.q_2 {
-  background: var(--netural-white, #ffffff);
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  left: 84px;
-  top: 121px;
-}
-.have_to {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-.button_text {
-  color: var(--font-color-70, #252b5a);
-  text-align: center;
-  font-family: var(--subtitle1-bold-36px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--subtitle1-bold-36px-font-size, 36px);
-  line-height: var(--subtitle1-bold-36px-line-height, 140%);
-  letter-spacing: var(--subtitle1-bold-36px-letter-spacing, -0.02em);
-  font-weight: var(--subtitle1-bold-36px-font-weight, 700);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.login_button {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-.button {
-  background: var(--netural-white, #ffffff);
-  border-radius: 20px;
-  border-style: solid;
-  border-color: var(--font-color-50, #4b527e);
-  border-width: 1px;
-  padding: 11px 142px 11px 142px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 200px;
-  height: 50px;
-  position: relative;
-}
-.div3 {
-  color: var(--font-color-50, #4b527e);
-  text-align: center;
-  font-family: var(--body2-bold-20px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--body2-bold-20px-font-size, 20px);
-  line-height: var(--body2-bold-20px-line-height, 140%);
-  letter-spacing: var(--body2-bold-20px-letter-spacing, -0.02em);
-  font-weight: var(--body2-bold-20px-font-weight, 700);
-  position: relative;
-}
-
 .overlay {
   position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0; */
-  background-color: rgba(0, 0, 0, 0.4); /* 반투명 검은 배경 */
+  inset: 0; /* top: 0; right: 0; bottom: 0; left: 0; */
+  background-color: rgba(0, 0, 0, 0.4); /* 반투명 배경 */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+
+.AlertDialog {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2.1875rem 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8125rem;
+  align-items: center;
+  justify-content: center;
+  width: 50rem;
+  height: 28.125rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.Alert_dialog_img {
+  width: 11.625rem;
+  height: 11.625rem;
+}
+
+.Text_contanier {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.Main {
+  color: #252b5a;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Confirm_buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.9375rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
 }

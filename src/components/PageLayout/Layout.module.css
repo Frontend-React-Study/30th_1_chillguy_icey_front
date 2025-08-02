@@ -23,9 +23,9 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   width: 100%;
-  padding: 0px 50px;
+  padding: 0px 3.125rem;
   min-height: 100vh;
   align-items: flex-start;
   justify-content: flex-start;

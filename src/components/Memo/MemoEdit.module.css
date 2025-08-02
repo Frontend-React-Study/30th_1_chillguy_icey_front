@@ -4,22 +4,22 @@
 }
 .MemoEdit {
   background: #e4f0ff;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   align-items: center;
   justify-content: flex-start;
-  width: 183px;
-  height: 210px;
+  width: 11.4375rem;
+  height: 13.125rem;
   position: relative;
   overflow: hidden;
 }
 
 .Memo_area {
-  width: 163px;
-  height: 170px;
+  width: 100%;
+  height: 100%;
   background: none;
   border: none;
   outline: none;
@@ -31,7 +31,7 @@
   color: #4b527e;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -44,11 +44,11 @@
 .Memo_tools {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  width: 168px;
-  height: 14px;
+  width: 100%;
+  height: 0.875rem;
   position: relative;
 }
 
@@ -56,12 +56,12 @@
   color: #7b83b1;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
   position: relative;
-  height: 14px;
+  height: 0.875rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -70,12 +70,17 @@
 .Memo_save_btn {
   background: transparent;
   border: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
 }
 
 .Memo_save_img {
   position: relative;
-  width: 12px;
-  height: 14px;
+  width: 0.75rem;
+  height: 0.875rem;
   cursor: pointer;
 }
 
@@ -83,7 +88,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   top: 0;
   bottom: 0;
   left: 0;

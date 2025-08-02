@@ -2,6 +2,7 @@
 .div * {
   box-sizing: border-box;
 }
+
 .div {
   background: linear-gradient(
     180deg,
@@ -9,7 +10,8 @@
     rgba(255, 255, 255, 0.2) 100%
   );
 
-  border-radius: 20px;
+  border-radius: 1.25rem;
+
   border-width: 1px;
   border-style: solid;
   border-image: linear-gradient(
@@ -18,66 +20,65 @@
     rgba(255, 255, 255, 0.2) 100%
   );
   border-image-slice: 1;
-  padding: 203px 45px 203px 45px;
+  padding: 12.6875rem 2.8125rem;
   display: flex;
   border: none;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.875rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
-  height: 615px;
+  height: 38.4375rem;
   position: relative;
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
 }
+
 .content {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 1.375rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 468px;
+  height: 29.25rem;
   position: relative;
   overflow: hidden;
 
   /* ✅ 스크롤 적용 */
   overflow-y: auto;
   padding-right: 5px;
-  scrollbar-gutter: stable; /* 스크롤 생겨도 너비 안 바뀌게 */
-}
-/* 전체 스크롤바 영역 */
-.content::-webkit-scrollbar {
-  width: 10px;
-  height: 6px;
+  scrollbar-gutter: stable;
 }
 
-/* 스크롤바 막대 (thumb) */
+.content::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.375rem;
+}
+
 .content::-webkit-scrollbar-thumb {
   background-color: white;
-  border-radius: 50px;
+  border-radius: 3.125rem;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
-/* 스크롤바 트랙 (배경) */
 .content::-webkit-scrollbar-track {
   background: transparent;
 }
 
 .text {
   background: #ffffff;
-  border-radius: 10px;
-  padding: 7px 21px 7px 21px;
+
+  border-radius: 0.625rem;
+
+  padding: 0.4375rem 1.3125rem 0.4375rem 1.3125rem;
+
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -86,42 +87,40 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .textarea {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: left;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   flex: 1;
 }
 
 .button {
   background: #ffffff;
-  border-radius: 20px;
-  padding: 11px 24px;
+  border-radius: 1.25rem;
+  padding: 0.6875rem 1.5rem;
   border: none;
   display: flex;
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  width: 200px; /* ✅ 내용에 맞춰서 크기 지정 */
-  height: 50px;
+  width: 12.5rem;
+  height: 3.125rem;
   margin: 0 auto;
 }
+
 .viewall {
-  white-space: nowrap; /* ✅ 텍스트 한 줄 유지 */
+  white-space: nowrap;
   word-break: keep-all;
   color: #4b527e;
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   font-weight: 700;
 }

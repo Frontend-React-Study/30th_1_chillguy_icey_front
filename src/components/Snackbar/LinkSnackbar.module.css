@@ -6,13 +6,13 @@
 
   z-index: 999;
 
-  width: 550px;
-  height: 180px;
+  width: 34.375rem;
+  height: 11.25rem;
   flex-shrink: 0;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   background: #fff;
 
-  padding: 25px;
+  padding: 1.5625rem;
 
   /* 글래스모피즘 종합 */
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5) inset;
@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 1.5625rem;
 }
 
 .popup_invite_text_space {
@@ -31,7 +31,7 @@
   text-align: center;
 
   font-family: Inter;
-  font-size: 30px;
+  font-size: 1.875rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 42px */
@@ -46,14 +46,14 @@
 }
 
 .link_text {
-  width: 400px;
-  height: 35px;
+  width: 25rem;
+  height: 2.1875rem;
 
   color: var(--Font-Color-30, #a4abd5);
 
   /* Body2/Bold/20px */
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 28px */

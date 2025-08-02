@@ -1,5 +1,5 @@
 .body {
-  max-width: 1364px;
+  max-width: 85.25rem;
   width: 100%; /* (필수) auto margin이 적용되려면 있어야 함 */
   margin: 0 auto;
   background: linear-gradient(
@@ -7,28 +7,23 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-  border-radius: 20px;
-  padding: 50px 40px 50px 40px;
+  border-radius: 1.25rem;
+  padding: 3.125rem 2.5rem 3.125rem 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.875rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 825px;
-  position: relative;
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
-  overflow: hidden;
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  height: 51.5625rem;
+
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
 }
 .title {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 0.5625rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
@@ -38,11 +33,11 @@
 .title1 {
   color: #252b5a;
   text-align: center;
-  font-family: var(--title2-bold-48px-font-family, "Inter-Bold", sans-serif);
-  font-size: var(--title2-bold-48px-font-size, 48px);
-  line-height: var(--title2-bold-48px-line-height, 140%);
-  letter-spacing: var(--title2-bold-48px-letter-spacing, -0.02em);
-  font-weight: var(--title2-bold-48px-font-weight, 700);
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 3rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -50,17 +45,13 @@
   justify-content: center;
 }
 .title2 {
-  color: var(--font-color-50, #4b527e);
+  color: #4b527e;
   text-align: center;
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -68,7 +59,7 @@
   justify-content: center;
 }
 .target_purpose {
-  padding: 20px 0px 20px 0px;
+  padding: 1.25rem 0px 1.25rem 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -84,34 +75,26 @@
     rgba(255, 255, 255, 0.2) 100%
   );
   border-radius: 20px;
-  border-width: 3px;
-  border-style: solid;
-  border: none;
-  border-image: transparent;
-  border-image-slice: 1;
-  padding: 39px 42px 39px 42px;
+  padding: 2.4375rem 2.625rem 2.4375rem 2.625rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   align-self: stretch;
   flex: 1;
-  height: 400px;
-  max-width: 417px;
+  height: 25rem;
+  max-width: 26.0625rem;
   margin: 0 auto;
 
   position: relative;
-  box-shadow: var(
-    ---box-shadow,
-    inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5)
-  );
-  backdrop-filter: var(---backdrop-filter, blur(22.5px));
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(22.5px);
 }
 .target_purpose_text {
-  color: var(--font-color-60, #363d6c);
+  color: #363d6c;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 48px;
+  font-size: 3rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -123,7 +106,7 @@
 .ex_div {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 0.1875rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -134,7 +117,7 @@
   color: #7b83b1;
   text-align: left;
   font-family: "Inter-SemiBold", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 600;
@@ -148,7 +131,7 @@
   color: #7b83b1;
   text-align: left;
   font-family: "Inter-SemiBold", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 600;
@@ -161,7 +144,7 @@
 .input {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 0.4375rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -169,10 +152,10 @@
   position: relative;
 }
 .input_tp {
-  color: var(--font-color-40, #363d6c);
+  color: #363d6c;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -203,10 +186,27 @@
 .line {
   margin-top: -3px;
   border-style: solid;
-  border-color: var(--font-color-50, #4b527e);
+  border-color: #4b527e;
   border-width: 3px 0 0 0;
   align-self: stretch;
   flex-shrink: 0;
   height: 0px;
   position: relative;
+}
+
+/* overlay가 전체 화면을 덮도록 */
+.overlay {
+  position: fixed; /* 화면에 고정 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #4b527e50;
+  opacity: 1;
+  z-index: 999; /* 팝업보다 아래, 다른 요소보다 위 */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

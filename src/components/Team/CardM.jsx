@@ -1,5 +1,4 @@
 import st from "./CardM.module.css";
-import Img from "../../assets/exPig.png";
 import { useNavigate } from "react-router-dom";
 
 const CardM = ({ card, team }) => {
@@ -34,13 +33,14 @@ const CardM = ({ card, team }) => {
     돼지: "pig",
     토끼: "rabbit",
   };
+  const accessoryMap = { BASIC: "animal", RIBBON: "ribbon", STAR: "star" };
+  const images = import.meta.glob("/src/assets/animal/*.svg", { eager: true });
 
-  const images = import.meta.glob("../../assets/animal/*.svg", { eager: true });
   const pickAnimalImg = () => {
     if (!card || !card.animal || !card.profileColor) return null;
 
-    const fileName = `animal_${animalMap[card.animal]}${colorMap[card.profileColor]}.svg`;
-    const imagePath = images[`../../assets/animal/${fileName}`];
+    const fileName = `${accessoryMap[card.accessory]}_${animalMap[card.animal]}${colorMap[card.profileColor]}.svg`;
+    const imagePath = images[`/src/assets/animal/${fileName}`];
 
     return (
       <div className={st.cardM_img_background}>
@@ -56,17 +56,20 @@ const CardM = ({ card, team }) => {
   if (!team) return null;
 
   return (
-    <div className={st.CardM_content} onClick={handleCardMClick}>
-      {/* <div className={st.cardM_img_background}>
+    <div className={st.CardM_all_content}>
+      <div className={st.CardM_content} onClick={handleCardMClick}>
+        {/* <div className={st.cardM_img_background}>
         <img className={st.cardM_img} src={pickAnimalImg()} alt="" />
       </div> */}
-      {pickAnimalImg()}
-      <div className={st.cardM_board}>
-        <div className={st.cardM_text}>{card.nickname}</div>
-        <div className={st.cardM_text}>{card.mbti}</div>
-        <div className={st.cardM_text}>{card.hobby}</div>
-        <div className={st.cardM_text}>{card.secretTip}</div>
-        <div className={st.cardM_text}>{card.tmi}</div>
+        {pickAnimalImg()}
+        <div className={st.cardM_vline}></div>
+        <div className={st.cardM_board}>
+          <div className={st.cardM_text}>{card.nickname}</div>
+          <div className={st.cardM_text}>{card.mbti}</div>
+          <div className={st.cardM_text}>{card.hobby}</div>
+          <div className={st.cardM_text}>{card.secretTip}</div>
+          <div className={st.cardM_text}>{card.tmi}</div>
+        </div>
       </div>
     </div>
   );

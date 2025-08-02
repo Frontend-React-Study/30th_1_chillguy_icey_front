@@ -42,9 +42,11 @@ const Promise = ({ team, teamCreateDate, goalDate }) => {
 
       <div className={st.promise_text_box}>
         {goalDate === null ? (
-          <div className={st.promise_text}>
-            약속 잡기 전입니다. 우리 팀 약속 시간을 정해보세요.
-          </div>
+          <>
+            <div className={st.promise_text}>약속 잡기 전입니다.</div>
+            <div className={st.promise_text}>우리 팀 약속 시간을</div>
+            <div className={st.promise_text}>정해보세요.</div>
+          </>
         ) : dday < 0 ? (
           <div className={st.promise_text}>이미 만났습니다.</div>
         ) : (

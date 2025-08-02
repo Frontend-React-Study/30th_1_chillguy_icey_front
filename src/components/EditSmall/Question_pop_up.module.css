@@ -1,0 +1,158 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.popupContainer,
+.popupContainer * {
+  box-sizing: border-box;
+}
+.popupContainer {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8125rem;
+  align-items: center;
+  justify-content: center;
+  height: 28.125rem;
+  position: relative;
+  overflow: hidden;
+  width: 50rem;
+  height: 450px;
+}
+.iconBackground {
+  background: #fee102;
+
+  border-radius: 5.8125rem;
+  padding: 2.875rem 5.25rem 2.875rem 5.25rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 11.625rem;
+  height: 11.625rem;
+  position: relative;
+}
+.exclamationMarkGroup {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 5.75rem;
+  position: static;
+}
+.exclamationTop {
+  background: #ffffff;
+  width: 1.125rem;
+  height: 3.5625rem;
+  position: absolute;
+  left: 84px;
+  top: 47px;
+}
+.exclamationDot {
+  background: #ffffff;
+  width: 1.125rem;
+  height: 1.125rem;
+  position: absolute;
+  left: 84px;
+  top: 121px;
+}
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 0.9375rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.defaultButton {
+  background: #ffffff;
+  border-radius: 1.25rem;
+
+  border-style: solid;
+  border-color: #4b527e;
+  border-width: 1px;
+  padding: 0.6875rem 8.875rem 0.6875rem 8.875rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 12.5rem;
+  height: 3.125rem;
+  position: relative;
+}
+.buttonText {
+  color: #4b527e;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+}
+
+.popupTitle {
+  color: #252b5a;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 2.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popupDescription {
+  color: #252b5a;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popupCountText {
+  color: #252b5a;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

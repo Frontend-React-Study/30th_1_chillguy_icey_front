@@ -10,44 +10,44 @@
 .team_create_box {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 
   width: 100%;
 }
 
 .team_create_mid_text {
-  width: 80px;
-  min-width: 80px;
+  width: 5rem;
+  min-width: 5rem;
   color: var(--Font-Color-50, #4b527e);
 
-  /* Body1/SemiBold/24px */
+  /* Body1/SemiBold/1.5rem */
   font-family: Inter;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 33.6px */
-  letter-spacing: -0.48px;
+  letter-spacing: -0.03rem;
 }
 
 .team_create_input {
   /* flex-grow: 1; ✅ 남은 공간 꽉 채움 */
-  height: 35px;
+  height: 2.1875rem;
   width: 100%;
 
   color: #7b83b1;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 28px */
-  letter-spacing: -0.4px;
+  letter-spacing: -0.025rem;
 
   border: none;
-  border-bottom: 3px solid #7b83b1;
+  border-bottom: 0.1875rem solid #7b83b1;
   background: transparent; /* ✅ 투명 배경 */
   outline: none; /* 클릭 시 테두리 제거 */
 
-  padding-bottom: 5px;
+  padding-bottom: 0.3125rem;
 }
 
 .team_create_input::placeholder {

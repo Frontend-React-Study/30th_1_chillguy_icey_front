@@ -15,13 +15,13 @@
 }
 
 .info_popup_space {
-  width: 800px;
-  height: 450px;
+  width: 50rem;
+  height: 28.125rem;
   flex-shrink: 0;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   background: #fff;
 
-  padding: 0 110px;
+  padding: 0 6.875rem;
 
   /* 글래스모피즘 종합 */
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5) inset;
@@ -31,7 +31,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 1.875rem;
 }
 
 .info_text_space {
@@ -40,7 +40,7 @@
 
   /* Subtitle1/Bold/36px */
   font-family: Inter;
-  font-size: 36px;
+  font-size: 2.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 50.4px */
@@ -49,24 +49,24 @@
 
 .info_select_space {
   width: 100%;
-  height: 160px;
+  height: 10rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  padding: 30px 70px;
-  gap: 10px;
+  padding: 1.875rem 4.375rem;
+  gap: 0.3125rem;
 
-  border-radius: 20px;
+  border-radius: 1.25rem;
   border: 2.5px solid var(--Font-Color-50, #4b527e);
-  background: var(
+  /* background: var(
     --,
     linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.3) 0%,
       rgba(255, 255, 255, 0.2) 100%
     )
-  );
+  ); */
 
   /* 글래스모피즘 종합 */
   box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5) inset;
@@ -76,15 +76,15 @@
 .info_mid_size_text_space {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 1.5625rem;
 }
 
 .info_mid_size_text {
-  width: 150px;
+  width: 9.375rem;
 
   color: var(--Font-Color-50, #4b527e);
   font-family: Inter;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 33.6px */
@@ -96,11 +96,11 @@
 } */
 
 .info_popup_button_space {
-  width: 570px;
+  width: 35.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 0.9375rem;
 }
 /* . 
 .
@@ -109,24 +109,24 @@
 
 /* 세로 구분선 */
 .info_popup_v_line {
-  width: 3px;
-  height: 95px;
-  border-radius: 50px;
+  width: 0.2rem;
+  height: 5.9375rem;
+  border-radius: 3.125rem;
   background-color: var(--Font-Color-40, #7b83b1);
   align-self: center;
 }
 
 .info_test_text {
   width: 100%;
-  min-width: 200px;
-  height: 35px;
+  min-width: 12.5rem;
+  height: 2.1875rem;
   /* margin-left: 30px; */
 
   color: var(--Font-Color-50, #4b527e);
 
   /* Body2/Bold/24px */
   font-family: Inter;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 28px */

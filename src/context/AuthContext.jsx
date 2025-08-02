@@ -4,7 +4,8 @@ import axios from "axios";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
+  const [token, setAccessToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
   const [loading, setLoading] = useState(true);
   const backLink = "https://icey-backend-1027532113913.asia-northeast3.run.app";
 
@@ -14,16 +15,46 @@ export const AuthProvider = ({ children }) => {
 
   // 로컬스토리지에서 초기화
   useEffect(() => {
-    const storedToken = localStorage.getItem("accessToken");
-    console.log("storedToken :", storedToken);
-    if (storedToken) setToken(storedToken);
-    setLoading(false);
+    const storedAccessToken = localStorage.getItem("accessToken");
+    const storedRefreshToken = localStorage.getItem("refreshToken");
+
+    const checkInitialToken = async () => {
+      if (!storedAccessToken || !storedRefreshToken) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        // ❗ axios가 아닌 raw fetch 또는 axios 인스턴스를 새로 만들어서 interceptors 안 타게
+        await axios.get(`${backLink}/api/teams`, {
+          headers: { Authorization: `Bearer ${storedAccessToken}` },
+        });
+
+        // 유효한 경우
+        setAccessToken(storedAccessToken);
+        setRefreshToken(storedRefreshToken);
+      } catch (error) {
+        if (error.response?.status === 401) {
+          // ✅ 초기 진입 시 accessToken 만료 → 로그아웃
+          console.warn("🚫 초기 진입: accessToken 만료 → logout()");
+          logout();
+        } else {
+          console.error("🚨 초기 진입 에러", error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkInitialToken();
   }, []);
 
   // 로그인 처리 함수
-  const login = (newToken) => {
+  const login = (newToken, newRefreshToken) => {
     localStorage.setItem("accessToken", newToken);
-    setToken(newToken);
+    localStorage.setItem("refreshToken", newRefreshToken);
+    setAccessToken(newToken);
+    setRefreshToken(newRefreshToken);
   };
 
   // 로그아웃 처리 함수
@@ -41,7 +72,8 @@ export const AuthProvider = ({ children }) => {
     } finally {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("loginType");
-      setToken(null);
+      setAccessToken(null);
+      setRefreshToken(null);
       console.log("isLoggedIn :", isLoggedIn);
     }
   };

@@ -1,14 +1,14 @@
 .team_button {
   background-color: #fff;
   border: none;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   width: 100%;
-  padding: 15px;
+  padding: 0.9375rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0.625rem;
 
   /* 최소 너비 설정으로 너무 작아지는 것 방지 */
   min-width: 250px;
@@ -18,8 +18,8 @@
 .left_section {
   display: flex;
   align-items: center;
-  gap: 8px;
-  height: 45px;
+  gap: 0.5rem;
+  height: 2.8125rem;
 
   /* 유연하게 늘어나고 줄어들되, 최소 너비 보장 */
   flex: 1;
@@ -34,14 +34,14 @@
   align-items: center;
   justify-content: center;
 
-  width: 45px;
-  height: 45px;
+  width: 2.8125rem;
+  height: 2.8125rem;
 
   /* 체크박스는 고정 크기 유지 */
   flex-shrink: 0;
 
   border: none;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   background: var(--Netural-Gray20, #d1d1d1);
   cursor: pointer;
 }
@@ -51,8 +51,8 @@
 }
 
 .check_img_size {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   display: block;
   margin: auto;
 }
@@ -63,7 +63,7 @@
 
   /* 텍스트 줄임표시를 위한 설정 */
   flex: 1;
-  width: 50px; /* 최소 너비 85px */
+  width: 3.125rem; /* 최소 너비 85px */
   max-width: 100%; /* 최대 너비 제한 */
 
   white-space: nowrap;
@@ -71,7 +71,7 @@
   text-overflow: ellipsis;
 
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
@@ -82,16 +82,16 @@
 .right_section {
   display: flex;
   align-items: center;
-  gap: 5px;
-  height: 45px;
+  gap: 0.3125rem;
+  height: 2.8125rem;
 
   /* 고정 크기 유지 */
   flex-shrink: 0;
 }
 
 .link_button {
-  width: 45px;
-  height: 45px;
+  width: 2.8125rem;
+  height: 2.8125rem;
 
   /* 링크 버튼도 고정 크기 유지 */
   flex-shrink: 0;
@@ -106,17 +106,17 @@
 }
 
 .link_img_size {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   display: block;
   margin: auto;
 }
 
 /* 세로 구분선 */
 .v_line {
-  width: 2.5px;
-  height: 25px;
-  border-radius: 50px;
+  width: 0.15625rem;
+  height: 1.5625rem;
+  border-radius: 3.125rem;
   background-color: var(--Font-Color-40, #7b83b1);
 
   /* 구분선도 고정 크기 유지 */
@@ -135,7 +135,7 @@
   color: #ff4f49;
 
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 140%;
   letter-spacing: -1px;

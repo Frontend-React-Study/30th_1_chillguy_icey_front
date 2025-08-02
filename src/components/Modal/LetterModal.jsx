@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import axios from "axios";
 
 import Button from "../Button";
 import st from "./LetterModal.module.css";
@@ -8,17 +6,16 @@ import st from "./LetterModal.module.css";
 import modal_line from "../../assets/modal_line.svg";
 import modal_line_vertical from "../../assets/modal_line_vertical.svg";
 import { getAnimalImage } from "../../util/get-animal-image";
-import exPig from "../../assets/exPig.png";
+import exPig from "../../assets/animal/animal_pig9.svg";
+
+import { sendLetter } from "../../util/LetterDataAPI";
 
 // Props
 // card: 선택된 명함 정보
 // onClose: 모달 닫기 함수
 // onSend: 쪽지 내용 저장 함수
 
-const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
-  // 토큰 불러오기
-  const { token } = useAuth();
-  const backLink = "https://icey-backend-1027532113913.asia-northeast3.run.app";
+const LetterModal = ({ card, teamId, onClose, sender, onSendSuccess }) => {
   // state: 쪽지 본문 저장
   const [message, setMessage] = useState("");
   // state: 전송 중 상태 처리
@@ -26,32 +23,6 @@ const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
   // state: 에러 상태 처리
   const [error, setError] = useState(null);
 
-  // 보내기 버튼 콜백 함수
-  const handleSendClick = async () => {
-    if (!message.trim()) return; // 빈 메시지 방지
-    setSending(true);
-    setError(null);
-
-    try {
-      await axios.post(
-        `${backLink}/api/teams/${teamId}/cards/${card.cardId}/letters`,
-        {
-          content: message,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      onSend(message);
-    } catch (e) {
-      console.error("쪽지 전송 실패", e);
-      setError("쪽지 전송에 실패했습니다. 다시 시도해주세요.");
-    } finally {
-      setSending(false);
-    }
-  };
   // 동물 이미지 매핑
   const animalMap = {
     강아지: "dog",
@@ -76,16 +47,34 @@ const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
     회색: 10,
   };
 
-  // 이미지 경로 받아오기
-  const animalKey = animalMap[card.animal] || "default";
-  const colorKey = colorMap[card.profileColor] || "default";
-  const animalImageSrc = getAnimalImage(animalKey, colorKey);
+  const accessoryMap = { BASIC: "animal", RIBBON: "ribbon", STAR: "star" };
+
+  const animalKey = animalMap[card.animal] || "pig";
+  const colorKey = colorMap[card.profileColor] || "9";
+  const accessoryKey = accessoryMap[card.accessory] || "animal";
+
+  const animalImageSrc = getAnimalImage(animalKey, colorKey, accessoryKey);
+
+  const handleSendClick = async () => {
+    if (!message.trim()) return;
+    setSending(true);
+    setError(null);
+
+    try {
+      await sendLetter(teamId, card.cardId, message);
+      onSendSuccess();
+      onClose();
+    } catch (e) {
+      console.error("쪽지 전송 실패", e);
+      setError("쪽지 전송에 실패했습니다. 다시 시도해주세요.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div className={st.Overlay}>
-      {/* 모달 전체 컨테이너 */}
       <div className={st.LetterModal}>
-        {/* 타이틀 */}
         <div className={st.Title_wrapper}>
           <div className={st.Title}>
             <div className={st.Main_title}>쪽지 작성하기</div>
@@ -94,20 +83,16 @@ const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
           <img className={st.Line} src={modal_line} alt="modal_line" />
         </div>
 
-        {/* 명함 + 쪽지 작성 */}
         <div className={st.Letter_wrapper}>
-          {/* 수신자 명함 정보 */}
           <div className={st.Card}>
-            <div className={st.Card_Name}>
-              {card.nickname} {card.animal}
-            </div>
+            <div className={st.Card_Name}>{card.nickname}</div>
             <div className={st.Card_Wrapper}>
               <div className={st.Card_image}>
                 <img
                   src={animalImageSrc}
                   alt={`${card.animal} image`}
                   onError={(e) => {
-                    e.currentTarget.src = exPig; // 로딩 실패 시 예시 이미지 나중에 수정
+                    e.currentTarget.src = exPig;
                   }}
                 />
               </div>
@@ -122,9 +107,7 @@ const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
             </div>
           </div>
 
-          {/* 쪽지 작성 */}
           <div className={st.Write_body}>
-            {/* 발신자, 수신자 정보 표시 */}
             <div className={st.Info}>
               <div className={st.Send_wrapper}>
                 <div className={st.Info_text_title}>보내는 사람</div>
@@ -142,13 +125,10 @@ const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
                   src={modal_line_vertical}
                   alt="modal_line_vertical"
                 />
-                <div className={st.Info_text}>
-                  {card.nickname} {card.animal}
-                </div>
+                <div className={st.Info_text}>{card.nickname}</div>
               </div>
             </div>
 
-            {/* 쪽지 작성 textarea */}
             <div className={st.Write_letter}>
               <textarea
                 className={st.Write_text}
@@ -162,7 +142,6 @@ const LetterModal = ({ card, teamId, onClose, onSend, sender }) => {
           </div>
         </div>
 
-        {/* 하단 버튼 */}
         <div className={st.Confirm_buttons}>
           <Button
             text={sending ? "전송 중..." : "보내기"}

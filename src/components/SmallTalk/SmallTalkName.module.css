@@ -1,77 +1,71 @@
 .div {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
   justify-content: flex-end;
   align-self: stretch;
   flex-shrink: 0;
-  height: 50px;
+  width: 100%;
+  height: 3.125rem;
   position: relative;
 }
+
 .title_section {
-  padding: 0px 10px 0px 10px;
+  padding: 0 0.625rem 1.875rem 0.625rem;
   display: flex;
   flex-direction: row;
-  gap: 0px 39px;
+
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   align-content: center;
   flex-shrink: 0;
-  height: 38px;
   position: absolute;
-  right: 0px;
-  left: 0px;
+  right: 0;
+  left: 0;
   top: 50%;
   translate: 0 -50%;
 }
+
 .vector {
   flex-shrink: 0;
-  width: 25px;
-  height: 25px;
+  width: 1.5625rem;
+  height: 1.5625rem;
   position: relative;
   overflow: visible;
   aspect-ratio: 1;
 }
-.date {
-  width: 137px;
-  color: #ffffff;
-  text-align: left;
-  /* font */
-  text-shadow: 0px 2px 10px rgba(89, 126, 219, 0.5);
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
+
+.date,
 .title {
-  width: 114px;
-  cursor: pointer;
   color: #ffffff;
   text-align: left;
-  /* font */
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   text-shadow: 0px 2px 10px rgba(89, 126, 219, 0.5);
-  font-family: var(
-    --body1-semibold-24px-font-family,
-    "Inter-SemiBold",
-    sans-serif
-  );
-  font-size: var(--body1-semibold-24px-font-size, 24px);
-  line-height: var(--body1-semibold-24px-line-height, 140%);
-  letter-spacing: var(--body1-semibold-24px-letter-spacing, -0.02em);
-  font-weight: var(--body1-semibold-24px-font-weight, 600);
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
+}
+
+.date {
+  width: 8.5625rem;
+}
+
+.title {
+  width: 7.125rem;
+  cursor: pointer;
+}
+
+.headerLine {
+  width: 100%;
+  max-width: 85.125rem;
+  height: 0.125rem;
+  border: 2px solid #ffffff;
+  opacity: 0.7;
+  filter: blur(2px);
 }

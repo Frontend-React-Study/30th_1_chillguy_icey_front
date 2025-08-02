@@ -17,7 +17,7 @@
   justify-content: center; /* 가로 중앙 */
   align-items: center;
   width: 100%;
-  padding: 18px 38px 18px 38px;
+  padding: 1.125rem 2.375rem 1.125rem 2.375rem;
   min-height: 100vh;
 
   position: relative;
@@ -25,11 +25,11 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 1.375rem;
   align-items: center;
   justify-content: flex-start;
   min-width: 744px;
-  max-width: 1440px;
+  max-width: 90rem;
   position: relative;
   overflow-y: auto;
 }
@@ -37,12 +37,12 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-end;
   align-self: stretch;
   flex-shrink: 0;
-  height: 126px;
+  height: 7.875rem;
   min-width: 375px;
   min-height: 126px;
   position: relative;
@@ -53,7 +53,7 @@
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  height: 126px;
+  height: 7.875rem;
   position: absolute;
   right: 0px;
   left: 0px;
@@ -62,18 +62,18 @@
 .logo {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 250px;
+  width: 15.625rem;
   position: relative;
 }
 .icey {
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 90px;
+  font-size: 5.625rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -88,7 +88,7 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-  border-radius: 19px;
+  border-radius: 1.1875rem;
   border-width: 3px;
   cursor: pointer;
   border-image: transparent;
@@ -96,12 +96,12 @@
   border: none;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 173px;
-  height: 59px;
+  width: 10.8125rem;
+  height: 3.6875rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -113,7 +113,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 25px;
+  font-size: 1.5625rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -125,7 +125,7 @@
 .header_line {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -137,7 +137,7 @@
 .body {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -148,7 +148,7 @@
 .heroSection {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
@@ -161,20 +161,20 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-  border-radius: 20px;
+  border-radius: 1.25rem;
   border-width: 3px;
 
   border-image: transparent;
   border-image-slice: 1;
-  padding: 55px 20px 55px 20px;
+  padding: 3.4375rem 1.25rem 3.4375rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 668px;
-  height: 500px;
+  width: 41.75rem;
+  height: 31.25rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -185,7 +185,7 @@
 .heroTextBox {
   display: flex;
   flex-direction: column;
-  gap: 27px;
+  gap: 1.6875rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -196,7 +196,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 90px;
+  font-size: 5.625rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -210,7 +210,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 40px;
+  font-size: 2.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -224,7 +224,7 @@
   color: #ffffff;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 25px;
+  font-size: 1.5625rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -237,7 +237,7 @@
 .go_button {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: flex-start;
   flex: 1;
@@ -253,19 +253,19 @@
       rgba(255, 255, 255, 0.5) 100%
     )
   );
-  border-radius: 20px;
+  border-radius: 1.25rem;
   border-width: 3px;
 
   border-image: transparent;
   border-image-slice: 1;
-  padding: 66px 20px 66px 20px;
+  padding: 4.125rem 1.25rem 4.125rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: flex-start;
   flex: 1;
-  height: 500px;
+  height: 31.25rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -277,7 +277,7 @@
   color: var(--font-color-50, #4b527e);
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 40px;
+  font-size: 2.5rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -295,19 +295,19 @@
       rgba(179, 186, 228, 0.5) 0%,
       rgba(99, 108, 159, 0.8) 100%
     );
-  border-radius: 20px;
+  border-radius: 1.25rem;
   border-width: 3px;
   cursor: pointer;
   border-image: transparent;
   border-image-slice: 1;
-  padding: 66px 20px 66px 20px;
+  padding: 4.125rem 1.25rem 4.125rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   justify-content: flex-start;
   flex: 1;
-  height: 500px;
+  height: 31.25rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -321,19 +321,19 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-  border-radius: 20px;
+  border-radius: 1.25rem;
   border-width: 3px;
 
   border-image: transparent;
   border-image-slice: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
-  height: 832px;
+  height: 52rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -348,10 +348,10 @@
     rgba(255, 255, 255, 0.3) 59.13461446762085%,
     rgba(141, 176, 240, 0) 100%
   );
-  border-radius: 23px;
+  border-radius: 1.4375rem;
   align-self: stretch;
   flex-shrink: 0;
-  height: 827px;
+  height: 51.6875rem;
   position: relative;
   filter: blur(2px);
 }
@@ -361,7 +361,7 @@
   border-color: var(--netural-white, #ffffff);
   border-width: 2px 0 0 0;
   flex-shrink: 0;
-  width: 1288px;
+  width: 80.5rem;
   height: 0px;
   position: absolute;
   left: calc(50% - 645px);
@@ -430,7 +430,7 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-shrink: 0;
-  width: 1288px;
+  width: 80.5rem;
   position: absolute;
   left: calc(50% - 645px);
   top: 323px;
@@ -441,8 +441,8 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-shrink: 0;
-  width: 432px;
-  height: 314px;
+  width: 27rem;
+  height: 19.625rem;
   position: relative;
 }
 .momentItem1 {
@@ -481,14 +481,14 @@
   justify-content: flex-start;
 }
 .momentCardTeam {
-  padding: 50px 0px 50px 0px;
+  padding: 3.125rem 0px 3.125rem 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
   flex-shrink: 0;
-  width: 491px;
-  height: 414px;
+  width: 30.6875rem;
+  height: 25.875rem;
   position: relative;
 }
 .momentItem3 {
@@ -534,16 +534,16 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-  border-radius: 20px;
-  padding: 51px 627px 51px 627px;
+  border-radius: 1.25rem;
+  padding: 3.1875rem 39.1875rem 3.1875rem 39.1875rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 746px;
+  height: 46.625rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -555,7 +555,7 @@
   color: var(--font-color-50, #4b527e);
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 50px;
+  font-size: 3.125rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -568,7 +568,7 @@
   color: var(--font-color-50, #4b527e);
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -583,16 +583,16 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0.2) 100%
   );
-  border-radius: 20px;
-  padding: 51px 605px 51px 605px;
+  border-radius: 1.25rem;
+  padding: 3.1875rem 37.8125rem 3.1875rem 37.8125rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 746px;
+  height: 46.625rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -604,7 +604,7 @@
   color: var(--font-color-50, #4b527e);
   text-align: center;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -626,7 +626,7 @@
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 240px;
+  height: 15rem;
   position: relative;
   box-shadow: var(
     ---box-shadow,
@@ -635,21 +635,21 @@
   backdrop-filter: var(---backdrop-filter, blur(22.5px));
 }
 .footerContent {
-  padding: 20px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.875rem;
   align-items: flex-start;
   justify-content: flex-start;
   flex: 1;
-  height: 240px;
+  height: 15rem;
   position: relative;
   overflow: hidden;
 }
 .footerLanguage {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -660,7 +660,7 @@
 .footerCopyright {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-end;
   align-self: stretch;
@@ -684,7 +684,7 @@
 .footerLegalInfo {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -695,7 +695,7 @@
 .footerLinkList {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -719,7 +719,7 @@
 .footerEtcInfo {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;

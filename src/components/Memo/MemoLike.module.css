@@ -5,16 +5,16 @@
 .MemoLike {
   background: white;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   position: relative;
   display: flex;
   align-items: center;
 }
 
 .Animal_image {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   border-radius: 50%;
   object-fit: cover;
   cursor: default;

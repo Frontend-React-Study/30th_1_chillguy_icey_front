@@ -4,12 +4,15 @@ body {
   padding: 0;
   height: 100%;
   min-width: 744px;
+  user-select: none;
+  box-sizing: border-box; /* 안전하게 추가 */
+  overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: inherit; /* 상속 */
 }
 
 .App-background {
@@ -20,15 +23,18 @@ body {
     rgba(181, 208, 253, 1) 57.38%,
     rgba(222, 222, 246, 1) 86.25%
   );
+}
 
+.App-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  padding: 0px 50px;
+  gap: 1rem;
+  width: 100vw; /* 100% 대신 100vw 권장, 정확한 뷰포트 너비 */
   min-height: 100vh;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
   overflow: hidden;
+  padding-left: max(3.125rem, 200px);
+  padding-right: max(3.125rem, 200px);
 }
